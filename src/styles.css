@@ -1,0 +1,90 @@
+@import "tailwindcss";
+@import "@fontsource/cinzel/latin-400.css";
+@import "@fontsource/cinzel/latin-600.css";
+@import "@fontsource/cinzel/latin-700.css";
+@import "@fontsource/cormorant-garamond/latin-400.css";
+@import "@fontsource/cormorant-garamond/latin-400-italic.css";
+@import "@fontsource/cormorant-garamond/latin-600.css";
+
+@theme {
+  --color-navy: #14213d;
+  --color-navy-deep: #0c152b;
+  --color-navy-raised: #1c2c4f;
+  --color-parchment: #f4ebd9;
+  --color-cream: #fbf6ec;
+  --color-ember: #e4572e;
+  --color-ember-deep: #c44522;
+  --color-amber: #f2a541;
+  --font-display: "Cinzel", Palatino, "Palatino Linotype", serif;
+  --font-body: "Cormorant Garamond", Georgia, "Iowan Old Style", serif;
+  --tracking-brand: 0.42em;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-parchment);
+    color: var(--color-navy);
+    font-family: var(--font-body);
+    font-size: 1.1875rem;
+    line-height: 1.55;
+    text-rendering: optimizeLegibility;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-ember);
+    color: var(--color-parchment);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ember);
+    outline-offset: 3px;
+  }
+
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    .rise {
+      animation: none;
+    }
+  }
+}
+
+.hero-rays {
+  background: repeating-conic-gradient(
+    from 200deg at 82% 42%,
+    transparent 0 12deg,
+    color-mix(in oklab, var(--color-parchment) 7%, transparent) 12deg 13deg
+  );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 700ms ease both;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
