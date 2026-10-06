@@ -1,0 +1,5 @@
+/* Corner radii and rules. The app-icon tile uses 22.37% (iOS ratio, measured from the brand sheet). */
+:root{
+--radius-none:0;--radius-xs:2px;--radius-sm:4px;--radius-md:8px;--radius-lg:14px;--radius-xl:22px;--radius-pill:999px;--radius-icon:22.37%;
+--border-width-1:1px;--border-width-2:2px;--bar-thickness:10px;
+}

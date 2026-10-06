@@ -1,0 +1,33 @@
+/* Spacing, sizing, layout, stacking. 4px base. */
+:root{
+--space-0:0;/* @kind spacing */
+--space-px:1px;/* @kind spacing */
+--space-0-5:2px;/* @kind spacing */
+--space-1:4px;/* @kind spacing */
+--space-2:8px;/* @kind spacing */
+--space-3:12px;/* @kind spacing */
+--space-4:16px;/* @kind spacing */
+--space-5:20px;/* @kind spacing */
+--space-6:24px;/* @kind spacing */
+--space-8:32px;/* @kind spacing */
+--space-10:40px;/* @kind spacing */
+--space-12:48px;/* @kind spacing */
+--space-16:64px;/* @kind spacing */
+--space-20:80px;/* @kind spacing */
+--space-24:96px;/* @kind spacing */
+--space-32:128px;/* @kind spacing */
+--control-sm:36px;/* @kind spacing */
+--control-md:44px;/* @kind spacing */
+--control-lg:56px;/* @kind spacing */
+--container-sm:40rem;/* @kind spacing */
+--container-md:60rem;/* @kind spacing */
+--container-lg:75rem;/* @kind spacing */
+--gutter:var(--space-6);/* @kind spacing */
+--z-base:0;/* @kind other */
+--z-sticky:100;/* @kind other */
+--z-dropdown:200;/* @kind other */
+--z-overlay:300;/* @kind other */
+--z-modal:400;/* @kind other */
+--z-toast:500;/* @kind other */
+--z-tooltip:600;/* @kind other */
+}

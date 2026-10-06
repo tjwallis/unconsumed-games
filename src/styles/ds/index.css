@@ -1,0 +1,18 @@
+/* Unconsumed Games design system, vendored from the Claude Design export
+   (unconsumed-games-design-system-bd47239e). Token and component files are
+   copied verbatim; only font URLs point at /public/fonts. Edit upstream, not here. */
+@import "./fonts.css";
+@import "./colors.css";
+@import "./typography.css";
+@import "./spacing.css";
+@import "./radii.css";
+@import "./shadows.css";
+@import "./motion.css";
+@import "./patterns.css";
+@import "./covenanter.css";
+@import "./base.css";
+@import "./actions.css";
+@import "./forms.css";
+@import "./display.css";
+@import "./navigation.css";
+@import "./feedback.css";

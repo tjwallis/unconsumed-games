@@ -1,0 +1,50 @@
+/* Unconsumed Games — type tokens.
+   Cormorant Garamond is identified from the supplied wordmark, tagline and banner. Source Serif 4 is a chosen text face (not in the supplied files). */
+:root{
+--font-display:"Cormorant Garamond","Cormorant","EB Garamond",Garamond,"Times New Roman",serif;/* @kind font */
+--font-text:"Source Serif 4","Source Serif Pro",Georgia,"Times New Roman",serif;/* @kind font */
+--font-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;/* @kind font */
+--fw-light:300;/* @kind font */
+--fw-regular:400;/* @kind font */
+--fw-medium:500;/* @kind font */
+--fw-semibold:600;/* @kind font */
+--fw-bold:700;/* @kind font */
+--fs-2xs:.75rem;/* @kind font */
+--fs-xs:.8125rem;/* @kind font */
+--fs-sm:.9375rem;/* @kind font */
+--fs-md:1.0625rem;/* @kind font */
+--fs-lg:1.25rem;/* @kind font */
+--fs-xl:1.5rem;/* @kind font */
+--fs-2xl:2rem;/* @kind font */
+--fs-3xl:2.75rem;/* @kind font */
+--fs-4xl:3.75rem;/* @kind font */
+--fs-5xl:5rem;/* @kind font */
+--fs-6xl:7rem;/* @kind font */
+--lh-none:1;/* @kind font */
+--lh-tight:1.05;/* @kind font */
+--lh-snug:1.2;/* @kind font */
+--lh-normal:1.45;/* @kind font */
+--lh-relaxed:1.6;/* @kind font */
+--tracking-tight:-.01em;/* @kind font */
+--tracking-normal:0;/* @kind font */
+--tracking-wide:.04em;/* @kind font */
+--tracking-caps:.1em;/* @kind font */
+--tracking-wordmark:.07em;/* @kind font */
+--tracking-eyebrow:.22em;/* @kind font */
+--tracking-lockup:.6em;/* @kind font */
+/* Roles (CSS font shorthand) */
+--type-display:700 var(--fs-5xl)/var(--lh-none) var(--font-display);/* @kind font */
+--type-h1:600 var(--fs-4xl)/var(--lh-tight) var(--font-display);/* @kind font */
+--type-h2:600 var(--fs-3xl)/1.1 var(--font-display);/* @kind font */
+--type-h3:600 var(--fs-2xl)/var(--lh-snug) var(--font-display);/* @kind font */
+--type-h4:700 var(--fs-xl)/1.25 var(--font-display);/* @kind font */
+--type-eyebrow:600 1rem/1.2 var(--font-display);/* @kind font */
+--type-lead:400 var(--fs-lg)/1.5 var(--font-text);/* @kind font */
+--type-body:400 var(--fs-md)/var(--lh-relaxed) var(--font-text);/* @kind font */
+--type-body-sm:400 var(--fs-sm)/1.5 var(--font-text);/* @kind font */
+--type-caption:400 var(--fs-xs)/1.4 var(--font-text);/* @kind font */
+--type-label:600 var(--fs-sm)/1.2 var(--font-text);/* @kind font */
+--type-button:700 1.0625rem/1 var(--font-display);/* @kind font */
+--type-quote:italic 500 var(--fs-xl)/1.35 var(--font-display);/* @kind font */
+--type-code:400 .875rem/1.5 var(--font-mono);/* @kind font */
+}

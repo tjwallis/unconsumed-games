@@ -1,0 +1,32 @@
+/* Base element styles and .uc-* utilities. Light theme by default; add data-theme="dark" to any container for the navy ground. */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--surface-page);color:var(--text-body);font:var(--type-body);font-feature-settings:"kern","liga"}
+[data-theme="dark"]{background:var(--surface-page);color:var(--text-body)}
+h1,h2,h3,h4,h5,h6{margin:0;color:var(--text-strong);font-family:var(--font-display);text-wrap:balance}
+h1{font:var(--type-h1)}h2{font:var(--type-h2)}h3{font:var(--type-h3)}
+h4{font:var(--type-h4);letter-spacing:var(--tracking-caps);text-transform:uppercase}
+p{margin:0;text-wrap:pretty}
+a{color:var(--text-link);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.2em;transition:var(--transition-color)}
+a:hover{color:var(--text-link-hover)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,[tabindex]:focus-visible{outline:none;box-shadow:var(--shadow-focus)}
+::selection{background:var(--amber-300);color:var(--navy-900)}
+hr{border:0;border-top:var(--border-width-1) solid var(--border-default);margin:0}
+code,kbd,pre{font:var(--type-code)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+.uc-display{font:var(--type-display);letter-spacing:var(--tracking-wordmark);text-transform:uppercase}
+.uc-h1{font:var(--type-h1)}.uc-h2{font:var(--type-h2)}.uc-h3{font:var(--type-h3)}
+.uc-h4{font:var(--type-h4);letter-spacing:var(--tracking-caps);text-transform:uppercase}
+.uc-eyebrow{font:var(--type-eyebrow);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-accent)}
+.uc-lead{font:var(--type-lead)}
+.uc-body{font:var(--type-body)}
+.uc-small{font:var(--type-body-sm)}
+.uc-caption{font:var(--type-caption);color:var(--text-muted)}
+.uc-label{font:var(--type-label)}
+.uc-quote{font:var(--type-quote)}
+.uc-cite{font:var(--type-quote);color:var(--text-accent)}
+.uc-games{font-family:var(--font-display);font-weight:var(--fw-regular);letter-spacing:var(--tracking-lockup);text-transform:uppercase;color:var(--text-accent-display)}
+.uc-rays{background:var(--pattern-rays),var(--surface-page)}
+.uc-bar{border-bottom:var(--bar-thickness) solid var(--ember-500)}
+.uc-rule{height:0;border:0;border-top:var(--border-width-1) solid var(--border-default)}

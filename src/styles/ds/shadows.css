@@ -1,0 +1,10 @@
+/* Elevation. Brand artwork is flat; shadows are for floating UI only and are navy-tinted. */
+:root{
+--shadow-xs:0 1px 2px rgb(20 33 61 / .08);
+--shadow-sm:0 2px 6px rgb(20 33 61 / .10);
+--shadow-md:0 8px 20px -6px rgb(20 33 61 / .18);
+--shadow-lg:0 20px 44px -12px rgb(20 33 61 / .28);
+--shadow-xl:0 32px 64px -16px rgb(11 23 49 / .40);
+--shadow-inset:inset 0 1px 2px rgb(20 33 61 / .10);
+--shadow-focus:0 0 0 2px var(--surface-page),0 0 0 4px var(--focus-ring-color);
+}

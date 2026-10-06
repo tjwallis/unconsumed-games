@@ -1,0 +1,119 @@
+/* Unconsumed Games — color tokens.
+   Brand palette is taken from the supplied brand sheet (navy #14213D, ember #E4572E, amber #F2A541, parchment #F4EBD9),
+   plus the banner ray tone #1A2541, the sheet rule #C7C2BA / icon border #D8D2C6 and label text #575D6B.
+   Every other stop is derived in OKLCH from those values. */
+:root{
+/* Brand palette (supplied) */
+--uc-navy:#14213D;--uc-ember:#E4572E;--uc-amber:#F2A541;--uc-parchment:#F4EBD9;
+/* Navy — 900 is the brand navy, 800 is the banner ray tone */
+--navy-50:#F4F7FD;--navy-100:#E9EDF5;--navy-200:#D8DCE6;--navy-300:#B7BECB;--navy-400:#969FAF;--navy-500:#707B8F;--navy-600:#4F5B72;--navy-700:#36425B;--navy-800:#1A2541;--navy-900:#14213D;--navy-950:#0B1731;
+/* Ember — 500 is the brand orange-red */
+--ember-50:#FFF4F1;--ember-100:#FEE9E3;--ember-200:#FED3C7;--ember-300:#FEB29C;--ember-400:#F08668;--ember-500:#E4572E;--ember-600:#C33C0F;--ember-700:#A02B00;--ember-800:#7C1F00;--ember-900:#591602;--ember-950:#3B0700;
+/* Amber — 400 is the brand amber */
+--amber-50:#FFF9F3;--amber-100:#FFF1E2;--amber-200:#FEE3C5;--amber-300:#FBCA94;--amber-400:#F2A541;--amber-500:#D68C24;--amber-600:#B37313;--amber-700:#925B00;--amber-800:#704500;--amber-900:#503002;--amber-950:#351E01;
+/* Parchment — 100 is the brand cream */
+--parchment-50:#FDFAF3;--parchment-100:#F4EBD9;--parchment-200:#E7DDCA;--parchment-300:#D6CDBA;--parchment-400:#C3BAA8;--parchment-500:#A69D8D;--parchment-600:#877F70;--parchment-700:#696255;--parchment-800:#4D473B;--parchment-900:#322D23;--parchment-950:#1F1A11;
+/* Stone — warm neutral; 300 = light icon border, 400 = sheet rule */
+--stone-50:#F9F8F6;--stone-100:#F0EEEB;--stone-200:#E3E1DD;--stone-300:#D8D2C6;--stone-400:#C7C2BA;--stone-500:#A29E96;--stone-600:#7D7A73;--stone-700:#5D5A54;--stone-800:#423F3A;--stone-900:#2B2924;--stone-950:#1A1814;
+/* Slate — cool neutral; 600 = sheet label text */
+--slate-50:#F5F7FA;--slate-100:#EAEDF1;--slate-200:#DBDEE3;--slate-300:#B9BEC6;--slate-400:#969CA6;--slate-500:#737B88;--slate-600:#575D6B;--slate-700:#404857;--slate-800:#2E3643;--slate-900:#1E2430;--slate-950:#111620;
+/* Success (derived) */
+--success-50:#EEFBF2;--success-100:#E1F2E6;--success-200:#CFE4D5;--success-300:#B2D0BC;--success-400:#8EB69B;--success-500:#6A9D7C;--success-600:#2F7A4F;--success-700:#1C683F;--success-800:#01502C;--success-900:#03381D;--success-950:#00220F;
+/* Danger (derived) */
+--danger-50:#FFF4F2;--danger-100:#FEE4E0;--danger-200:#FCCEC7;--danger-300:#EFB3AA;--danger-400:#DD8C81;--danger-500:#CB685D;--danger-600:#B3322A;--danger-700:#9C1D19;--danger-800:#7A0A0A;--danger-900:#5B0404;--danger-950:#3A0001;
+/* Info (derived) */
+--info-50:#F0F8FF;--info-100:#E1EFFC;--info-200:#CEE1F2;--info-300:#B2CBE2;--info-400:#8EAFCD;--info-500:#6A94BA;--info-600:#2C6A9C;--info-700:#1E5C8C;--info-800:#054571;--info-900:#003052;--info-950:#001C33;
+
+/* Semantic — light theme (default) */
+--surface-page:var(--parchment-100);
+--surface-raised:var(--parchment-50);
+--surface-sunken:var(--parchment-200);
+--surface-inverse:var(--navy-900);
+--surface-inverse-raised:var(--navy-800);
+--surface-scrim:rgb(11 23 49 / .62);
+--text-strong:var(--navy-900);
+--text-body:var(--navy-900);
+--text-muted:var(--slate-600);
+--text-subtle:var(--slate-500);
+--text-accent:var(--ember-700);
+--text-accent-display:var(--ember-500);
+--text-on-primary:var(--parchment-100);
+--text-on-accent:var(--navy-950);
+--text-inverse:var(--parchment-100);
+--text-inverse-muted:var(--navy-300);
+--text-inverse-accent:var(--amber-400);
+--text-link:var(--ember-700);
+--text-link-hover:var(--ember-800);
+--border-subtle:var(--stone-300);
+--border-default:var(--stone-400);
+--border-strong:var(--navy-900);
+--border-accent:var(--ember-500);
+--action-primary-bg:var(--navy-900);
+--action-primary-bg-hover:var(--navy-700);
+--action-primary-bg-active:var(--navy-950);
+--action-primary-fg:var(--parchment-100);
+--action-accent-bg:var(--ember-500);
+--action-accent-bg-hover:var(--ember-400);
+--action-accent-bg-active:var(--ember-600);
+--action-accent-fg:var(--navy-950);
+--action-secondary-border:var(--navy-900);
+--action-secondary-hover:var(--navy-900);
+--action-secondary-hover-fg:var(--parchment-100);
+--action-ghost-hover:var(--parchment-200);
+--control-bg:var(--parchment-50);
+--control-border:var(--stone-400);
+--control-border-hover:var(--navy-500);
+--control-border-focus:var(--navy-900);
+--control-disabled-bg:var(--parchment-200);
+--control-disabled-fg:var(--stone-600);
+--focus-ring-color:var(--navy-900);
+--status-success-bg:var(--success-50);--status-success-border:var(--success-300);--status-success-fg:var(--success-700);--status-success-solid:var(--success-600);
+--status-warning-bg:var(--amber-100);--status-warning-border:var(--amber-300);--status-warning-fg:var(--amber-800);--status-warning-solid:var(--amber-400);
+--status-danger-bg:var(--danger-50);--status-danger-border:var(--danger-300);--status-danger-fg:var(--danger-700);--status-danger-solid:var(--danger-600);
+--status-info-bg:var(--info-50);--status-info-border:var(--info-300);--status-info-fg:var(--info-700);--status-info-solid:var(--info-600);
+}
+/* Dark theme — navy ground, the banner / social look. Apply with data-theme="dark" on any container. */
+[data-theme="dark"]{
+--surface-page:var(--navy-900);
+--surface-raised:var(--navy-800);
+--surface-sunken:var(--navy-950);
+--surface-inverse:var(--parchment-100);
+--surface-inverse-raised:var(--parchment-50);
+--surface-scrim:rgb(5 10 24 / .72);
+--text-strong:var(--parchment-50);
+--text-body:var(--parchment-100);
+--text-muted:var(--navy-300);
+--text-subtle:var(--navy-400);
+--text-accent:var(--amber-400);
+--text-accent-display:var(--amber-400);
+--text-on-primary:var(--navy-900);
+--text-on-accent:var(--navy-950);
+--text-inverse:var(--navy-900);
+--text-inverse-muted:var(--slate-600);
+--text-inverse-accent:var(--ember-700);
+--text-link:var(--amber-400);
+--text-link-hover:var(--amber-300);
+--border-subtle:var(--navy-700);
+--border-default:var(--navy-600);
+--border-strong:var(--parchment-100);
+--border-accent:var(--ember-500);
+--action-primary-bg:var(--amber-400);
+--action-primary-bg-hover:var(--amber-300);
+--action-primary-bg-active:var(--amber-500);
+--action-primary-fg:var(--navy-900);
+--action-secondary-border:var(--parchment-100);
+--action-secondary-hover:var(--parchment-100);
+--action-secondary-hover-fg:var(--navy-900);
+--action-ghost-hover:var(--navy-700);
+--control-bg:var(--navy-950);
+--control-border:var(--navy-600);
+--control-border-hover:var(--navy-400);
+--control-border-focus:var(--amber-400);
+--control-disabled-bg:var(--navy-800);
+--control-disabled-fg:var(--navy-500);
+--focus-ring-color:var(--amber-400);
+--status-success-bg:rgb(47 122 79 / .22);--status-success-border:var(--success-500);--status-success-fg:var(--success-200);--status-success-solid:var(--success-500);
+--status-warning-bg:rgb(242 165 65 / .16);--status-warning-border:var(--amber-500);--status-warning-fg:var(--amber-300);--status-warning-solid:var(--amber-400);
+--status-danger-bg:rgb(179 50 42 / .26);--status-danger-border:var(--danger-500);--status-danger-fg:var(--danger-200);--status-danger-solid:var(--danger-500);
+--status-info-bg:rgb(44 106 156 / .26);--status-info-border:var(--info-500);--status-info-fg:var(--info-200);--status-info-solid:var(--info-500);
+}
