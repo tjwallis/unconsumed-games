@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { BookOpen, Landmark, Users } from "lucide-react";
 import type { ReactNode } from "react";
+import { CastParade } from "@/components/cast-parade";
 import { LaunchForm } from "@/components/launch-form";
 import { PageShell } from "@/components/page-shell";
 import { STUDIO } from "@/lib/site";
@@ -37,21 +38,21 @@ const reasons = [
   },
 ] as const;
 
-const concepts = [
+const scenes = [
   {
-    src: "/art/concept-scripture.jpg",
-    title: "The Word",
-    alt: "Concept painting of an open Bible on a lectern inside a stone kirk, lit by a single candle.",
+    src: "/art/game/st-giles.jpg",
+    title: "St Giles’",
+    alt: "St Giles’ Kirk in Edinburgh, reformed, with Knox standing in the pulpit above the pews.",
   },
   {
-    src: "/art/concept-road.jpg",
-    title: "The Road",
-    alt: "Concept painting of a cloaked traveler on a highland road toward a distant Scottish kirk.",
+    src: "/art/game/disputation.jpg",
+    title: "A disputation",
+    alt: "Alasdair answering Friar Tobias by choosing a truth from Scripture.",
   },
   {
-    src: "/art/concept-close.jpg",
-    title: "The Town",
-    alt: "Concept painting of a narrow 16th-century Scottish close at twilight, lit by hanging lanterns.",
+    src: "/art/game/dundee.jpg",
+    title: "Dundee",
+    alt: "The harbour at Dundee, where the pilgrimage begins and Knox is home.",
   },
 ] as const;
 
@@ -87,15 +88,28 @@ function Home() {
           </div>
 
           <figure className="rise">
-            <div className="overflow-hidden rounded-2xl shadow-2xl ring-1 ring-amber/70">
-              <img
-                src="/art/hero.jpg"
-                alt="Concept painting of a stone kirk and cottages above a Scottish firth at dusk, for Covenanter."
-                className="aspect-video w-full object-cover"
-              />
+            <div className="rounded-2xl bg-navy-deep px-3 pt-8 pb-4 ring-1 ring-amber/70 sm:px-6">
+              <div className="flex items-end justify-center gap-1 sm:gap-4">
+                <img
+                  src="/cast/stage/alasdair-idle.png"
+                  alt="Alasdair, the pilgrim, in his gown with a Bible and satchel."
+                  className="pixel h-28 w-auto sm:h-44 lg:h-56"
+                />
+                <img
+                  src="/cast/stage/knox-struck.png"
+                  alt="John Knox preaching, arms raised."
+                  className="pixel h-32 w-auto sm:h-52 lg:h-64"
+                />
+                <img
+                  src="/cast/stage/queen-idle.png"
+                  alt="Mary, Queen of Scots, in a French hood and black gown."
+                  className="pixel h-28 w-auto sm:h-44 lg:h-56"
+                />
+              </div>
+              <div className="mx-6 mt-2 h-px bg-amber/50" />
             </div>
-            <figcaption className="mt-3 font-display text-xs tracking-widest text-amber uppercase">
-              Key art · Reformation Scotland
+            <figcaption className="mt-3 text-center font-display text-xs tracking-widest text-amber uppercase">
+              Alasdair · John Knox · Mary, Queen of Scots
             </figcaption>
           </figure>
         </div>
@@ -139,25 +153,34 @@ function Home() {
             ))}
           </div>
 
-          <div className="mt-12 grid grid-cols-3 gap-3 sm:gap-5">
-            {concepts.map((concept) => (
-              <figure key={concept.title}>
+          <div className="mt-14">
+            <h3 className="text-center font-display text-sm tracking-widest text-ember uppercase">
+              Who you meet
+            </h3>
+            <div className="mt-4">
+              <CastParade />
+            </div>
+          </div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {scenes.map((scene) => (
+              <figure key={scene.title}>
                 <div className="overflow-hidden rounded-2xl ring-1 ring-ember/25">
                   <img
-                    src={concept.src}
-                    alt={concept.alt}
-                    className="aspect-3/4 w-full object-cover"
+                    src={scene.src}
+                    alt={scene.alt}
+                    className="aspect-video w-full object-cover"
                     loading="lazy"
                   />
                 </div>
                 <figcaption className="mt-3 text-center font-display text-xs tracking-widest text-ember uppercase">
-                  {concept.title}
+                  {scene.title}
                 </figcaption>
               </figure>
             ))}
           </div>
           <p className="mt-4 text-center text-base text-navy/60">
-            Concept art from the world of the game. Gameplay stills will replace these as Covenanter comes together.
+            Stills from the game. The people are the sprites you meet on the road.
           </p>
         </div>
       </section>

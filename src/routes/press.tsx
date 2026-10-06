@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell } from "@/components/page-shell";
 import { STUDIO } from "@/lib/site";
@@ -44,19 +44,34 @@ const features = [
 
 const shots = [
   {
-    src: "/art/concept-scripture.jpg",
-    alt: "Concept painting of an open Bible on a lectern in a stone kirk.",
-    label: "The Word",
+    src: "/art/game/title.jpg",
+    alt: "The Covenanter title screen: Post tenebras lux over a Scottish skyline.",
+    label: "Title",
   },
   {
-    src: "/art/concept-road.jpg",
-    alt: "Concept painting of a traveler on a highland road.",
-    label: "The Road",
+    src: "/art/game/st-giles.jpg",
+    alt: "Knox in the pulpit of St Giles’ Kirk.",
+    label: "St Giles’",
   },
   {
-    src: "/art/concept-close.jpg",
-    alt: "Concept painting of a 16th-century Scottish close at twilight.",
-    label: "The Town",
+    src: "/art/game/disputation.jpg",
+    alt: "Alasdair disputing with Friar Tobias.",
+    label: "Disputation",
+  },
+  {
+    src: "/art/game/dundee.jpg",
+    alt: "Dundee harbour, with Knox.",
+    label: "Dundee",
+  },
+  {
+    src: "/art/game/world-map.jpg",
+    alt: "The road across Scotland.",
+    label: "The road",
+  },
+  {
+    src: "/art/game/commonplace-book.jpg",
+    alt: "The Commonplace Book of truths and proof-texts.",
+    label: "The Book",
   },
 ];
 
@@ -205,12 +220,12 @@ function PressPage() {
           <h2 className="mt-12 font-display text-3xl tracking-wide">Trailer</h2>
           <Trailer />
 
-          <h2 className="mt-12 font-display text-3xl tracking-wide">Concept art</h2>
-          <div className="mt-5 grid gap-4 sm:grid-cols-3">
+          <h2 className="mt-12 font-display text-3xl tracking-wide">Screenshots</h2>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {shots.map((shot) => (
               <figure key={shot.label}>
                 <div className="overflow-hidden rounded-2xl ring-1 ring-ember/25">
-                  <img src={shot.src} alt={shot.alt} className="aspect-3/4 w-full object-cover" loading="lazy" />
+                  <img src={shot.src} alt={shot.alt} className="aspect-video w-full object-cover" loading="lazy" />
                 </div>
                 <figcaption className="mt-2 font-display text-xs tracking-widest text-ember uppercase">
                   {shot.label}
@@ -219,7 +234,11 @@ function PressPage() {
             ))}
           </div>
           <p className="mt-3 text-base text-navy/60">
-            Concept paintings, not gameplay captures. Stills and a downloadable set will replace these when the game is ready to show.
+            Captured from the game. Character sprites on the{" "}
+            <Link to="/brand" className="text-ember underline underline-offset-4">
+              brand page
+            </Link>{" "}
+            are cut from the same sheets.
           </p>
 
           <h2 className="mt-12 font-display text-3xl tracking-wide">Logos & brand assets</h2>
@@ -297,8 +316,8 @@ function Trailer() {
     <figure className="mt-5">
       <div className="relative overflow-hidden rounded-2xl ring-1 ring-ember/30">
         <img
-          src="/art/hero.jpg"
-          alt="Concept painting of a Scottish kirk at dusk, standing in for the Covenanter trailer."
+          src="/art/game/title.jpg"
+          alt="The Covenanter title screen, standing in until the trailer is cut."
           className="aspect-video w-full object-cover"
         />
         <div className="absolute inset-0 flex items-end bg-linear-to-t from-navy/80 via-navy/10 to-transparent p-4 sm:p-6">
