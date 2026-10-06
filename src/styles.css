@@ -64,6 +64,16 @@
   }
 }
 
+.pixel {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.pixel-smoothed {
+  image-rendering: auto;
+  filter: blur(1px);
+}
+
 .hero-rays {
   background: repeating-conic-gradient(
     from 200deg at 82% 42%,

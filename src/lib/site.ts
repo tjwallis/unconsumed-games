@@ -21,6 +21,7 @@ export const NAV = [
   { label: "Why Covenanter", to: "/", hash: "why" as const },
   { label: "Platforms", to: "/", hash: "platforms" as const },
   { label: "About", to: "/", hash: "studio" as const },
+  { label: "Brand", to: "/brand", hash: undefined },
   { label: "Press", to: "/press", hash: undefined },
   { label: "Join the List", to: "/", hash: "list" as const },
 ] as const;

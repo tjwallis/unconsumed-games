@@ -41,6 +41,10 @@ export function SiteFooter() {
           Press Kit
         </Link>
         <span aria-hidden>·</span>
+        <Link to="/brand" className="underline decoration-parchment/30 underline-offset-4 hover:text-parchment">
+          Brand
+        </Link>
+        <span aria-hidden>·</span>
         <Link
           to="/delete-account"
           className="underline decoration-parchment/30 underline-offset-4 hover:text-parchment"

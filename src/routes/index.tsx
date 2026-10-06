@@ -1,9 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { BookOpen, Landmark, Users } from "lucide-react";
 import type { ReactNode } from "react";
 import { CastParade } from "@/components/cast-parade";
 import { LaunchForm } from "@/components/launch-form";
 import { PageShell } from "@/components/page-shell";
+import { StageScene } from "@/components/stage-scene";
 import { STUDIO } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
@@ -88,26 +89,27 @@ function Home() {
           </div>
 
           <figure className="rise">
-            <div className="rounded-2xl bg-navy-deep px-3 pt-8 pb-4 ring-1 ring-amber/70 sm:px-6">
-              <div className="flex items-end justify-center gap-1 sm:gap-4">
-                <img
-                  src="/cast/stage/alasdair-idle.png"
-                  alt="Alasdair, the pilgrim, in his gown with a Bible and satchel."
-                  className="pixel h-28 w-auto sm:h-44 lg:h-56"
-                />
-                <img
-                  src="/cast/stage/knox-struck.png"
-                  alt="John Knox preaching, arms raised."
-                  className="pixel h-32 w-auto sm:h-52 lg:h-64"
-                />
-                <img
-                  src="/cast/stage/queen-idle.png"
-                  alt="Mary, Queen of Scots, in a French hood and black gown."
-                  className="pixel h-28 w-auto sm:h-44 lg:h-56"
-                />
-              </div>
-              <div className="mx-6 mt-2 h-px bg-amber/50" />
-            </div>
+            <StageScene
+              className="ring-1 ring-amber/70"
+              background="/art/stages/edinburgh-high.png"
+              figures={[
+                {
+                  src: "/cast/stage/alasdair-idle.png",
+                  alt: "Alasdair, the pilgrim, in his gown with a Bible and satchel.",
+                  size: "lead",
+                },
+                {
+                  src: "/cast/stage/knox-struck.png",
+                  alt: "John Knox preaching, arms raised.",
+                  size: "tall",
+                },
+                {
+                  src: "/cast/stage/queen-idle.png",
+                  alt: "Mary, Queen of Scots, in a French hood and black gown.",
+                  size: "lead",
+                },
+              ]}
+            />
             <figcaption className="mt-3 text-center font-display text-xs tracking-widest text-amber uppercase">
               Alasdair · John Knox · Mary, Queen of Scots
             </figcaption>
@@ -160,6 +162,14 @@ function Home() {
             <div className="mt-4">
               <CastParade />
             </div>
+            <p className="mt-4 text-center">
+              <Link
+                to="/brand"
+                className="inline-flex min-h-11 items-center font-display text-xs tracking-widest text-ember uppercase"
+              >
+                Brand guidelines
+              </Link>
+            </p>
           </div>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">

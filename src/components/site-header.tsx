@@ -31,7 +31,7 @@ export function SiteHeader() {
 
         <nav className="hidden items-center gap-5 lg:flex" aria-label="Primary">
           {NAV.map((item) => {
-            const current = item.to === "/press" && pathname === "/press";
+            const current = item.to !== "/" && pathname === item.to;
             return (
               <Link
                 key={item.label}
