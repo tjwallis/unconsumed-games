@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { BookOpen, Landmark, Users } from "lucide-react";
 import type { ReactNode } from "react";
 import { CastParade } from "@/components/cast-parade";
+import { CastCard, FigureBox } from "@/components/figure-box";
 import { LaunchForm } from "@/components/launch-form";
 import { PageShell } from "@/components/page-shell";
 import { StageScene } from "@/components/stage-scene";
@@ -20,6 +21,21 @@ export const Route = createFileRoute("/")({
   }),
   component: Home,
 });
+
+const cornerCast = [
+  {
+    src: "/cast/walk/knox.png",
+    alt: "John Knox standing in the corner of the card.",
+  },
+  {
+    src: "/cast/walk/queen.png",
+    alt: "Mary, Queen of Scots standing in the corner of the card.",
+  },
+  {
+    src: "/cast/walk/piper.png",
+    alt: "A burgh piper standing in the corner of the card.",
+  },
+] as const;
 
 const reasons = [
   {
@@ -118,16 +134,26 @@ function Home() {
         <div className="relative h-1 bg-ember" />
       </section>
 
-      <section className="bg-cream px-5 py-14 text-center md:px-8 md:py-16">
-        <p className="mx-auto max-w-3xl text-2xl text-navy italic md:text-3xl">
-          On 3 December 1557, Protestant lords in Scotland signed the “First Band,” pledging to “maintain, set forward, and establish the most blessed Word of God.” Covenanting started with Knox’s generation.
-        </p>
-        <a
-          href="/press#history"
-          className="mt-6 inline-flex min-h-11 items-center font-display text-xs tracking-widest text-ember uppercase"
-        >
-          The history behind the name
-        </a>
+      <section className="px-5 py-16 md:px-8 md:py-20">
+        <div className="band-frame mx-auto grid max-w-6xl overflow-hidden rounded-3xl bg-navy text-parchment md:grid-cols-[16rem_1fr]">
+          <FigureBox
+            src="/cast/stage/knox-struck.png"
+            alt="John Knox preaching, arms raised."
+            className="figure-box-flush"
+          />
+          <div className="px-6 py-10 md:px-12 md:py-14">
+            <p className="font-display text-xs tracking-widest text-amber uppercase">The First Band</p>
+            <p className="mt-4 text-2xl italic md:text-3xl">
+              On 3 December 1557, Protestant lords in Scotland signed the “First Band,” pledging to “maintain, set forward, and establish the most blessed Word of God.” Covenanting started with Knox’s generation.
+            </p>
+            <a
+              href="/press#history"
+              className="mt-6 inline-flex min-h-11 items-center font-display text-xs tracking-widest text-amber uppercase"
+            >
+              The history behind the name
+            </a>
+          </div>
+        </div>
       </section>
 
       <section id="why" className="px-5 py-16 md:px-8 md:py-24">
@@ -139,11 +165,8 @@ function Home() {
             Made for believers who love Reformation history, and for the families and teachers passing it on.
           </p>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {reasons.map((reason) => (
-              <article
-                key={reason.title}
-                className="rounded-3xl bg-cream p-7 shadow-sm ring-1 ring-navy/5"
-              >
+            {reasons.map((reason, index) => (
+              <CastCard key={reason.title} src={cornerCast[index].src} alt={cornerCast[index].alt}>
                 <div className="flex size-12 items-center justify-center rounded-xl bg-navy text-amber">
                   <reason.icon className="size-5" aria-hidden />
                 </div>
@@ -151,7 +174,7 @@ function Home() {
                   {reason.title}
                 </h3>
                 <p className="mt-3 text-lg text-navy/80">{reason.body}</p>
-              </article>
+              </CastCard>
             ))}
           </div>
 
@@ -174,7 +197,7 @@ function Home() {
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {scenes.map((scene) => (
-              <figure key={scene.title}>
+              <figure key={scene.title} className="scene-still">
                 <div className="overflow-hidden rounded-2xl ring-1 ring-ember/25">
                   <img
                     src={scene.src}
@@ -206,15 +229,26 @@ function Home() {
               name="iOS"
               detail="iPhone & iPad"
               status="Coming soon"
+              figure="/cast/stage/alasdair-idle.png"
+              figureAlt="Alasdair standing, Bible and satchel in hand."
               icon={<AppleMark />}
             />
             <PlatformCard
               name="Android"
               detail="Phones & tablets"
               status="Coming soon"
+              figure="/cast/stage/knox-talk.png"
+              figureAlt="John Knox speaking, one hand raised."
               icon={<AndroidMark />}
             />
-            <PlatformCard name="Steam" detail="PC" status="Planned" icon={<SteamMark />} />
+            <PlatformCard
+              name="Steam"
+              detail="PC"
+              status="Planned"
+              figure="/cast/stage/queen-won.png"
+              figureAlt="Mary, Queen of Scots, at court."
+              icon={<SteamMark />}
+            />
           </div>
         </div>
       </section>
@@ -271,20 +305,27 @@ function PlatformCard({
   detail,
   status,
   icon,
+  figure,
+  figureAlt,
 }: {
   name: string;
   detail: string;
   status: string;
   icon: ReactNode;
+  figure: string;
+  figureAlt: string;
 }) {
   return (
-    <article className="rounded-2xl border border-parchment/15 bg-navy-raised px-6 py-10 text-center">
-      <div className="mx-auto flex h-10 items-center justify-center text-amber">{icon}</div>
-      <h3 className="mt-4 font-display text-sm tracking-widest uppercase">{name}</h3>
-      <p className="mt-2 text-lg text-parchment/75">{detail}</p>
-      <p className="mt-4 inline-flex min-h-8 items-center rounded-full bg-navy px-3 font-display text-xs tracking-widest text-amber uppercase">
-        {status}
-      </p>
+    <article className="platform-card">
+      <div className="px-6 pt-8 text-center">
+        <div className="mx-auto flex h-10 items-center justify-center text-amber">{icon}</div>
+        <h3 className="mt-4 font-display text-sm tracking-widest uppercase">{name}</h3>
+        <p className="mt-2 text-lg text-parchment/75">{detail}</p>
+        <p className="mt-4 inline-flex min-h-8 items-center rounded-full bg-navy px-3 font-display text-xs tracking-widest text-amber uppercase">
+          {status}
+        </p>
+      </div>
+      <FigureBox src={figure} alt={figureAlt} className="figure-box-inset" />
     </article>
   );
 }

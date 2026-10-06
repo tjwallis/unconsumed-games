@@ -1,8 +1,11 @@
 import type { ReactNode } from "react";
+import { useRouterState } from "@tanstack/react-router";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export function PageShell({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+
   return (
     <div id="top" className="min-h-screen bg-parchment text-navy">
       <a
@@ -12,7 +15,9 @@ export function PageShell({ children }: { children: ReactNode }) {
         Skip to content
       </a>
       <SiteHeader />
-      <main id="content">{children}</main>
+      <main id="content" key={pathname} className="page-enter">
+        {children}
+      </main>
       <SiteFooter />
     </div>
   );

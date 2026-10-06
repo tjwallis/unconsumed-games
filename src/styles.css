@@ -23,6 +23,24 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-ember) var(--color-navy-deep);
+    overflow-x: clip;
+  }
+
+  html::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  html::-webkit-scrollbar-track {
+    background: var(--color-navy-deep);
+  }
+
+  html::-webkit-scrollbar-thumb {
+    border: 2px solid var(--color-navy-deep);
+    border-radius: 999px;
+    background: var(--color-ember);
   }
 
   body {
@@ -58,7 +76,8 @@
       scroll-behavior: auto;
     }
 
-    .rise {
+    .rise,
+    .page-enter {
       animation: none;
     }
   }
@@ -86,6 +105,37 @@
   .rise {
     animation: rise 700ms ease both;
   }
+
+  .page-enter {
+    animation: rise 520ms ease both;
+  }
+
+  .stage-bob {
+    animation: bob 2.8s ease-in-out infinite;
+    transform-origin: center bottom;
+  }
+
+  .scene-still img {
+    transition: transform 600ms ease;
+  }
+
+  .scene-still:hover img {
+    transform: scale(1.045);
+  }
+
+  .cast-card,
+  .platform-card,
+  .held-plate {
+    transition:
+      transform 220ms ease,
+      box-shadow 220ms ease;
+  }
+
+  .cast-card:hover,
+  .platform-card:hover,
+  .held-plate:hover {
+    transform: translateY(-4px);
+  }
 }
 
 @keyframes rise {
@@ -96,5 +146,171 @@
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.figure-box {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 11rem;
+  background:
+    radial-gradient(120% 80% at 50% 100%, color-mix(in oklab, var(--color-navy-raised) 80%, transparent), transparent 70%),
+    var(--color-navy-deep);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-amber) 42%, transparent);
+}
+
+.figure-box-floor {
+  position: absolute;
+  right: 16%;
+  bottom: 0.65rem;
+  left: 16%;
+  height: 2px;
+  background: color-mix(in oklab, var(--color-amber) 70%, transparent);
+}
+
+.figure-box-sprite {
+  position: relative;
+  z-index: 1;
+  height: 9.25rem;
+  width: auto;
+}
+
+.figure-box-flush {
+  height: 100%;
+  min-height: 18rem;
+  border-radius: 0;
+  box-shadow: none;
+  border-right: 1px solid color-mix(in oklab, var(--color-amber) 32%, transparent);
+}
+
+.figure-box-flush .figure-box-sprite {
+  height: 16rem;
+}
+
+.figure-box-inset {
+  min-height: 13.5rem;
+  margin: 1.25rem 1rem 1rem;
+  border-radius: 1rem;
+}
+
+.figure-box-inset .figure-box-sprite {
+  height: 12rem;
+}
+
+.cast-card {
+  position: relative;
+  min-height: 18.5rem;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: var(--color-cream);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-navy) 8%, transparent);
+}
+
+.cast-card-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 17rem;
+  padding: 1.75rem 1.5rem 1.5rem;
+}
+
+.cast-card-figure {
+  position: absolute;
+  right: 0.7rem;
+  bottom: 0.7rem;
+  width: 6.75rem;
+  min-height: 9rem;
+  border-radius: 0.9rem;
+}
+
+.cast-card-figure .figure-box-sprite {
+  height: 8rem;
+}
+
+.platform-card {
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in oklab, var(--color-parchment) 15%, transparent);
+  background: var(--color-navy-raised);
+}
+
+.held-plate {
+  position: relative;
+  width: 11.25rem;
+}
+
+.held-plate .figure-box {
+  min-height: 15rem;
+  border-radius: 1.15rem;
+}
+
+.held-plate .figure-box-sprite {
+  height: 13.25rem;
+}
+
+.held-ticket {
+  position: absolute;
+  right: 0.55rem;
+  bottom: 4.6rem;
+  left: 0.55rem;
+  z-index: 2;
+  border-radius: 0.8rem;
+  background: var(--color-cream);
+  padding: 0.55rem 0.65rem 0.6rem;
+  text-align: center;
+  box-shadow:
+    0 10px 22px color-mix(in oklab, var(--color-navy) 28%, transparent),
+    inset 0 0 0 1px color-mix(in oklab, var(--color-amber) 65%, transparent);
+}
+
+.cast-rail {
+  scroll-snap-type: x mandatory;
+}
+
+.cast-rail > li {
+  scroll-snap-align: start;
+}
+
+@media (min-width: 768px) {
+  .cast-card-copy {
+    max-width: 13.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .cast-card {
+    min-height: 20rem;
+  }
+
+  .cast-card-copy {
+    max-width: none;
+    padding-right: 7.4rem;
+  }
+
+  .figure-box-flush .figure-box-sprite {
+    height: 13rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage-bob,
+  .cast-card,
+  .platform-card,
+  .held-plate,
+  .scene-still img {
+    animation: none;
+    transition: none;
   }
 }

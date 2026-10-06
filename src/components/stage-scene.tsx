@@ -35,12 +35,13 @@ export function StageScene({
         className="pixel absolute inset-0 size-full object-cover"
       />
       <div className="absolute inset-x-0 bottom-0 flex items-end justify-center">
-        {figures.map((figure) => (
+        {figures.map((figure, index) => (
           <img
             key={figure.src + figure.alt}
             src={figure.src}
             alt={figure.alt}
-            className={cn("pixel w-auto", heights[figure.size])}
+            className={cn("pixel stage-bob w-auto", heights[figure.size])}
+            style={{ animationDelay: `${index * 180}ms` }}
           />
         ))}
       </div>

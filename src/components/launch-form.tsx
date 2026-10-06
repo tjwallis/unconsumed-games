@@ -108,6 +108,7 @@ export function LaunchForm({
           inputMode="email"
           placeholder="you@example.com"
           value={email}
+          suppressHydrationWarning
           onChange={(event) => {
             setEmail(event.target.value);
             if (error) setError("");

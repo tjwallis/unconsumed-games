@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell } from "@/components/page-shell";
+import { FigureBox } from "@/components/figure-box";
 import { STUDIO } from "@/lib/site";
 
 export const Route = createFileRoute("/press")({
@@ -144,18 +145,27 @@ const swatches = [
 function PressPage() {
   return (
     <PageShell>
-      <section className="bg-navy px-5 pt-28 pb-14 text-center text-parchment md:px-8 md:pt-32">
-        <p className="font-display text-xs tracking-widest text-amber uppercase">Press kit</p>
-        <h1 className="mt-4 font-display text-5xl tracking-wide sm:text-6xl">Covenanter</h1>
-        <p className="mx-auto mt-4 max-w-2xl text-xl text-parchment/80">
-          A story game set in the Scottish Reformation, 1559–60. Everything you need to cover the game.
-        </p>
-        <p className="mt-4 text-lg">
-          Questions?{" "}
-          <a className="text-amber underline underline-offset-4" href={`mailto:${STUDIO.press}`}>
-            {STUDIO.press}
-          </a>
-        </p>
+      <section className="bg-navy px-5 pt-28 pb-14 text-parchment md:px-8 md:pt-32">
+        <div className="mx-auto grid max-w-6xl items-end gap-8 text-center lg:grid-cols-[1fr_12rem] lg:text-left">
+          <div>
+            <p className="font-display text-xs tracking-widest text-amber uppercase">Press kit</p>
+            <h1 className="mt-4 font-display text-5xl tracking-wide sm:text-6xl">Covenanter</h1>
+            <p className="mx-auto mt-4 max-w-2xl text-xl text-parchment/80 lg:mx-0">
+              A story game set in the Scottish Reformation, 1559–60. Everything you need to cover the game.
+            </p>
+            <p className="mt-4 text-lg">
+              Questions?{" "}
+              <a className="text-amber underline underline-offset-4" href={`mailto:${STUDIO.press}`}>
+                {STUDIO.press}
+              </a>
+            </p>
+          </div>
+          <FigureBox
+            src="/cast/stage/knox-talk.png"
+            alt="John Knox, speaking."
+            className="figure-box-inset mx-auto w-44"
+          />
+        </div>
       </section>
       <div className="h-1 bg-ember" />
 
