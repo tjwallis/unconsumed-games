@@ -1,0 +1,12 @@
+/* Motion — calm and unhurried; ease-out settles, no bounce. */
+:root{
+--dur-instant:90ms;/* @kind other */
+--dur-fast:160ms;/* @kind other */
+--dur-base:240ms;/* @kind other */
+--dur-slow:400ms;/* @kind other */
+--dur-slower:700ms;/* @kind other */
+--ease-out:cubic-bezier(.22,.61,.36,1);/* @kind other */
+--ease-in-out:cubic-bezier(.65,0,.35,1);/* @kind other */
+--ease-emphasized:cubic-bezier(.2,.8,.2,1);/* @kind other */
+--transition-color:color var(--dur-fast) var(--ease-out),background-color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out);/* @kind other */
+}

@@ -11,7 +11,11 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: APP_NAME },
-      { name: "description", content: "Unconsumed Games makes faithful, well-made games. First title: Covenanter, a story game set in the Scottish Reformation." },
+      {
+        name: "description",
+        content:
+          "Unconsumed Games makes video games grounded in the Word of God. First title: Covenanter, a tale of the Scottish Reformation.",
+      },
       { name: "theme-color", content: "#14213D" },
     ],
     links: [
@@ -26,7 +30,7 @@ export const Route = createRootRoute({
       <head>
         <HeadContent />
       </head>
-      <body className="bg-parchment text-navy antialiased">
+      <body>
         <PreviewHostBridge />
         <AuthProvider>
           <Outlet />

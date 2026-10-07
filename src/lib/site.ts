@@ -17,11 +17,18 @@ export const SOCIAL = [
   { label: "Facebook", href: "https://www.facebook.com/unconsumedgames" },
 ] as const;
 
+/** Sections of the home page. `/#id` works from every route and scrolls in place on the home page. */
 export const NAV = [
-  { label: "Why Covenanter", to: "/", hash: "why" as const },
-  { label: "Platforms", to: "/", hash: "platforms" as const },
-  { label: "About", to: "/", hash: "studio" as const },
-  { label: "Brand", to: "/brand", hash: undefined },
-  { label: "Press", to: "/press", hash: undefined },
-  { label: "Join the List", to: "/", hash: "list" as const },
+  { label: "Why it lasts", href: "/#lasting" },
+  { label: "The cast", href: "/#cast" },
+  { label: "The name", href: "/#covenant" },
+  { label: "Covenanter", href: "/#game" },
+  { label: "Try it", href: "/#disputation" },
+] as const;
+
+export const LEGAL = [
+  { label: "Press kit", href: "/press" },
+  { label: "Brand", href: "/brand" },
+  { label: "Privacy", href: "/privacy" },
+  { label: "Delete account", href: "/delete-account" },
 ] as const;

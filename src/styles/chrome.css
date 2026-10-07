@@ -1,0 +1,44 @@
+/* Additions to the design's chrome: skip link, mobile menu, footer social and legal rows,
+   the notify form, and the error screen. Built from the design-system tokens. */
+html{overflow-x:clip}
+button:not(:disabled),[role="button"]:not(:disabled){cursor:pointer}
+.pixel{image-rendering:pixelated;image-rendering:crisp-edges}
+.pixel-smoothed{image-rendering:auto;filter:blur(1px)}
+.skip{position:fixed;left:16px;top:-80px;z-index:60;padding:10px 16px;border-radius:var(--radius-sm);background:var(--parchment-50);color:var(--navy-900);font:var(--type-label);text-decoration:none}
+.skip:focus{top:92px;color:var(--navy-900)}
+
+/* mobile menu: the design hides the section links below 1100px */
+.nav__menu{display:none}
+@media(max-width:1100px){.nav__menu{display:inline-flex}}
+.nav__drawer{position:absolute;top:100%;left:0;right:0;background:var(--navy-900);border-bottom:var(--bar) solid var(--ember-500);box-shadow:var(--shadow-xl);animation:swap .3s var(--ez)}
+.nav__drawer .wrap{display:flex;flex-direction:column;padding-top:4px;padding-bottom:24px}
+.nav__drawer a{display:block;padding:16px 0;border-bottom:1px solid var(--navy-700);font:700 1.125rem/1 var(--font-display);letter-spacing:.14em;text-transform:uppercase;color:var(--parchment-100);text-decoration:none}
+.nav__drawer a:hover{color:var(--amber-400)}
+.nav__more{display:flex;flex-wrap:wrap;gap:0 28px}
+.nav__more a{border-bottom:0;font-size:.9375rem;color:var(--navy-300)}
+
+/* footer additions */
+.foot__social{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding:0 0 28px;font:var(--type-body-sm);color:var(--navy-300)}
+.foot .foot__social a{font-size:.8125rem;letter-spacing:.16em;color:var(--amber-400)}
+.foot .foot__social a:hover{color:var(--parchment-50)}
+.foot__legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px}
+.foot__legal nav{display:flex;flex-wrap:wrap;gap:6px 18px}
+.foot .foot__legal a{font:var(--type-caption);letter-spacing:0;text-transform:none;color:var(--navy-300);text-decoration:underline;text-decoration-color:var(--navy-600);text-underline-offset:.2em}
+.foot .foot__legal a:hover{color:var(--parchment-50)}
+
+/* notify */
+.notify-form{display:flex;flex-direction:column;gap:16px}
+.nf__note{margin-top:-6px}
+.gfeat__txt .gfeat__note{font:italic 500 1.1875rem/1.4 var(--font-display);color:var(--navy-200)}
+
+/* error screen */
+.err{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center;background:var(--pattern-rays),var(--navy-900)}
+.err__icon{color:var(--ember-400)}
+.err__msg{max-width:32em;color:var(--navy-300);overflow-wrap:anywhere}
+
+/* the design's .disp__txt p rule greys this eyebrow; keep it ember like the others */
+.disp__txt .uc-eyebrow{color:var(--text-accent)}
+/* Cinzel Decorative runs wide; keep the game title inside the card on phones */
+.gfeat .gtitle{font-size:min(clamp(2.75rem,8vw,6.5rem),9.4vw)}
+/* base.css rings every focused input; inside a .uc-input wrapper the wrapper already shows the ring */
+.uc-input input:focus-visible,.uc-select select:focus-visible{box-shadow:none}

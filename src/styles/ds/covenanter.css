@@ -1,0 +1,72 @@
+/* Covenanter (game) tokens — values copied from tjwallis/covenanter lib/app/theme.dart (class Pal, Fonts),
+   lib/ui/widgets.dart (Panel, GoldButton, Parchment, FramedPortrait, SwayBar) and lib/data/doctrine.dart (Truth ribbons).
+   The game UI is authored at k = 1 for a 540px short side; multiply by your own k when scaling. */
+:root{
+/* Pal */
+--cv-night:#0C1830;/* @kind color */
+--cv-navy:#14213D;/* @kind color */
+--cv-midnight:#1C3054;/* @kind color */
+--cv-slate:#2A4068;/* @kind color */
+--cv-parchment:#F4EBD9;/* @kind color */
+--cv-parchment-deep:#E4D3B0;/* @kind color */
+--cv-vellum:#FAF3E6;/* @kind color */
+--cv-sepia:#2A1D12;/* @kind color */
+--cv-umber:#5A3E26;/* @kind color */
+--cv-gold:#F2A541;/* @kind color */
+--cv-gold-light:#F6C56A;/* @kind color */
+--cv-gold-deep:#B86A1E;/* @kind color */
+--cv-crimson:#E4572E;/* @kind color */
+--cv-scarlet:#C44828;/* @kind color */
+--cv-teal:#1E8A8A;/* @kind color */
+--cv-moss:#4A8A3A;/* @kind color */
+--cv-text:#F4EBD9;/* @kind color */
+--cv-text-dim:#B9B2A0;/* @kind color */
+--cv-sway:#6A5A8A;/* @kind color */
+/* Surfaces from the widget painters */
+--cv-panel-top:rgb(30 38 80 / .94);/* @kind color */
+--cv-panel-bottom:rgb(16 20 44 / .94);/* @kind color */
+--cv-panel-fill:linear-gradient(180deg,var(--cv-panel-top),var(--cv-panel-bottom));/* @kind other */
+--cv-button-fill:linear-gradient(180deg,#1F2750,#151A38);/* @kind other */
+--cv-button-fill-hot:linear-gradient(180deg,#3B2E62,#261D46);/* @kind other */
+--cv-round-fill:radial-gradient(circle,rgb(42 51 102 / .9),rgb(20 26 56 / .9));/* @kind other */
+--cv-parchment-fill:radial-gradient(circle at 50% 50%,var(--cv-vellum) 0%,var(--cv-parchment) 60%,var(--cv-parchment-deep) 100%);/* @kind other */
+--cv-nameplate-fill:linear-gradient(90deg,#6E1622,var(--cv-crimson),#6E1622);/* @kind other */
+--cv-sway-fill:linear-gradient(90deg,#3A1E5A,#6A3A8A,#3A1E5A);/* @kind other */
+--cv-title-gold:linear-gradient(180deg,#FFF4CF 0%,var(--cv-gold-light) 35%,var(--cv-gold) 70%,#B07A26 100%);/* @kind other */
+--cv-select-hi:rgb(246 217 138 / .2);/* @kind color */
+--cv-select-hi-parchment:rgb(154 34 48 / .15);/* @kind color */
+--cv-scrim:rgb(7 9 22 / .74);/* @kind color */
+--cv-panel-shadow:0 6px 12px rgb(0 0 0 / .4);/* @kind shadow */
+--cv-button-glow:0 0 14px rgb(242 165 65 / .28);/* @kind shadow */
+--cv-radius-panel:6px;/* @kind radius */
+--cv-radius-button:4px;/* @kind radius */
+--cv-radius-parchment:4px;/* @kind radius */
+--cv-radius-row:3px;/* @kind radius */
+/* Fonts */
+--font-cv-body:"Cormorant Garamond",Garamond,serif;/* @kind font */
+--font-cv-display:"Cinzel","Trajan Pro",serif;/* @kind font */
+--font-cv-decorative:"Cinzel Decorative","Cinzel",serif;/* @kind font */
+--font-cv-blackletter:"Jacquarda Bastarda 9","UnifrakturMaguntia",serif;/* @kind font */
+/* Truth ribbons (kTruths colours) */
+--cv-truth-scripture:#2848B0;/* @kind color */
+--cv-truth-grace:#D99A2A;/* @kind color */
+--cv-truth-faith:#B82836;/* @kind color */
+--cv-truth-mediator:#6E2EA0;/* @kind color */
+--cv-truth-glory:#F2B53A;/* @kind color */
+--cv-truth-sacrifice:#9A2230;/* @kind color */
+--cv-truth-rest:#1E8A8A;/* @kind color */
+--cv-truth-images:#7A5A3A;/* @kind color */
+--cv-truth-priesthood:#2A7A44;/* @kind color */
+--cv-truth-tongue:#3F72E0;/* @kind color */
+--cv-truth-headship:#5A1E4A;/* @kind color */
+--cv-truth-supper:#8E1A2C;/* @kind color */
+--cv-truth-providence:#1E5A6A;/* @kind color */
+--cv-truth-prophets:#8A4A1E;/* @kind color */
+--cv-truth-trinity:#B8801E;/* @kind color */
+--cv-truth-holiness:#4A8A3A;/* @kind color */
+--cv-truth-courage:#E0742C;/* @kind color */
+--cv-truth-ruin:#4A4A6A;/* @kind color */
+--cv-truth-liberty:#D8466E;/* @kind color */
+--cv-truth-kirk:#2E6A46;/* @kind color */
+--cv-truth-magistrate:#8A6A2A;/* @kind color */
+}
