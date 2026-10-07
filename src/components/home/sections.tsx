@@ -4,7 +4,7 @@ import { Badge } from "@/components/ds/display";
 import { Input } from "@/components/ds/forms";
 import { Icon, type IconName } from "@/components/ds/icon";
 import { Tabs } from "@/components/ds/navigation";
-import { useNotify } from "@/components/site/notify";
+import { Honeypot, honeypotValue, useNotify } from "@/components/site/notify";
 import { GoldDivider, Lozenges, Oval, Panel } from "@/components/site/parts";
 import { CAST, CLAIMS, GROUPS, LADDER, POSES, SHOTS, VERSES, castById } from "@/lib/covenanter";
 
@@ -364,9 +364,13 @@ export function Motto() {
   const notify = useNotify();
   const [email, setEmail] = useState("");
   const [err, setErr] = useState("");
-  const submit = (e: FormEvent) => {
+  const [busy, setBusy] = useState(false);
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const error = notify.save(email);
+    if (busy) return;
+    setBusy(true);
+    const error = await notify.save(email, "", honeypotValue(e.currentTarget));
+    setBusy(false);
     setErr(error ?? "");
     if (!error) setEmail("");
   };
@@ -407,12 +411,13 @@ export function Motto() {
               }}
               error={err}
             />
-            <Button size="lg" type="submit">
-              Notify me
+            <Button size="lg" type="submit" disabled={busy}>
+              {busy ? "Sending…" : "Notify me"}
             </Button>
+            <Honeypot />
           </form>
           <p className="uc-caption nf__note">
-            The list is not connected yet. Your email stays on this device until it is.
+            We will only write about Covenanter. You can leave the list from any email.
           </p>
         </div>
       </div>

@@ -44,3 +44,5 @@ button:not(:disabled),[role="button"]:not(:disabled){cursor:pointer}
 .hero__news{width:fit-content;max-width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:14px 16px 16px 18px;border:1px solid rgb(242 165 65/.45);border-radius:var(--radius-md);background:rgb(10 16 48/.6)}
 .hero__news-cta{display:flex;flex-wrap:wrap;gap:8px}
 @media(max-width:560px){.hero__news{padding:14px 14px 14px 16px}.hero__news-cta{width:100%}.hero__news-cta .uc-btn{flex:1}}
+/* honeypot field for the notify forms: off-screen, never seen by people */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}

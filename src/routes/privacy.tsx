@@ -35,12 +35,11 @@ function PrivacyPage() {
 
             <h2>The launch list</h2>
             <p>
-              The notify form on this site is not connected to a mailing service yet. If you enter
-              an email, it is saved only in your browser on this device. It is not sent to us, and
-              we cannot see it. When the list is connected, we will say so on the form. From then
-              on, an address you submit will be used only for occasional notes: beta invitations,
-              launch day, and resources for families and teachers. You will be able to leave the
-              list from any note we send.
+              When you join the list on this site, we send your email address (and the platform, if
+              you choose one) to Kit, the service we use to send email. We use the address only for
+              occasional notes about Covenanter: beta invitations, launch day, and resources for
+              families and teachers. Kit may ask you to confirm the address first. Every email has a
+              link to leave the list, and you can also write to us to be removed.
             </p>
 
             <h2>Game accounts</h2>
@@ -64,7 +63,7 @@ function PrivacyPage() {
               not ask children to create an account on this website.
             </p>
 
-            <p className="prose__src">Last updated 1 October 2026.</p>
+            <p className="prose__src">Last updated 7 October 2026.</p>
           </article>
         </div>
       </section>

@@ -13,17 +13,19 @@ import { Button } from "@/components/ds/actions";
 import { Dialog, Toast } from "@/components/ds/feedback";
 import { Input, Select } from "@/components/ds/forms";
 
-/* The launch list is not connected to a mail service yet. Addresses are kept in this
-   browser only (same key as the old site's form), and the copy says so. */
-const EMAIL_KEY = "unconsumed-launch-email";
-const PLATFORM_KEY = "unconsumed-launch-platform";
+/* Sign-ups post to the PHP endpoint deployed next to the static site (public/api/subscribe.php),
+   which adds them to Kit. The Kit API key lives only on the server. */
+const SUBSCRIBE_URL = import.meta.env.VITE_SUBSCRIBE_URL || "/api/subscribe.php";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type Notify = {
   /** Open the "Get notified" dialog. */
   open: () => void;
-  /** Validate and save an address. Returns an error message, or null on success. */
-  save: (email: string, platform?: string) => string | null;
+  /**
+   * Sign an address up. Resolves to an error message, or null on success.
+   * `trap` is the hidden honeypot field: real people leave it empty.
+   */
+  save: (email: string, platform?: string, trap?: string) => Promise<string | null>;
 };
 
 const NotifyContext = createContext<Notify | null>(null);
@@ -34,26 +36,57 @@ export function useNotify() {
   return ctx;
 }
 
+/** Off-screen field that only bots fill in. Read it with `form.elements.namedItem("website")`. */
+export function Honeypot() {
+  return (
+    <input
+      className="hp"
+      type="text"
+      name="website"
+      tabIndex={-1}
+      autoComplete="off"
+      aria-hidden="true"
+      defaultValue=""
+    />
+  );
+}
+
+export function honeypotValue(form: HTMLFormElement) {
+  const el = form.elements.namedItem("website");
+  return el instanceof HTMLInputElement ? el.value : "";
+}
+
 export function NotifyProvider({ children }: { children: ReactNode }) {
   const [dialog, setDialog] = useState(false);
-  const [toast, setToast] = useState(false);
+  const [toast, setToast] = useState<null | { confirm: boolean }>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => () => clearTimeout(timer.current), []);
 
-  const save = useCallback((raw: string, platform?: string) => {
+  const save = useCallback(async (raw: string, platform?: string, trap?: string) => {
     const email = raw.trim();
     if (!EMAIL_RE.test(email)) return "Enter a valid email address";
+    let res: Response;
     try {
-      localStorage.setItem(EMAIL_KEY, email);
-      if (platform) localStorage.setItem(PLATFORM_KEY, platform);
+      res = await fetch(SUBSCRIBE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({ email, platform: platform || "", website: trap || "" }),
+      });
     } catch {
-      return "This browser blocked saving. Nothing was sent.";
+      return "We could not reach the sign-up service. Check your connection and try again.";
     }
+    const body = (await res.json().catch(() => ({}))) as {
+      ok?: boolean;
+      error?: string;
+      confirm?: boolean;
+    };
+    if (!res.ok || !body.ok)
+      return body.error || "We could not sign you up just now. Please try again later.";
     setDialog(false);
-    setToast(true);
+    setToast({ confirm: Boolean(body.confirm) });
     clearTimeout(timer.current);
-    timer.current = setTimeout(() => setToast(false), 6400);
+    timer.current = setTimeout(() => setToast(null), 8000);
     return null;
   }, []);
 
@@ -65,10 +98,16 @@ export function NotifyProvider({ children }: { children: ReactNode }) {
       <NotifyDialog open={dialog} onClose={() => setDialog(false)} onSave={save} />
       {toast ? (
         <div className="toast-region">
-          <Toast tone="success" title="Saved on this device" onClose={() => setToast(false)}>
-            Our mailing list is not connected yet, so nothing was sent. When it is, we will write to
-            you when Covenanter is available.
-          </Toast>
+          {toast.confirm ? (
+            <Toast tone="success" title="Check your email" onClose={() => setToast(null)}>
+              We sent a link to confirm your address. Once you confirm, we will write when
+              Covenanter is available.
+            </Toast>
+          ) : (
+            <Toast tone="success" title="You are on the list" onClose={() => setToast(null)}>
+              We will write when Covenanter is available.
+            </Toast>
+          )}
         </div>
       ) : null}
     </NotifyContext.Provider>
@@ -87,10 +126,14 @@ function NotifyDialog({
   const [email, setEmail] = useState("");
   const [platform, setPlatform] = useState("");
   const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
 
-  const submit = (e: FormEvent) => {
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const err = onSave(email, platform);
+    if (busy) return;
+    setBusy(true);
+    const err = await onSave(email, platform, honeypotValue(e.currentTarget));
+    setBusy(false);
     setError(err ?? "");
     if (!err) {
       setEmail("");
@@ -110,8 +153,8 @@ function NotifyDialog({
           <Button variant="ghost" onClick={onClose}>
             Cancel
           </Button>
-          <Button type="submit" form="notify-form">
-            Notify me
+          <Button type="submit" form="notify-form" disabled={busy}>
+            {busy ? "Sending…" : "Notify me"}
           </Button>
         </>
       }
@@ -142,8 +185,9 @@ function NotifyDialog({
             { value: "android", label: "Android" },
           ]}
         />
+        <Honeypot />
         <p className="uc-caption">
-          The list is not connected yet. Your email stays on this device until it is.
+          We will only write about Covenanter. You can leave the list from any email.
         </p>
       </form>
     </Dialog>
