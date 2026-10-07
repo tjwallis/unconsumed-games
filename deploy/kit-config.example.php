@@ -16,6 +16,7 @@ return [
     // Optional: tag ids for the platform choice in the notify dialog. Leave '' to skip.
     'KIT_TAG_IOS' => '',
     'KIT_TAG_ANDROID' => '',
+    'KIT_TAG_STEAM' => '',
 
     // '1': new subscribers must confirm by email (the form's double opt-in). '0': active at once.
     'KIT_DOUBLE_OPT_IN' => '1',

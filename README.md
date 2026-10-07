@@ -51,7 +51,7 @@ Plesk's Git extension builds and publishes it on every push:
 
 `public/api/subscribe.php` is deployed with the site and needs PHP 8.1+ with curl (Plesk default). It keeps the Kit API key on the server:
 
-1. In Kit, create (or pick) the form people should join, and an API key under **Settings → Developer**. Optionally create `iOS` and `Android` tags.
+1. In Kit, create (or pick) the form people should join, and an API key under **Settings → Developer**. Optionally create `iOS`, `Android` and `Steam` tags.
 2. Copy `deploy/kit-config.example.php` to the folder **above** the web root as `kit-config.php` (for example `/var/www/vhosts/unconsumedgames.com/kit-config.php`, next to `httpdocs`) and fill in the key, form id and tag ids. Plesk's File Manager can do this. Never commit the real file.
 3. Environment variables (`KIT_API_KEY`, `KIT_FORM_ID`, …) override the file, and `KIT_CONFIG` can point at a different file.
 

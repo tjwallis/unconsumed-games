@@ -12,6 +12,7 @@
  *   KIT_FORM_ID      required  the form subscribers join (its confirmation email is sent from Kit)
  *   KIT_TAG_IOS      optional  tag id added when the visitor picks iOS
  *   KIT_TAG_ANDROID  optional  tag id added when the visitor picks Android
+ *   KIT_TAG_STEAM    optional  tag id added when the visitor picks Steam
  *   KIT_DOUBLE_OPT_IN optional "1" (default): new subscribers stay inactive until they confirm
  */
 
@@ -132,6 +133,7 @@ if ($status < 200 || $status >= 300) {
 $tag = match ($platform) {
     'ios' => setting($file, 'KIT_TAG_IOS'),
     'android' => setting($file, 'KIT_TAG_ANDROID'),
+    'steam' => setting($file, 'KIT_TAG_STEAM'),
     default => '',
 };
 if ($tag !== '') {

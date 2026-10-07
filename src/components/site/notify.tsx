@@ -183,6 +183,7 @@ function NotifyDialog({
           options={[
             { value: "ios", label: "iOS" },
             { value: "android", label: "Android" },
+            { value: "steam", label: "Steam (PC)" },
           ]}
         />
         <Honeypot />
