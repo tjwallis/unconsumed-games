@@ -8,7 +8,7 @@ import { PageShell } from "@/components/page-shell";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Unconsumed Games · Faithful stories, well made" },
+      { title: "Unconsumed Games · Games which last" },
       {
         name: "description",
         content:

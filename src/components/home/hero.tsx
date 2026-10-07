@@ -23,16 +23,16 @@ export function Hero({ onPick }: { onPick: (id: string) => void }) {
             Covenanter · Coming to <span className="nc">iOS</span> &amp; Android
           </p>
           <h1>
-            Games that are <em>not burned up.</em>
+            Unconsumed <em>Games</em>
           </h1>
-          <p className="hero__tag">Faithful stories, well made.</p>
+          <p className="hero__tag">Games which last.</p>
           <p className="hero__lead">
             Unconsumed Games makes video games grounded in the Word of God. They teach children the
             Bible, doctrine and history, and they are made to last.
           </p>
           <div className="hero__cta">
-            <Button size="lg" href="#game" iconRight="arrow-right">
-              Meet Covenanter
+            <Button size="lg" href="#lasting" iconRight="arrow-right">
+              Why they last
             </Button>
             <Button size="lg" variant="secondary" onClick={notify.open}>
               Notify me

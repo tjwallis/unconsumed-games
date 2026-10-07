@@ -19,7 +19,7 @@ export const SOCIAL = [
 
 /** Sections of the home page. `/#id` works from every route and scrolls in place on the home page. */
 export const NAV = [
-  { label: "Why it lasts", href: "/#lasting" },
+  { label: "Why they last", href: "/#lasting" },
   { label: "The cast", href: "/#cast" },
   { label: "The name", href: "/#covenant" },
   { label: "Covenanter", href: "/#game" },

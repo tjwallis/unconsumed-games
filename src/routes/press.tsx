@@ -72,8 +72,10 @@ const DOWNLOADS = [
   { href: "/brand/lockup.png", title: "Logo lockup, light ground", kind: "PNG", dark: false },
   { href: "/brand/mark-on-dark.svg", title: "Mark, dark ground", kind: "SVG", dark: true },
   { href: "/brand/mark.svg", title: "Mark, light ground", kind: "SVG", dark: false },
-  { href: "/brand/app-icon.svg", title: "App icon", kind: "SVG", dark: false },
-  { href: "/brand/app-icon-light.svg", title: "App icon, light", kind: "SVG", dark: false },
+  { href: "/brand/mark-on-dark.png", title: "Mark, dark ground", kind: "PNG", dark: true },
+  { href: "/brand/mark.png", title: "Mark, light ground", kind: "PNG", dark: false },
+  { href: "/brand/app-icon.png", title: "App icon", kind: "PNG 1024", dark: false },
+  { href: "/brand/app-icon-light.png", title: "App icon, light", kind: "PNG 1024", dark: false },
 ];
 
 const SWATCHES: [string, string][] = [

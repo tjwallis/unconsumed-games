@@ -9,26 +9,10 @@ import { GoldDivider, Lozenges, Oval, Panel } from "@/components/site/parts";
 import { CAST, CLAIMS, GROUPS, LADDER, POSES, SHOTS, VERSES, castById } from "@/lib/covenanter";
 
 const PILLARS: [IconName, string, string][] = [
-  [
-    "book-open",
-    "Grounded in the Word",
-    "Every Truth the game teaches rests on Scripture, quoted from the Authorised Version.",
-  ],
-  [
-    "scroll-text",
-    "Good theology",
-    "The doctrines of the Reformation are set out plainly, from the Word alone to Christ as sole Head of the Kirk.",
-  ],
-  [
-    "landmark",
-    "Bible, doctrine and history",
-    "Children learn all three together, through real towns, people and events of the Scottish Reformation.",
-  ],
-  [
-    "flame",
-    "To the glory of God",
-    "We make these games for the glory of God alone. Soli Deo Gloria.",
-  ],
+  ["book-open", "Bible", "Real verses from Scripture, learned by heart."],
+  ["scroll-text", "Theology", "Plain truths about who God is and what he has done."],
+  ["landmark", "History", "True people and places of the Scottish Reformation."],
+  ["flame", "God’s glory", "Made for the glory of God alone."],
 ];
 
 export function Lasting() {
@@ -37,7 +21,7 @@ export function Lasting() {
       <div className="wrap">
         <div className="lasting__top">
           <div className="lasting__txt">
-            <p className="uc-eyebrow">Why it lasts</p>
+            <p className="uc-eyebrow">Why they last</p>
             <h2>Made to last.</h2>
             <p className="uc-lead">
               Most games are played and used up. We want ours to be remembered. A child who learns a
@@ -67,14 +51,19 @@ export function Lasting() {
             <p className="plate__cap">John Knox and Wee Jock · The Word passed on</p>
           </div>
         </div>
-        <div className="pillars">
-          {PILLARS.map(([icon, title, text]) => (
-            <div className="pillar" key={title}>
-              <Icon name={icon} size={32} />
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </div>
-          ))}
+        <div className="edu">
+          <h3 className="edu__h">Education in</h3>
+          <ul className="pillars">
+            {PILLARS.map(([icon, title, text]) => (
+              <li className="pillar" key={title}>
+                <span className="pillar__icon">
+                  <Icon name={icon} size={26} />
+                </span>
+                <h4>{title}</h4>
+                <p>{text}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
@@ -390,7 +379,7 @@ export function Motto() {
     >
       <div className="wrap">
         <div className="motto__in">
-          <img className="motto__mark" src="/brand/mark-on-dark-traced.svg" alt="" />
+          <img className="motto__mark" src="/brand/mark-on-dark.svg" alt="" />
           <p className="motto__t">Nec tamen consumebatur</p>
           <p className="motto__c">Exodus 3:2</p>
           <p className="motto__v">

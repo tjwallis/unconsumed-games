@@ -7,7 +7,7 @@ export function SiteFooter() {
         <div className="foot__row">
           <img src="/brand/lockup-on-dark.png" alt="Unconsumed Games" width={165} height={56} />
           <nav className="foot__l" aria-label="Footer">
-            <a href="/#lasting">Why it lasts</a>
+            <a href="/#lasting">Why they last</a>
             <a href="/#cast">The cast</a>
             <a href="/#covenant">The name</a>
             <a href="/#game">Covenanter</a>
