@@ -6,7 +6,17 @@ import { Icon, type IconName } from "@/components/ds/icon";
 import { Tabs } from "@/components/ds/navigation";
 import { useNotify } from "@/components/site/notify";
 import { GoldDivider, Lozenges, Oval, Panel } from "@/components/site/parts";
-import { CAST, CLAIMS, GROUPS, LADDER, POSES, SHOTS, VERSES, castById } from "@/lib/covenanter";
+import {
+  CAST,
+  CLAIMS,
+  GROUPS,
+  LADDER,
+  POSES,
+  SHOTS,
+  VERSES,
+  castById,
+  shotSrc,
+} from "@/lib/covenanter";
 
 const PILLARS: [IconName, string, string][] = [
   [
@@ -161,14 +171,14 @@ export function Cast({ sel, setSel }: { sel: string; setSel: (id: string) => voi
 
 export function Game() {
   const notify = useNotify();
-  const [k, setK] = useState("st-giles");
-  const i = SHOTS.findIndex((x) => x[1] === k);
+  const [k, setK] = useState(SHOTS[0].id);
+  const i = SHOTS.findIndex((x) => x.id === k);
   const s = SHOTS[i];
-  const go = (d: number) => setK(SHOTS[(i + d + SHOTS.length) % SHOTS.length][1]);
+  const go = (d: number) => setK(SHOTS[(i + d + SHOTS.length) % SHOTS.length].id);
 
   useEffect(() => {
     SHOTS.forEach((x) => {
-      new Image().src = `/art/game/${x[1]}.jpg`;
+      new Image().src = shotSrc(x.id);
     });
   }, []);
 
@@ -200,10 +210,10 @@ export function Game() {
             </div>
             <figure className="gshot">
               <div className="gshot__f">
-                <img key={k} src={`/art/game/${k}.jpg`} alt={s[2]} width={1280} height={720} />
+                <img key={k} src={shotSrc(k)} alt={s.alt} width={1600} height={736} />
               </div>
               <figcaption>
-                <span aria-live="polite">{s[2]}</span>
+                <span aria-live="polite">{s.caption}</span>
                 <span className="gshot__nav">
                   <IconButton
                     icon="arrow-left"
@@ -223,7 +233,7 @@ export function Game() {
           </div>
           <div className="gshot__t">
             <Tabs
-              items={SHOTS.map((x) => ({ id: x[1], label: x[0] }))}
+              items={SHOTS.map((x) => ({ id: x.id, label: x.label }))}
               value={k}
               onChange={setK}
               aria-label="Screenshots"

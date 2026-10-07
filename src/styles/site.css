@@ -105,7 +105,7 @@ header.nav.solid[data-theme]{background:var(--navy-900);border-color:var(--navy-
 .gfeat__txt p{font:var(--type-lead);color:var(--parchment-100)}
 .gfeat__b{display:flex;flex-wrap:wrap;gap:10px}
 .gshot{margin:0;min-width:0;display:flex;flex-direction:column;gap:14px}
-.gshot__f{overflow:hidden;aspect-ratio:16/9;border:2px solid var(--cv-gold);border-radius:6px;background:var(--cv-night);box-shadow:0 18px 40px rgb(5 10 24/.5),0 0 0 6px rgb(12 24 48/.8)}
+.gshot__f{overflow:hidden;aspect-ratio:717/330;border:2px solid var(--cv-gold);border-radius:6px;background:var(--cv-night);box-shadow:0 18px 40px rgb(5 10 24/.5),0 0 0 6px rgb(12 24 48/.8)}
 .gshot__f img{display:block;width:100%;height:100%;object-fit:cover;animation:swap .5s var(--ez)}
 .gshot figcaption{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;min-height:2.7em;font:italic 500 1.1875rem/1.35 var(--font-display);color:var(--navy-200)}
 .gshot figcaption>span:first-child{flex:1;min-width:0}
