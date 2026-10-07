@@ -1,0 +1,13 @@
+{
+  "name": "Unconsumed Games",
+  "short_name": "Unconsumed",
+  "description": "Faithful stories, well made.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#14213D",
+  "theme_color": "#14213D",
+  "icons": [
+    { "src": "/brand/app-icon.png", "sizes": "1024x1024", "type": "image/png" },
+    { "src": "/brand/app-icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
