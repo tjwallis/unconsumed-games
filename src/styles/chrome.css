@@ -40,3 +40,7 @@ button:not(:disabled),[role="button"]:not(:disabled){cursor:pointer}
 .gfeat .gtitle{font-size:min(clamp(2.75rem,8vw,6.5rem),9.4vw)}
 /* base.css rings every focused input; inside a .uc-input wrapper the wrapper already shows the ring */
 .uc-input input:focus-visible,.uc-select select:focus-visible{box-shadow:none}
+/* hero announcement: the game and the notify list, above the studio title */
+.hero__news{width:fit-content;max-width:100%;display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:14px 16px 16px 18px;border:1px solid rgb(242 165 65/.45);border-radius:var(--radius-md);background:rgb(10 16 48/.6)}
+.hero__news-cta{display:flex;flex-wrap:wrap;gap:8px}
+@media(max-width:560px){.hero__news{padding:14px 14px 14px 16px}.hero__news-cta{width:100%}.hero__news-cta .uc-btn{flex:1}}

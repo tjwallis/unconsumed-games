@@ -19,9 +19,19 @@ export function Hero({ onPick }: { onPick: (id: string) => void }) {
       </div>
       <div className="wrap hero__in">
         <div className="hero__txt">
-          <p className="uc-eyebrow">
-            Covenanter · Coming to <span className="nc">iOS</span> &amp; Android
-          </p>
+          <div className="hero__news">
+            <p className="uc-eyebrow">
+              Covenanter · Coming to <span className="nc">iOS</span> &amp; Android
+            </p>
+            <div className="hero__news-cta">
+              <Button size="sm" variant="secondary" href="#game" iconRight="arrow-right">
+                Meet Covenanter
+              </Button>
+              <Button size="sm" onClick={notify.open} iconLeft="bell">
+                Notify me
+              </Button>
+            </div>
+          </div>
           <h1>
             Unconsumed <em>Games</em>
           </h1>
@@ -33,9 +43,6 @@ export function Hero({ onPick }: { onPick: (id: string) => void }) {
           <div className="hero__cta">
             <Button size="lg" href="#lasting" iconRight="arrow-right">
               Why they last
-            </Button>
-            <Button size="lg" variant="secondary" onClick={notify.open}>
-              Notify me
             </Button>
           </div>
         </div>

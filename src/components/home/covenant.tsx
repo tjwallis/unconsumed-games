@@ -92,7 +92,7 @@ export function Covenant({ onPick }: { onPick: (id: string) => void }) {
                   <img
                     className="nm__pose"
                     src={POSES.hero}
-                    alt="The hero of Covenanter, a young Scottish scholar with a satchel and a Bible"
+                    alt="The Scholar, a young Scottish scholar of Covenanter with a satchel and a Bible"
                     width={346}
                     height={660}
                     loading="lazy"
@@ -100,7 +100,7 @@ export function Covenant({ onPick }: { onPick: (id: string) => void }) {
                 ) : (
                   <Oval id="player" n={2} />
                 )}
-                <span>Our hero</span>
+                <span>Scholar</span>
               </div>
               <div className="nm__sils">
                 {CROWD.map((id, i) => (
