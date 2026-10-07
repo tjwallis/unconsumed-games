@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/ds/actions";
 import { Icon } from "@/components/ds/icon";
 import { PageHeader, PageShell } from "@/components/page-shell";
-import { POSES } from "@/lib/covenanter";
+import { POSES, SHOTS, shotFull, shotSrc } from "@/lib/covenanter";
 import { STUDIO } from "@/lib/site";
 
 export const Route = createFileRoute("/press")({
@@ -44,28 +44,8 @@ const FEATURES = [
   "Family-friendly: no ads, no loot boxes",
 ];
 
-const SHOTS: [string, string, string][] = [
-  ["title", "Title", "The Covenanter title screen: Post tenebras lux over a Scottish skyline."],
-  ["dundee", "Dundee", "Dundee harbour, May 1559, where Chapter I begins."],
-  ["st-giles", "St Giles’", "Knox in the pulpit of St Giles’ Kirk, Edinburgh."],
-  [
-    "disputation",
-    "Disputation",
-    "Answering Friar Tobias with a Truth and the verse that meets it.",
-  ],
-  ["commonplace-book", "Commonplace Book", "The Commonplace Book of Truths and proof-texts."],
-  ["world-map", "Scotland", "The road across Scotland."],
-  [
-    "perth",
-    "Perth",
-    "Perth, May 1559. The quest: find John Knox at Patrick Murray’s house on the High Street.",
-  ],
-  [
-    "reformation",
-    "Chapter I",
-    "Chapter I ends: Dundee is reformed. He sent his word, and healed them (Psalm 107:20).",
-  ],
-];
+/** Stands in for the trailer until it is cut. */
+const TRAILER_STILL = SHOTS.find((x) => x.id === "dundee-shore") ?? SHOTS[0];
 
 const DOWNLOADS = [
   { href: "/brand/lockup-on-dark.png", title: "Logo lockup, dark ground", kind: "PNG", dark: true },
@@ -169,12 +149,12 @@ function PressPage() {
 
             <h2>Trailer</h2>
             <figure className="frame">
-              <div className="frame__f">
+              <div className="frame__f frame__f--shot">
                 <img
-                  src="/art/game/title.jpg"
-                  alt="The Covenanter title screen, standing in until the trailer is cut."
-                  width={1280}
-                  height={720}
+                  src={shotSrc(TRAILER_STILL.id)}
+                  alt={`${TRAILER_STILL.alt} A screenshot, standing in until the trailer is cut.`}
+                  width={1600}
+                  height={736}
                   loading="lazy"
                 />
                 <span className="frame__tag">Trailer coming soon</span>
@@ -188,23 +168,23 @@ function PressPage() {
 
             <h2>Screenshots</h2>
             <div className="shots">
-              {SHOTS.map(([id, label, alt]) => (
+              {SHOTS.map(({ id, label, alt }) => (
                 <figure key={id} className="frame">
-                  <a className="frame__f" href={`/art/game/${id}.jpg`} download>
-                    <img
-                      src={`/art/game/${id}.jpg`}
-                      alt={alt}
-                      width={1280}
-                      height={720}
-                      loading="lazy"
-                    />
+                  <a
+                    className="frame__f frame__f--shot"
+                    href={shotFull(id)}
+                    download={`covenanter-${id}.png`}
+                    title={`Download ${label}, full-size PNG, 2868 × 1320`}
+                  >
+                    <img src={shotSrc(id)} alt={alt} width={1600} height={736} loading="lazy" />
                   </a>
                   <figcaption className="frame__k">{label}</figcaption>
                 </figure>
               ))}
             </div>
             <p className="prose__src">
-              Captured from the game at 1280 × 720. Select a screenshot to download it.
+              Captured from the game at 2868 × 1320, the App Store size. Select a screenshot to
+              download the full-size PNG.
             </p>
 
             <h2 id="assets">Logos and brand assets</h2>
