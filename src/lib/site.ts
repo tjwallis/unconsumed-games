@@ -28,7 +28,6 @@ export const NAV = [
 
 export const LEGAL = [
   { label: "Press kit", href: "/press" },
-  { label: "Brand", href: "/brand" },
   { label: "Privacy", href: "/privacy" },
   { label: "Delete account", href: "/delete-account" },
 ] as const;

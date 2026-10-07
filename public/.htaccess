@@ -60,7 +60,7 @@ DirectorySlash Off
     Header set Cache-Control "public, max-age=31536000, immutable"
   </If>
   # Fonts, art and brand files: a month.
-  <ElseIf "%{REQUEST_URI} =~ m#^/(fonts|art|brand|cast)/#">
+  <ElseIf "%{REQUEST_URI} =~ m#^/(fonts|art|brand)/#">
     Header set Cache-Control "public, max-age=2592000"
   </ElseIf>
   # Pages: always revalidate, so a deploy shows up at once.

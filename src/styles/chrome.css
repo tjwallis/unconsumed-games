@@ -2,8 +2,6 @@
    the notify form, and the error screen. Built from the design-system tokens. */
 html{overflow-x:clip}
 button:not(:disabled),[role="button"]:not(:disabled){cursor:pointer}
-.pixel{image-rendering:pixelated;image-rendering:crisp-edges}
-.pixel-smoothed{image-rendering:auto;filter:blur(1px)}
 .skip{position:fixed;left:16px;top:-80px;z-index:60;padding:10px 16px;border-radius:var(--radius-sm);background:var(--parchment-50);color:var(--navy-900);font:var(--type-label);text-decoration:none}
 .skip:focus{top:92px;color:var(--navy-900)}
 

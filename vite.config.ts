@@ -183,7 +183,6 @@ export default defineConfig(({ command, isPreview }) => ({
             pages: [
               { path: "/" },
               { path: "/press" },
-              { path: "/brand" },
               { path: "/privacy" },
               { path: "/delete-account" },
               { path: "/404", sitemap: { exclude: true } },
