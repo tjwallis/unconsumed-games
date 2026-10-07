@@ -237,8 +237,7 @@ function PressPage() {
             </ul>
             <p className="prose__src">
               Type: Cormorant Garamond for display, Source Serif 4 for text. In the game, Cinzel for
-              labels and Cinzel Decorative for the title. Full guidance is on the{" "}
-              <a href="/brand">brand page</a>.
+              labels and Cinzel Decorative for the title.
             </p>
 
             <h2>About Unconsumed Games</h2>

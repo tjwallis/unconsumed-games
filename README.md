@@ -6,7 +6,6 @@ Marketing site for [Unconsumed Games](https://unconsumedgames.com) and **Covenan
 
 - `/` — studio home: hero, “Made to last”, the cast, why it is called Covenanter, the game, a playable disputation, and the notify form
 - `/press` — press kit, screenshots and brand downloads
-- `/brand` — brand guidelines: marks, colour, type, voice, and the cast sprites
 - `/delete-account` — how to delete a Covenanter account
 - `/privacy` — privacy notice
 

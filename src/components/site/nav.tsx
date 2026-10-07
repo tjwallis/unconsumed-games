@@ -65,7 +65,7 @@ export function SiteNav() {
               </a>
             ))}
             <div className="nav__more">
-              {LEGAL.slice(0, 2).map((l) => (
+              {LEGAL.slice(0, 1).map((l) => (
                 <a key={l.href} href={l.href}>
                   {l.label}
                 </a>
