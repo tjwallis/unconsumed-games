@@ -5,7 +5,7 @@ Marketing site for [Unconsumed Games](https://unconsumedgames.com) and **Covenan
 ## Pages
 
 - `/` — studio home: hero, “Made to last”, the cast, why it is called Covenanter, the game, a playable disputation, and the notify form
-- `/press` — press kit, screenshots and brand downloads
+- `/press` — press kit: fact sheet, descriptions, chapters, features, screenshots and logo downloads
 - `/delete-account` — how to delete a Covenanter account
 - `/privacy` — privacy notice
 
@@ -21,7 +21,7 @@ The site follows the Unconsumed Games design system exported from Claude Design.
 - `src/styles/chrome.css`, `pages.css` — the mobile menu, footer additions and the inner pages, built from the same tokens.
 - `src/lib/covenanter.ts` — cast, screenshots, verses and disputation claims. The biographies were written from general history; check them against the game.
 - Art: `public/art/covenanter/` (title parallax and portrait sheet), `public/art/poses/` (generated poses), `public/fonts/`.
-- Screenshots: `public/art/game/<id>.jpg` (1600 × 736 JPEG, shown on the home page, press kit and brand page) and `public/art/game/full/<id>.png` (the 2868 × 1320 App Store PNG, the press-kit download). The list, captions and alt text are `SHOTS` in `src/lib/covenanter.ts`.
+- Screenshots: `public/art/game/<id>.jpg` (1600 × 736 JPEG, shown on the home page and in the press kit) and `public/art/game/full/<id>.png` (the 2868 × 1320 App Store PNG, the press-kit download). The list, captions and alt text are `SHOTS` in `src/lib/covenanter.ts`.
 
 ## Develop
 
