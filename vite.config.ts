@@ -142,6 +142,15 @@ function authPopupPlugin(): Plugin {
   };
 }
 
+/**
+ * `npm run build:static` (STATIC_SITE=1) prerenders every page to plain HTML in
+ * `dist/client` for self-hosting (Plesk/Apache). It skips the Grok server
+ * middleware or Nitro, so the head tags come from `src/routes/__root.tsx` instead.
+ * The default build (Grok preview / Vercel) is unchanged.
+ */
+const STATIC_SITE = process.env.STATIC_SITE === "1";
+const SITE_URL = process.env.VITE_SITE_URL || "https://unconsumedgames.com";
+
 // `0.0.0.0:8080` is the live-preview contract — don't change host/port.
 // The dev server starts once `src/router.tsx` and `src/routes/` exist — see
 // AGENTS.md § "First scaffold".
@@ -166,18 +175,36 @@ export default defineConfig(({ command, isPreview }) => ({
     // PWA head + ?install=1 tutorial page; runs before Start/Nitro.
     grokPwaPlugin(),
     tailwindcss(),
-    tanstackStart(),
-    ...(command === "build" || isPreview
-      ? [
-          nitro({
-            preset: "vercel",
-            // Auto-registers server/middleware/* (the PWA install page +
-            // manifest + head-tag middleware). Nitro v3 defaults serverDir to
-            // false, so removing this silently unwires /?install=1 on deploys.
-            serverDir: "./server",
-          }),
-        ]
-      : []),
+    tanstackStart(
+      STATIC_SITE
+        ? {
+            // Every page is listed here; add new routes to this list.
+            prerender: { enabled: true, crawlLinks: false, failOnError: true },
+            pages: [
+              { path: "/" },
+              { path: "/press" },
+              { path: "/brand" },
+              { path: "/privacy" },
+              { path: "/delete-account" },
+              { path: "/404", sitemap: { exclude: true } },
+            ],
+            sitemap: { enabled: true, host: SITE_URL, outputPath: "/sitemap.xml" },
+          }
+        : {},
+    ),
+    ...(STATIC_SITE
+      ? []
+      : command === "build" || isPreview
+        ? [
+            nitro({
+              preset: "vercel",
+              // Auto-registers server/middleware/* (the PWA install page +
+              // manifest + head-tag middleware). Nitro v3 defaults serverDir to
+              // false, so removing this silently unwires /?install=1 on deploys.
+              serverDir: "./server",
+            }),
+          ]
+        : []),
     viteReact(),
   ],
 }));

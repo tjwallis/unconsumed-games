@@ -29,3 +29,23 @@ The site follows the Unconsumed Games design system exported from Claude Design.
 npm install
 npm run dev
 ```
+
+## Deploy to Plesk (static)
+
+The site has no server code, so `npm run build:static` prerenders every page to plain HTML in `dist/client` (with `sitemap.xml`, `robots.txt` and the Apache rules in `public/.htaccess`). Set `VITE_SITE_URL` if the domain is not `https://unconsumedgames.com`; it is used for share cards and the sitemap. New routes must be added to the `pages` list in `vite.config.ts`.
+
+Plesk's Git extension builds and publishes it on every push:
+
+1. **Node.js:** install Node 22 with Plesk's Node.js extension. In **Web Hosting Access**, set SSH access to `/bin/bash` (not chrooted) so deploy actions can run it.
+2. **Websites & Domains → Git → Add repository:** `https://github.com/tjwallis/unconsumed-games`, branch `main`, deployment mode **Automatic**, server path outside the web root (for example `/unconsumed-games`).
+3. **Additional deployment actions:**
+   ```sh
+   sh scripts/plesk-deploy.sh /var/www/vhosts/unconsumedgames.com/httpdocs
+   ```
+   The script installs, builds and mirrors `dist/client` into `httpdocs`, keeping `.well-known` (Let's Encrypt).
+4. **Webhook:** copy the webhook URL Plesk shows into GitHub → Settings → Webhooks, so a push triggers a deploy.
+5. **HTTPS:** turn on **Permanent SEO-safe 301 redirect from HTTP to HTTPS** in Hosting Settings, or uncomment the HTTPS rule in `.htaccess` (not both).
+
+`.htaccess` needs Apache (the Plesk default, behind nginx). On an nginx-only site, translate its rewrite and header rules into **Apache & nginx Settings → Additional nginx directives**.
+
+`npm run build` is unchanged and still builds for the Grok preview and Vercel.

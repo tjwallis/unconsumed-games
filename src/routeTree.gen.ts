@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as R404RouteImport } from './routes/404'
 import { Route as BrandRouteImport } from './routes/brand'
 import { Route as DeleteAccountRouteImport } from './routes/delete-account'
 import { Route as PressRouteImport } from './routes/press'
@@ -18,6 +19,11 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R404Route = R404RouteImport.update({
+  id: '/404',
+  path: '/404',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BrandRoute = BrandRouteImport.update({
@@ -43,6 +49,7 @@ const PrivacyRoute = PrivacyRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/brand': typeof BrandRoute
   '/delete-account': typeof DeleteAccountRoute
   '/press': typeof PressRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/brand': typeof BrandRoute
   '/delete-account': typeof DeleteAccountRoute
   '/press': typeof PressRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/404': typeof R404Route
   '/brand': typeof BrandRoute
   '/delete-account': typeof DeleteAccountRoute
   '/press': typeof PressRoute
@@ -65,14 +74,22 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/brand' | '/delete-account' | '/press' | '/privacy'
+  fullPaths: '/' | '/404' | '/brand' | '/delete-account' | '/press' | '/privacy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/brand' | '/delete-account' | '/press' | '/privacy'
-  id: '__root__' | '/' | '/brand' | '/delete-account' | '/press' | '/privacy'
+  to: '/' | '/404' | '/brand' | '/delete-account' | '/press' | '/privacy'
+  id:
+    | '__root__'
+    | '/'
+    | '/404'
+    | '/brand'
+    | '/delete-account'
+    | '/press'
+    | '/privacy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R404Route: typeof R404Route
   BrandRoute: typeof BrandRoute
   DeleteAccountRoute: typeof DeleteAccountRoute
   PressRoute: typeof PressRoute
@@ -86,6 +103,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/404': {
+      id: '/404'
+      path: '/404'
+      fullPath: '/404'
+      preLoaderRoute: typeof R404RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/brand': {
@@ -121,6 +145,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R404Route: R404Route,
   BrandRoute: BrandRoute,
   DeleteAccountRoute: DeleteAccountRoute,
   PressRoute: PressRoute,

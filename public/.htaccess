@@ -1,0 +1,70 @@
+# Unconsumed Games — static site on Apache (Plesk).
+# Built by `npm run build:static`; copied to the web root by scripts/plesk-deploy.sh.
+
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+ErrorDocument 404 /404/index.html
+
+# Pages are prerendered as /press/index.html. Serve them at /press without the
+# directory-slash redirect (safe here: Indexes are off, so bare folders return 403).
+DirectorySlash Off
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # HTTPS. Plesk can do this instead (Hosting Settings → "Permanent SEO-safe 301
+  # redirect from HTTP to HTTPS"); turn on one or the other, not both.
+  # RewriteCond %{HTTPS} !=on
+  # RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # The 404 page is served for missing URLs, not as an address of its own.
+  RewriteCond %{ENV:REDIRECT_STATUS} ^$
+  RewriteRule ^404(/.*)?$ - [R=404,L]
+
+  # One address per page: /press/ → /press
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} ^/(.+)/$
+  RewriteCond %{DOCUMENT_ROOT}/%1/index.html -f
+  RewriteRule ^ /%1 [R=301,L]
+
+  # /press → /press/index.html (internal)
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.+)$ $1/index.html [L]
+</IfModule>
+
+# Types Apache may not know
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType font/ttf .ttf
+  AddType application/manifest+json .webmanifest
+  AddType image/svg+xml .svg
+</IfModule>
+
+# Compress text (woff2, png and jpg are already compressed)
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml
+  AddOutputFilterByType DEFLATE application/javascript text/javascript application/json
+  AddOutputFilterByType DEFLATE application/manifest+json image/svg+xml font/ttf
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+  # Build files have a content hash in their name: cache them for a year.
+  <If "%{REQUEST_URI} =~ m#^/assets/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+  # Fonts, art and brand files: a month.
+  <ElseIf "%{REQUEST_URI} =~ m#^/(fonts|art|brand|cast)/#">
+    Header set Cache-Control "public, max-age=2592000"
+  </ElseIf>
+  # Pages: always revalidate, so a deploy shows up at once.
+  <ElseIf "%{REQUEST_URI} =~ m#(^/$|\.html$|^/[^.]*$)#">
+    Header set Cache-Control "no-cache"
+  </ElseIf>
+</IfModule>
