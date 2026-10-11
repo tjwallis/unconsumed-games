@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 /* The Covenanter closed beta. Copy follows the campaign house rules: iOS and Android only,
-   invites go out by email, no promised times. */
+   invites go out by email, no promised times. A request is not a guaranteed place: testers are
+   chosen at random from everyone who asks. */
 export const BETA = {
   /** Midnight Eastern on Reformation Day, Saturday 31 October 2026. */
   opensAt: new Date("2026-10-31T00:00:00-04:00"),
@@ -16,6 +17,10 @@ export const PLATFORM_OPTIONS = [
   { value: "android", label: "Android" },
   { value: "steam", label: "Steam (PC), after the beta" },
 ];
+
+/** The one sentence that says a request is not a guaranteed place. Use it wherever people sign up. */
+export const SELECTION =
+  "Places are limited, so we choose testers at random from everyone who asks. If you are chosen, your invite comes by email.";
 
 export type BetaPhase = "soon" | "open";
 

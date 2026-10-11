@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ds/actions";
 import { Dialog, Toast } from "@/components/ds/feedback";
 import { Input, Select } from "@/components/ds/forms";
-import { BETA, PLATFORM_OPTIONS, useBeta } from "@/lib/beta";
+import { BETA, PLATFORM_OPTIONS, SELECTION, useBeta } from "@/lib/beta";
 
 /* Sign-ups post to the PHP endpoint deployed next to the static site (public/api/subscribe.php),
    which adds them to Kit. The Kit API key lives only on the server. */
@@ -20,7 +20,7 @@ const SUBSCRIBE_URL = import.meta.env.VITE_SUBSCRIBE_URL || "/api/subscribe.php"
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type Notify = {
-  /** Open the "Join the beta" dialog. */
+  /** Open the "Request to join the beta" dialog. */
   open: () => void;
   /**
    * Sign an address up. Resolves to an error message, or null on success.
@@ -101,12 +101,13 @@ export function NotifyProvider({ children }: { children: ReactNode }) {
         <div className="toast-region">
           {toast.confirm ? (
             <Toast tone="success" title="Check your email" onClose={() => setToast(null)}>
-              We sent a link to confirm your address. Once you confirm, your beta invite will come
-              by email.
+              We sent a link to confirm your address. Once you confirm, your request is in. Testers
+              are chosen at random, and invites go out by email.
             </Toast>
           ) : (
-            <Toast tone="success" title="You are on the list" onClose={() => setToast(null)}>
-              Your beta invite will come by email.
+            <Toast tone="success" title="Request received" onClose={() => setToast(null)}>
+              Testers are chosen at random from everyone who asks. If you are chosen, your invite
+              comes by email.
             </Toast>
           )}
         </div>
@@ -149,14 +150,14 @@ function NotifyDialog({
       onClose={onClose}
       size="sm"
       eyebrow="Covenanter · Closed beta"
-      title="Join the beta"
+      title="Request to join the beta"
       footer={
         <>
           <Button variant="ghost" onClick={onClose}>
             Cancel
           </Button>
           <Button type="submit" form="notify-form" disabled={busy}>
-            {busy ? "Sending…" : "Join the beta"}
+            {busy ? "Sending…" : "Request to join"}
           </Button>
         </>
       }
@@ -164,8 +165,8 @@ function NotifyDialog({
       <form id="notify-form" onSubmit={submit} noValidate className="notify-form">
         <p className="uc-small">
           {phase === "open"
-            ? `The closed beta is open on ${BETA.platforms}. Leave your email and your invite will come by email.`
-            : `The closed beta opens on ${BETA.dateLong} on ${BETA.platforms}. Leave your email and your invite will come by email.`}
+            ? `The closed beta is open on ${BETA.platforms}. ${SELECTION}`
+            : `The closed beta opens on ${BETA.dateLong} on ${BETA.platforms}. ${SELECTION}`}
         </p>
         <Input
           label="Email"

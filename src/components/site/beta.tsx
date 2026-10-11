@@ -52,7 +52,7 @@ export function SignupForm({ withPlatform = false }: { withPlatform?: boolean })
         />
       ) : null}
       <Button size="lg" type="submit" disabled={busy}>
-        {busy ? "Sending…" : "Join the beta"}
+        {busy ? "Sending…" : "Request to join"}
       </Button>
       <Honeypot />
     </form>
@@ -61,16 +61,19 @@ export function SignupForm({ withPlatform = false }: { withPlatform?: boolean })
 
 export function BetaSteps({ phase }: { phase: BetaPhase }) {
   const steps: [string, string][] = [
-    ["Sign up", "Leave your email. It takes a moment."],
+    ["Request a place", "Leave your email. It takes a moment."],
     phase === "open"
       ? [
           "Watch your inbox",
-          "Invites are going out by email. Check your spam and promotions folders too.",
+          "We choose testers at random from everyone who asks, and invites go out by email. Check your spam and promotions folders too.",
         ]
-      : ["Watch your inbox", `Invites go out by email when the beta opens on ${BETA.dateLong}.`],
+      : [
+          "Watch your inbox",
+          `We choose testers at random from everyone who asks. Invites go out by email from ${BETA.dateLong}.`,
+        ],
     [
       "Play together",
-      "Install Covenanter on iPhone, iPad or Android, then tell us what your children learn, what they love, and what we can make better.",
+      "If you are chosen, install Covenanter on iPhone, iPad or Android, then tell us what your children learn, what they love, and what we can make better.",
     ],
   ];
   return (
@@ -98,14 +101,18 @@ const FAQ: [string, React.ReactNode][] = [
     "iPhone, iPad and Android phones and tablets. The closed beta is not on Steam or PC.",
   ],
   [
-    "When will my invite arrive?",
-    `Invites go out by email when the beta opens on ${BETA.dateLong}. Sign up with the address you check most.`,
+    "Is everyone who asks given a place?",
+    "No. Places in the closed beta are limited, so we choose testers at random from everyone who asks. If you are not chosen this time, you stay on our list and we will write when Covenanter is available.",
   ],
   [
-    "I haven't had my invite.",
+    "When will I hear?",
+    `Invites go out by email from ${BETA.dateLong}. Use the address you check most.`,
+  ],
+  [
+    "I haven't had an invite.",
     <>
-      Check your spam and promotions folders, and make sure you signed up with the address you
-      check. If it still isn't there, sign up again on this page or write to{" "}
+      Not everyone who asks is chosen, so an invite may not come this time. Check your spam and
+      promotions folders, and make sure you used the address you check. Questions? Write to{" "}
       <a href={`mailto:${STUDIO.hello}`}>{STUDIO.hello}</a>.
     </>,
   ],

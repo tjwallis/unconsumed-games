@@ -6,7 +6,7 @@ import { Icon, type IconName } from "@/components/ds/icon";
 import { Tabs } from "@/components/ds/navigation";
 import { BetaSteps, SignupForm } from "@/components/site/beta";
 import { useNotify } from "@/components/site/notify";
-import { BETA, useBeta } from "@/lib/beta";
+import { BETA, SELECTION, useBeta } from "@/lib/beta";
 import { GoldDivider, Lozenges, Oval, Panel } from "@/components/site/parts";
 import { CAST, CLAIMS, GROUPS, LADDER, POSES, SHOTS, VERSES, castById } from "@/lib/covenanter";
 
@@ -186,7 +186,7 @@ export function Game() {
               </div>
               <p className="gfeat__note">No ads and no loot boxes. Something to play together.</p>
               <Button onClick={notify.open} iconLeft="bell">
-                Join the beta
+                Request to join
               </Button>
             </div>
             <figure className="gshot">
@@ -372,17 +372,17 @@ export function BetaBand() {
           <p className="uc-eyebrow">
             {phase === "open" ? "Closed beta · Now open" : `Closed beta · ${BETA.dateLong}`}
           </p>
-          <h2>{phase === "open" ? "The beta is open." : "Play it first."}</h2>
+          <h2>{phase === "open" ? "The beta is open." : "Be among the first to play."}</h2>
           <p className="uc-lead">
             {phase === "open"
-              ? `The Covenanter closed beta is open on ${BETA.platforms}. Sign up and your invite will come by email.`
-              : `The Covenanter closed beta opens on Reformation Day, ${BETA.dateLong}, on ${BETA.platforms}. Sign up now and your invite will come by email.`}
+              ? `The Covenanter closed beta is open on ${BETA.platforms}. ${SELECTION}`
+              : `The Covenanter closed beta opens on Reformation Day, ${BETA.dateLong}, on ${BETA.platforms}. ${SELECTION}`}
           </p>
         </header>
         <BetaSteps phase={phase} />
         <div className="beta-band__cta">
           <Button size="lg" onClick={notify.open} iconLeft="bell">
-            Join the beta
+            Request to join
           </Button>
           <Button size="lg" variant="secondary" href="/beta" iconRight="arrow-right">
             Beta questions
@@ -421,8 +421,8 @@ export function Motto() {
           </h2>
           <p className="uc-lead">
             {phase === "open"
-              ? `On ${BETA.platforms}. Leave your email and your invite will come by email.`
-              : `${BETA.dateLong}, on ${BETA.platforms}. Leave your email and your invite will come by email.`}
+              ? `On ${BETA.platforms}. Request a place below. ${SELECTION}`
+              : `${BETA.dateLong}, on ${BETA.platforms}. Request a place below. ${SELECTION}`}
           </p>
           <SignupForm />
           <p className="uc-caption nf__note">

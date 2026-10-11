@@ -44,7 +44,7 @@ export function SiteNav() {
             </a>
           ))}
           <Button size="sm" onClick={notify.open}>
-            Join the beta
+            Request to join
           </Button>
           <IconButton
             className="nav__menu"

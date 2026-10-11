@@ -3,7 +3,7 @@ import { Button } from "@/components/ds/actions";
 import { Icon } from "@/components/ds/icon";
 import { PageHeader, PageShell } from "@/components/page-shell";
 import { BetaFaq, BetaSteps, SignupForm } from "@/components/site/beta";
-import { BETA, daysLeftLabel, useBeta } from "@/lib/beta";
+import { BETA, SELECTION, daysLeftLabel, useBeta } from "@/lib/beta";
 import { POSES } from "@/lib/covenanter";
 
 export const Route = createFileRoute("/beta")({
@@ -13,7 +13,7 @@ export const Route = createFileRoute("/beta")({
       {
         name: "description",
         content:
-          "The Covenanter closed beta opens on Reformation Day, Saturday 31 October 2026, on iOS and Android. Sign up and your invite will come by email.",
+          "The Covenanter closed beta opens on Reformation Day, Saturday 31 October 2026, on iOS and Android. Request a place: testers are chosen at random, and invites go out by email.",
       },
     ],
   }),
@@ -43,8 +43,8 @@ function BetaPage() {
         }
         lead={
           phase === "open"
-            ? `Covenanter is in closed beta on ${BETA.platforms}. Sign up and your invite will come by email.`
-            : `${BETA.dateLong}, on ${BETA.platforms}. Sign up and your invite will come by email.`
+            ? `Covenanter is in closed beta on ${BETA.platforms}. ${SELECTION}`
+            : `${BETA.dateLong}, on ${BETA.platforms}. ${SELECTION}`
         }
         aside={
           <div className="ph__art ph__art--scholar">
@@ -106,7 +106,7 @@ function BetaPage() {
 
           <div className="beta-page__end">
             <Button size="lg" href="#join" iconLeft="bell">
-              Join the beta
+              Request to join
             </Button>
             <Button size="lg" variant="secondary" href="/#game" iconRight="arrow-right">
               Meet Covenanter

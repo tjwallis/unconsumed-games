@@ -33,8 +33,8 @@ export function Covenant({ onPick }: { onPick: (id: string) => void }) {
               are known by name, like John Knox and John Erskine of Dun. Many are unknown.
             </p>
             <p>
-              The Scholar is one of the unknown, standing for the countless faithful men who worked to
-              see the Word of God established in the kirks and burghs.
+              The Scholar is one of the unknown, standing for the countless faithful men who worked
+              to see the Word of God established in the kirks and burghs.
             </p>
             <p className="nm__end">
               If God permits, this is just one of the many Covenanter stories to come.

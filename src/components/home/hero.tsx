@@ -32,7 +32,7 @@ export function Hero({ onPick }: { onPick: (id: string) => void }) {
             </p>
             <div className="hero__news-cta">
               <Button size="sm" onClick={notify.open} iconLeft="bell">
-                Join the beta
+                Request to join
               </Button>
               <Button size="sm" variant="secondary" href="#game" iconRight="arrow-right">
                 Meet Covenanter
