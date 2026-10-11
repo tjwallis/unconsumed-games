@@ -11,7 +11,8 @@ import {
 } from "react";
 import { Button } from "@/components/ds/actions";
 import { Dialog, Toast } from "@/components/ds/feedback";
-import { Input, Select } from "@/components/ds/forms";
+import { Dropdown } from "@/components/ds/dropdown";
+import { Input } from "@/components/ds/forms";
 import { BETA, PLATFORM_OPTIONS, SELECTION, useBeta } from "@/lib/beta";
 
 /* Sign-ups post to the PHP endpoint deployed next to the static site (public/api/subscribe.php),
@@ -180,11 +181,11 @@ function NotifyDialog({
           }}
           error={error}
         />
-        <Select
+        <Dropdown
           label="Platform"
           value={platform}
-          onChange={(e) => setPlatform(e.target.value)}
-          placeholder="Choose one"
+          onChange={setPlatform}
+          placeholder="Choose one (optional)"
           options={PLATFORM_OPTIONS}
           hint="The closed beta is on iOS and Android."
         />

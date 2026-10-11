@@ -30,7 +30,8 @@ export function Dialog({
     if (!open) return undefined;
     const returnTo = document.activeElement as HTMLElement | null;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && dismissable && onClose) onClose();
+      // A control inside (e.g. an open dropdown) can claim Escape with preventDefault.
+      if (e.key === "Escape" && !e.defaultPrevented && dismissable && onClose) onClose();
     };
     document.addEventListener("keydown", onKey);
     const prev = document.body.style.overflow;
