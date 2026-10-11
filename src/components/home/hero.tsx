@@ -2,12 +2,14 @@ import type { CSSProperties } from "react";
 import { Button } from "@/components/ds/actions";
 import { useNotify } from "@/components/site/notify";
 import { Oval } from "@/components/site/parts";
+import { BETA, daysLeftLabel, useBeta } from "@/lib/beta";
 import { castById } from "@/lib/covenanter";
 
 const PROCESSION = ["willock", "methven", "goodman", "knox", "erskine", "lordjames", "winram"];
 
 export function Hero({ onPick }: { onPick: (id: string) => void }) {
   const notify = useNotify();
+  const { phase, daysLeft } = useBeta();
   return (
     <section className="hero" id="top" data-theme="dark" data-screen-label="01 Hero">
       <div className="scene" aria-hidden="true">
@@ -21,14 +23,19 @@ export function Hero({ onPick }: { onPick: (id: string) => void }) {
         <div className="hero__txt">
           <div className="hero__news">
             <p className="uc-eyebrow">
-              Covenanter · Coming to <span className="nc">iOS</span> &amp; Android
+              {phase === "open"
+                ? "Covenanter · Closed beta now open"
+                : `Covenanter · Closed beta · ${BETA.dateLong}`}
+              {daysLeft !== null ? (
+                <span className="hero__days">{daysLeftLabel(daysLeft)}</span>
+              ) : null}
             </p>
             <div className="hero__news-cta">
+              <Button size="sm" onClick={notify.open} iconLeft="bell">
+                Join the beta
+              </Button>
               <Button size="sm" variant="secondary" href="#game" iconRight="arrow-right">
                 Meet Covenanter
-              </Button>
-              <Button size="sm" onClick={notify.open} iconLeft="bell">
-                Notify me
               </Button>
             </div>
           </div>
@@ -37,8 +44,11 @@ export function Hero({ onPick }: { onPick: (id: string) => void }) {
           </h1>
           <p className="hero__tag">Games which last.</p>
           <p className="hero__lead">
-            Unconsumed Games makes video games grounded in the Word of God. They teach children the
-            Bible, doctrine and history, and they are made to last.
+            Unconsumed Games makes video games grounded in the Word of God, teaching children the
+            Bible, doctrine and history.{" "}
+            {phase === "open"
+              ? "Our first, Covenanter, is now in closed beta."
+              : "Our first, Covenanter, opens its closed beta on Reformation Day."}
           </p>
           <div className="hero__cta">
             <Button size="lg" href="#lasting" iconRight="arrow-right">

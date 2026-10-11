@@ -168,10 +168,10 @@ export const CAST: CastMember[] = [
     id: "carswell",
     name: "John Carswell",
     short: "Carswell",
-    role: "Minister and Bishop of the Isles",
+    role: "Superintendent of Argyll",
     g: "refs",
     blurb:
-      "Translated the Book of Common Order into Gaelic in 1567, the first book printed in Scottish Gaelic.",
+      "Became superintendent of Argyll for the Reformed Kirk in 1560. His Gaelic Book of Common Order of 1567 was the first book printed in Scottish Gaelic.",
   },
   {
     id: "lindsay",

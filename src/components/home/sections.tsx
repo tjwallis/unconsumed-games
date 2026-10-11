@@ -4,7 +4,9 @@ import { Badge } from "@/components/ds/display";
 import { Input } from "@/components/ds/forms";
 import { Icon, type IconName } from "@/components/ds/icon";
 import { Tabs } from "@/components/ds/navigation";
-import { Honeypot, honeypotValue, useNotify } from "@/components/site/notify";
+import { BetaSteps, SignupForm } from "@/components/site/beta";
+import { useNotify } from "@/components/site/notify";
+import { BETA, useBeta } from "@/lib/beta";
 import { GoldDivider, Lozenges, Oval, Panel } from "@/components/site/parts";
 import { CAST, CLAIMS, GROUPS, LADDER, POSES, SHOTS, VERSES, castById } from "@/lib/covenanter";
 
@@ -174,17 +176,17 @@ export function Game() {
             <div className="gfeat__txt">
               <p>
                 You come home from Geneva in May 1559. Walk the towns of Scotland, hear the
-                Reformers preach, and answer false teaching with the Scriptures. Everything you
-                learn is kept in your Commonplace Book.
+                Reformers preach, and answer false teaching with Scripture. Everything you learn is
+                kept in your Commonplace Book.
               </p>
               <div className="gfeat__b">
                 <Badge tone="gold">iOS</Badge>
                 <Badge tone="gold">Android</Badge>
-                <Badge tone="inverse">Coming soon</Badge>
+                <Badge tone="inverse">Closed beta · {BETA.dateShort}</Badge>
               </div>
               <p className="gfeat__note">No ads and no loot boxes. Something to play together.</p>
               <Button onClick={notify.open} iconLeft="bell">
-                Notify me
+                Join the beta
               </Button>
             </div>
             <figure className="gshot">
@@ -360,20 +362,39 @@ export function Disputation() {
   );
 }
 
-export function Motto() {
+export function BetaBand() {
   const notify = useNotify();
-  const [email, setEmail] = useState("");
-  const [err, setErr] = useState("");
-  const [busy, setBusy] = useState(false);
-  const submit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (busy) return;
-    setBusy(true);
-    const error = await notify.save(email, "", honeypotValue(e.currentTarget));
-    setBusy(false);
-    setErr(error ?? "");
-    if (!error) setEmail("");
-  };
+  const { phase } = useBeta();
+  return (
+    <section className="sec sec--light beta-band" id="beta" data-screen-label="05b Closed beta">
+      <div className="wrap">
+        <header className="sh">
+          <p className="uc-eyebrow">
+            {phase === "open" ? "Closed beta · Now open" : `Closed beta · ${BETA.dateLong}`}
+          </p>
+          <h2>{phase === "open" ? "The beta is open." : "Play it first."}</h2>
+          <p className="uc-lead">
+            {phase === "open"
+              ? `The Covenanter closed beta is open on ${BETA.platforms}. Sign up and your invite will come by email.`
+              : `The Covenanter closed beta opens on Reformation Day, ${BETA.dateLong}, on ${BETA.platforms}. Sign up now and your invite will come by email.`}
+          </p>
+        </header>
+        <BetaSteps phase={phase} />
+        <div className="beta-band__cta">
+          <Button size="lg" onClick={notify.open} iconLeft="bell">
+            Join the beta
+          </Button>
+          <Button size="lg" variant="secondary" href="/beta" iconRight="arrow-right">
+            Beta questions
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Motto() {
+  const { phase } = useBeta();
   return (
     <section
       className="motto"
@@ -394,28 +415,16 @@ export function Motto() {
         </div>
         <div className="notify">
           <h2>
-            Covenanter is coming to <span className="nc">iOS</span> and Android.
+            {phase === "open"
+              ? "The Covenanter closed beta is open."
+              : "The Covenanter closed beta opens on Reformation Day."}
           </h2>
-          <p className="uc-lead">Leave your email and we will write when it is available.</p>
-          <form className="nf" onSubmit={submit} noValidate>
-            <Input
-              size="lg"
-              type="email"
-              autoComplete="email"
-              placeholder="you@example.com"
-              aria-label="Email address"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                if (err) setErr("");
-              }}
-              error={err}
-            />
-            <Button size="lg" type="submit" disabled={busy}>
-              {busy ? "Sending…" : "Notify me"}
-            </Button>
-            <Honeypot />
-          </form>
+          <p className="uc-lead">
+            {phase === "open"
+              ? `On ${BETA.platforms}. Leave your email and your invite will come by email.`
+              : `${BETA.dateLong}, on ${BETA.platforms}. Leave your email and your invite will come by email.`}
+          </p>
+          <SignupForm />
           <p className="uc-caption nf__note">
             We will only write about Covenanter. You can leave the list from any email.
           </p>

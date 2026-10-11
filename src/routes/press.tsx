@@ -27,6 +27,7 @@ const FACTS: [string, string][] = [
   ["Setting", "Scotland, 1559–1560 (the Scottish Reformation)"],
   ["Platforms", "iOS (iPhone & iPad), Android; Steam planned"],
   ["Engine", "Flutter + Flame"],
+  ["Closed beta", "Opens Saturday 31 October 2026 (Reformation Day) on iOS and Android"],
   ["Release", "To be announced"],
   ["Price", "To be announced"],
   ["Monetisation", "No ads, no loot boxes"],
@@ -36,10 +37,11 @@ const FACTS: [string, string][] = [
 ];
 
 const FEATURES = [
-  "A story campaign set in Reformation Scotland, 1559–60",
+  "Eight chapters, from Dundee to Edinburgh, 1559–60",
   "Answer the errors of the age with Scripture, quoted from the Authorised Version",
   "Five levels of difficulty, from about age 5 to 13 and up",
   "A Commonplace Book that keeps every Truth with its proof-texts",
+  "Metrical psalms from the Scottish Psalter, sung alone and together",
   "Theology reviewed by a theologian; history researched with care",
   "Family-friendly: no ads, no loot boxes",
 ];
@@ -137,9 +139,9 @@ function PressPage() {
             <p>
               Covenanter is a story game set in the Scottish Reformation. It is May 1559. John Knox
               has come home to Scotland, the Lords of the Congregation have bound themselves by
-              covenant, and the nation stands on the edge of change. The player comes home from
+              covenant, and the nation stands on the edge of change. A young scholar comes home from
               Geneva, walks the towns of Scotland, hears the Reformers preach, and answers false
-              teaching with the Scriptures.
+              teaching with Scripture.
             </p>
             <p>
               Every answer in the game is reviewed by a theologian on the team, and the history
@@ -151,13 +153,16 @@ function PressPage() {
             <h2 id="history">The history behind the name</h2>
             <p>
               Most people link the word “Covenanter” with the seventeenth century. But on 3 December
-              1557 five Protestant nobles, the Earls of Argyll, Glencairn and Morton, Lord Lorne,
-              and John Erskine of Dun, signed the First Band, pledging to “maintain, set forward,
-              and establish the most blessed Word of God, and his Congregation.” Historians date the
-              Lords of the Congregation to that band. Covenanting began with Knox’s generation, and
-              that is where the game begins.
+              1557 Protestant nobles, among them the Earls of Argyll, Glencairn and Morton, Lord
+              Lorne, and John Erskine of Dun, signed the First Band, pledging to “maintain, set
+              forward, and establish the most blessed Word of God, and his Congregation.” Historians
+              date the Lords of the Congregation to that band. Covenanting began with Knox’s
+              generation, and that is where the game begins.
             </p>
-            <p className="prose__src">Sources: PCA Historical Center; Scottish History Society.</p>
+            <p className="prose__src">
+              Sources: John Knox, History of the Reformation in Scotland; PCA Historical Center,
+              This Day in Presbyterian History, 3 December.
+            </p>
 
             <h2>Features</h2>
             <ul className="ticks">

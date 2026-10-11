@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ds/actions";
 import { Dialog, Toast } from "@/components/ds/feedback";
 import { Input, Select } from "@/components/ds/forms";
+import { BETA, PLATFORM_OPTIONS, useBeta } from "@/lib/beta";
 
 /* Sign-ups post to the PHP endpoint deployed next to the static site (public/api/subscribe.php),
    which adds them to Kit. The Kit API key lives only on the server. */
@@ -19,7 +20,7 @@ const SUBSCRIBE_URL = import.meta.env.VITE_SUBSCRIBE_URL || "/api/subscribe.php"
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type Notify = {
-  /** Open the "Get notified" dialog. */
+  /** Open the "Join the beta" dialog. */
   open: () => void;
   /**
    * Sign an address up. Resolves to an error message, or null on success.
@@ -100,12 +101,12 @@ export function NotifyProvider({ children }: { children: ReactNode }) {
         <div className="toast-region">
           {toast.confirm ? (
             <Toast tone="success" title="Check your email" onClose={() => setToast(null)}>
-              We sent a link to confirm your address. Once you confirm, we will write when
-              Covenanter is available.
+              We sent a link to confirm your address. Once you confirm, your beta invite will come
+              by email.
             </Toast>
           ) : (
             <Toast tone="success" title="You are on the list" onClose={() => setToast(null)}>
-              We will write when Covenanter is available.
+              Your beta invite will come by email.
             </Toast>
           )}
         </div>
@@ -127,6 +128,7 @@ function NotifyDialog({
   const [platform, setPlatform] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const { phase } = useBeta();
 
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -146,22 +148,24 @@ function NotifyDialog({
       open={open}
       onClose={onClose}
       size="sm"
-      eyebrow="Covenanter"
-      title="Get notified"
+      eyebrow="Covenanter · Closed beta"
+      title="Join the beta"
       footer={
         <>
           <Button variant="ghost" onClick={onClose}>
             Cancel
           </Button>
           <Button type="submit" form="notify-form" disabled={busy}>
-            {busy ? "Sending…" : "Notify me"}
+            {busy ? "Sending…" : "Join the beta"}
           </Button>
         </>
       }
     >
       <form id="notify-form" onSubmit={submit} noValidate className="notify-form">
         <p className="uc-small">
-          Leave your email and we will let you know when Covenanter is available.
+          {phase === "open"
+            ? `The closed beta is open on ${BETA.platforms}. Leave your email and your invite will come by email.`
+            : `The closed beta opens on ${BETA.dateLong} on ${BETA.platforms}. Leave your email and your invite will come by email.`}
         </p>
         <Input
           label="Email"
@@ -180,11 +184,8 @@ function NotifyDialog({
           value={platform}
           onChange={(e) => setPlatform(e.target.value)}
           placeholder="Choose one"
-          options={[
-            { value: "ios", label: "iOS" },
-            { value: "android", label: "Android" },
-            { value: "steam", label: "Steam (PC)" },
-          ]}
+          options={PLATFORM_OPTIONS}
+          hint="The closed beta is on iOS and Android."
         />
         <Honeypot />
         <p className="uc-caption">

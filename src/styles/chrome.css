@@ -46,3 +46,5 @@ button:not(:disabled),[role="button"]:not(:disabled){cursor:pointer}
 @media(max-width:560px){.hero__news{padding:14px 14px 14px 16px}.hero__news-cta{width:100%}.hero__news-cta .uc-btn{flex:1}}
 /* honeypot field for the notify forms: off-screen, never seen by people */
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+.hero__days{display:inline-block;white-space:nowrap;margin-left:12px;padding:2px 8px;border-radius:var(--radius-pill);background:rgb(242 165 65/.18);color:var(--amber-300);letter-spacing:.12em}
+@media(max-width:560px){.hero__days{display:block;width:fit-content;margin:8px 0 0}}

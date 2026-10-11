@@ -4,7 +4,8 @@ Marketing site for [Unconsumed Games](https://unconsumedgames.com) and **Covenan
 
 ## Pages
 
-- `/` — studio home: hero, “Made to last”, the cast, why it is called Covenanter, the game, a playable disputation, and the notify form
+- `/` — studio home: hero, “Made to last”, the cast, why it is called Covenanter, the game, a playable disputation, the closed beta band, and the notify form
+- `/beta` — closed beta landing page (Reformation Day, 31 October 2026): sign-up, steps, FAQ. Use this link in social posts
 - `/press` — press kit, screenshots and brand downloads
 - `/delete-account` — how to delete a Covenanter account
 - `/privacy` — privacy notice
