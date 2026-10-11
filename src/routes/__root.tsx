@@ -21,7 +21,7 @@ const shareMeta = STATIC_SITE
   ? [
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: APP_NAME },
-      { property: "og:title", content: `${APP_NAME} · Faithful stories, well made` },
+      { property: "og:title", content: `${APP_NAME} · Games which last` },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:image", content: `${SITE_URL}/og.jpg` },
       { name: "twitter:card", content: "summary_large_image" },

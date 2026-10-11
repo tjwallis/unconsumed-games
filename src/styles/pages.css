@@ -80,3 +80,42 @@ a.frame__f:hover img{transform:scale(1.04)}
 .swatch__n{font:600 1.375rem/1.1 var(--font-display);color:var(--navy-900)}
 .prose .swatch__n{font-size:1.375rem}
 .swatch__h{font:700 .8125rem/1 var(--font-display);letter-spacing:.16em;color:var(--slate-600)}
+
+/* closed beta: shared pieces (home band, /beta page) */
+.sf{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;width:100%;align-items:start}
+.sf--platform{grid-template-columns:minmax(0,1fr) auto}
+.sf--platform>.uc-field:first-child{grid-column:1/-1}
+.sf .uc-select{height:var(--control-lg)}
+@media(max-width:700px){.sf,.sf--platform{grid-template-columns:minmax(0,1fr)}.sf .uc-btn{width:100%}}
+.steps3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px);margin:0;padding:0;list-style:none;counter-reset:none}
+.steps3 li{display:flex;flex-direction:column;gap:10px;padding:26px 24px;background:var(--parchment-50);border:1px solid var(--stone-300);border-radius:var(--radius-md)}
+.steps3__n{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin-bottom:6px;border-radius:50%;background:var(--ember-500);color:var(--navy-950);font:700 1.375rem/1 var(--font-display)}
+.steps3 h3{font-size:1.75rem;line-height:1.1}
+.steps3 p{font-size:1.0625rem;line-height:1.55;color:var(--slate-700)}
+@media(max-width:860px){.steps3{grid-template-columns:minmax(0,1fr)}}
+.faq{display:flex;flex-direction:column;border-top:2px solid var(--navy-900)}
+.faq details{border-bottom:1px solid var(--stone-400)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 2px;cursor:pointer;list-style:none;font:600 clamp(1.375rem,2vw,1.625rem)/1.2 var(--font-display);color:var(--navy-900)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:focus-visible{outline:none;box-shadow:var(--shadow-focus);border-radius:var(--radius-xs)}
+.faq summary svg{flex:none;color:var(--ember-700);transition:transform var(--dur-base) var(--ease-out)}
+.faq details[open] summary svg{transform:rotate(180deg)}
+.faq details p{max-width:42em;padding:0 2px 22px;font-size:1.125rem;line-height:1.6;color:var(--slate-700)}
+
+/* home band */
+.beta-band{border-top:1px solid var(--stone-300)}
+.beta-band__cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:clamp(28px,4vw,40px)}
+
+/* /beta page */
+.beta-hero__form{display:flex;flex-direction:column;gap:10px;width:100%;max-width:720px;margin-top:10px;scroll-margin-top:110px}
+.beta-hero__form .uc-caption{color:var(--navy-300)}
+.ph__art--scholar{width:min(100%,230px)}
+.beta-page{display:flex;flex-direction:column;gap:clamp(56px,8vw,96px)}
+.beta-page__fam{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,72px);align-items:center;padding:clamp(28px,4vw,48px);background:var(--parchment-50);border:1px solid var(--stone-300);border-bottom:4px solid var(--ember-500);border-radius:var(--radius-md)}
+.beta-page__fam>div{display:flex;flex-direction:column;gap:14px}
+.beta-page__fam h2{font-size:clamp(2.25rem,4vw,3.25rem);line-height:1}
+.beta-page__fam .uc-lead{color:var(--navy-800)}
+.ticks--card li{font-size:1.25rem;color:var(--navy-900)}
+.beta-page__end{display:flex;flex-wrap:wrap;gap:14px}
+.beta-page .sh h2{font-size:clamp(2.25rem,4.4vw,3.5rem);line-height:1}
+@media(max-width:900px){.beta-page__fam{grid-template-columns:minmax(0,1fr)}}

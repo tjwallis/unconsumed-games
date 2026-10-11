@@ -4,7 +4,9 @@ import { Badge } from "@/components/ds/display";
 import { Input } from "@/components/ds/forms";
 import { Icon, type IconName } from "@/components/ds/icon";
 import { Tabs } from "@/components/ds/navigation";
+import { BetaSteps, SignupForm } from "@/components/site/beta";
 import { useNotify } from "@/components/site/notify";
+import { BETA, SELECTION, useBeta } from "@/lib/beta";
 import { GoldDivider, Lozenges, Oval, Panel } from "@/components/site/parts";
 import {
   CAST,
@@ -19,26 +21,10 @@ import {
 } from "@/lib/covenanter";
 
 const PILLARS: [IconName, string, string][] = [
-  [
-    "book-open",
-    "Grounded in the Word",
-    "Every Truth the game teaches rests on Scripture, quoted from the Authorised Version.",
-  ],
-  [
-    "scroll-text",
-    "Good theology",
-    "The doctrines of the Reformation are set out plainly, from the Word alone to Christ as sole Head of the Kirk.",
-  ],
-  [
-    "landmark",
-    "Bible, doctrine and history",
-    "Children learn all three together, through real towns, people and events of the Scottish Reformation.",
-  ],
-  [
-    "flame",
-    "To the glory of God",
-    "We make these games for the glory of God alone. Soli Deo Gloria.",
-  ],
+  ["book-open", "Bible", "Real verses from Scripture, learned by heart."],
+  ["scroll-text", "Theology", "Plain truths about who God is and what he has done."],
+  ["landmark", "History", "True people and places of the Scottish Reformation."],
+  ["flame", "God’s glory", "Made for the glory of God alone."],
 ];
 
 export function Lasting() {
@@ -47,7 +33,7 @@ export function Lasting() {
       <div className="wrap">
         <div className="lasting__top">
           <div className="lasting__txt">
-            <p className="uc-eyebrow">Why it lasts</p>
+            <p className="uc-eyebrow">Why they last</p>
             <h2>Made to last.</h2>
             <p className="uc-lead">
               Most games are played and used up. We want ours to be remembered. A child who learns a
@@ -77,14 +63,19 @@ export function Lasting() {
             <p className="plate__cap">John Knox and Wee Jock · The Word passed on</p>
           </div>
         </div>
-        <div className="pillars">
-          {PILLARS.map(([icon, title, text]) => (
-            <div className="pillar" key={title}>
-              <Icon name={icon} size={32} />
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </div>
-          ))}
+        <div className="edu">
+          <h3 className="edu__h">Education in</h3>
+          <ul className="pillars">
+            {PILLARS.map(([icon, title, text]) => (
+              <li className="pillar" key={title}>
+                <span className="pillar__icon">
+                  <Icon name={icon} size={26} />
+                </span>
+                <h4>{title}</h4>
+                <p>{text}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
@@ -195,17 +186,17 @@ export function Game() {
             <div className="gfeat__txt">
               <p>
                 You come home from Geneva in May 1559. Walk the towns of Scotland, hear the
-                Reformers preach, and answer false teaching with the Scriptures. Everything you
-                learn is kept in your Commonplace Book.
+                Reformers preach, and answer false teaching with Scripture. Everything you learn is
+                kept in your Commonplace Book.
               </p>
               <div className="gfeat__b">
                 <Badge tone="gold">iOS</Badge>
                 <Badge tone="gold">Android</Badge>
-                <Badge tone="inverse">Coming soon</Badge>
+                <Badge tone="inverse">Closed beta · {BETA.dateShort}</Badge>
               </div>
               <p className="gfeat__note">No ads and no loot boxes. Something to play together.</p>
               <Button onClick={notify.open} iconLeft="bell">
-                Notify me
+                Request to join
               </Button>
             </div>
             <figure className="gshot">
@@ -381,16 +372,39 @@ export function Disputation() {
   );
 }
 
-export function Motto() {
+export function BetaBand() {
   const notify = useNotify();
-  const [email, setEmail] = useState("");
-  const [err, setErr] = useState("");
-  const submit = (e: FormEvent) => {
-    e.preventDefault();
-    const error = notify.save(email);
-    setErr(error ?? "");
-    if (!error) setEmail("");
-  };
+  const { phase } = useBeta();
+  return (
+    <section className="sec sec--light beta-band" id="beta" data-screen-label="05b Closed beta">
+      <div className="wrap">
+        <header className="sh">
+          <p className="uc-eyebrow">
+            {phase === "open" ? "Closed beta · Now open" : `Closed beta · ${BETA.dateLong}`}
+          </p>
+          <h2>{phase === "open" ? "The beta is open." : "Be among the first to play."}</h2>
+          <p className="uc-lead">
+            {phase === "open"
+              ? `The Covenanter closed beta is open on ${BETA.platforms}. ${SELECTION}`
+              : `The Covenanter closed beta opens on Reformation Day, ${BETA.dateLong}, on ${BETA.platforms}. ${SELECTION}`}
+          </p>
+        </header>
+        <BetaSteps phase={phase} />
+        <div className="beta-band__cta">
+          <Button size="lg" onClick={notify.open} iconLeft="bell">
+            Request to join
+          </Button>
+          <Button size="lg" variant="secondary" href="/beta" iconRight="arrow-right">
+            Beta questions
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Motto() {
+  const { phase } = useBeta();
   return (
     <section
       className="motto"
@@ -400,7 +414,7 @@ export function Motto() {
     >
       <div className="wrap">
         <div className="motto__in">
-          <img className="motto__mark" src="/brand/mark-on-dark-traced.svg" alt="" />
+          <img className="motto__mark" src="/brand/mark-on-dark.svg" alt="" />
           <p className="motto__t">Nec tamen consumebatur</p>
           <p className="motto__c">Exodus 3:2</p>
           <p className="motto__v">
@@ -411,29 +425,18 @@ export function Motto() {
         </div>
         <div className="notify">
           <h2>
-            Covenanter is coming to <span className="nc">iOS</span> and Android.
+            {phase === "open"
+              ? "The Covenanter closed beta is open."
+              : "The Covenanter closed beta opens on Reformation Day."}
           </h2>
-          <p className="uc-lead">Leave your email and we will write when it is available.</p>
-          <form className="nf" onSubmit={submit} noValidate>
-            <Input
-              size="lg"
-              type="email"
-              autoComplete="email"
-              placeholder="you@example.com"
-              aria-label="Email address"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                if (err) setErr("");
-              }}
-              error={err}
-            />
-            <Button size="lg" type="submit">
-              Notify me
-            </Button>
-          </form>
+          <p className="uc-lead">
+            {phase === "open"
+              ? `On ${BETA.platforms}. Request a place below. ${SELECTION}`
+              : `${BETA.dateLong}, on ${BETA.platforms}. Request a place below. ${SELECTION}`}
+          </p>
+          <SignupForm />
           <p className="uc-caption nf__note">
-            The list is not connected yet. Your email stays on this device until it is.
+            We will only write about Covenanter. You can leave the list from any email.
           </p>
         </div>
       </div>

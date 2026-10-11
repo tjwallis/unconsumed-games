@@ -28,6 +28,7 @@ const FACTS: [string, string, string?][] = [
   ["Setting", "Scotland, 1559–60: the Scottish Reformation"],
   ["Platforms", "iOS, Android, and the web from its own site"],
   ["Status", "In development"],
+  ["Closed beta", "Opens Saturday 31 October 2026 (Reformation Day) on iOS and Android"],
   ["Release date and price", "Not yet announced"],
   ["Engine", "Flutter and Flame"],
   [
@@ -75,8 +76,10 @@ const DOWNLOADS = [
   { href: "/brand/lockup.png", title: "Logo lockup, light ground", kind: "PNG", dark: false },
   { href: "/brand/mark-on-dark.svg", title: "Mark, dark ground", kind: "SVG", dark: true },
   { href: "/brand/mark.svg", title: "Mark, light ground", kind: "SVG", dark: false },
-  { href: "/brand/app-icon.svg", title: "App icon", kind: "SVG", dark: false },
-  { href: "/brand/app-icon-light.svg", title: "App icon, light", kind: "SVG", dark: false },
+  { href: "/brand/mark-on-dark.png", title: "Mark, dark ground", kind: "PNG", dark: true },
+  { href: "/brand/mark.png", title: "Mark, light ground", kind: "PNG", dark: false },
+  { href: "/brand/app-icon.png", title: "App icon", kind: "PNG 1024", dark: false },
+  { href: "/brand/app-icon-light.png", title: "App icon, light", kind: "PNG 1024", dark: false },
 ];
 
 const SWATCHES: [string, string][] = [
@@ -175,13 +178,16 @@ function PressPage() {
             <h2 id="history">The history behind the name</h2>
             <p>
               Most people link the word “Covenanter” with the seventeenth century. But on 3 December
-              1557 five Protestant nobles, the Earls of Argyll, Glencairn and Morton, Lord Lorne,
-              and John Erskine of Dun, signed the First Band, pledging to “maintain, set forward,
-              and establish the most blessed Word of God, and his Congregation.” Historians date the
-              Lords of the Congregation to that band. Covenanting began with Knox’s generation, and
-              that is where the game begins.
+              1557 Protestant nobles, among them the Earls of Argyll, Glencairn and Morton, Lord
+              Lorne, and John Erskine of Dun, signed the First Band, pledging to “maintain, set
+              forward, and establish the most blessed Word of God, and his Congregation.” Historians
+              date the Lords of the Congregation to that band. Covenanting began with Knox’s
+              generation, and that is where the game begins.
             </p>
-            <p className="prose__src">Sources: PCA Historical Center; Scottish History Society.</p>
+            <p className="prose__src">
+              Sources: John Knox, History of the Reformation in Scotland; PCA Historical Center,
+              This Day in Presbyterian History, 3 December.
+            </p>
 
             <h2>Features</h2>
             <ul className="ticks">

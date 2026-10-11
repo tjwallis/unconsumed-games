@@ -9,3 +9,4 @@ screenshots
 artifacts
 *.log
 .DS_Store
+kit-config.php

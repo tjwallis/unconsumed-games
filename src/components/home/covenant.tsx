@@ -33,8 +33,8 @@ export function Covenant({ onPick }: { onPick: (id: string) => void }) {
               are known by name, like John Knox and John Erskine of Dun. Many are unknown.
             </p>
             <p>
-              Our hero is one of the unknown, standing for the countless faithful men who worked to
-              see the Word of God established in the kirks and burghs.
+              The Scholar is one of the unknown, standing for the countless faithful men who worked
+              to see the Word of God established in the kirks and burghs.
             </p>
             <p className="nm__end">
               If God permits, this is just one of the many Covenanter stories to come.
@@ -92,7 +92,7 @@ export function Covenant({ onPick }: { onPick: (id: string) => void }) {
                   <img
                     className="nm__pose"
                     src={POSES.hero}
-                    alt="The hero of Covenanter, a young Scottish scholar with a satchel and a Bible"
+                    alt="The Scholar, a young Scottish scholar of Covenanter with a satchel and a Bible"
                     width={346}
                     height={660}
                     loading="lazy"
@@ -100,7 +100,7 @@ export function Covenant({ onPick }: { onPick: (id: string) => void }) {
                 ) : (
                   <Oval id="player" n={2} />
                 )}
-                <span>Our hero</span>
+                <span>Scholar</span>
               </div>
               <div className="nm__sils">
                 {CROWD.map((id, i) => (

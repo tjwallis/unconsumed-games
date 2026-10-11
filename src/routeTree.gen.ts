@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as R404RouteImport } from './routes/404'
+import { Route as BetaRouteImport } from './routes/beta'
 import { Route as DeleteAccountRouteImport } from './routes/delete-account'
 import { Route as PressRouteImport } from './routes/press'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const R404Route = R404RouteImport.update({
   id: '/404',
   path: '/404',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BetaRoute = BetaRouteImport.update({
+  id: '/beta',
+  path: '/beta',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DeleteAccountRoute = DeleteAccountRouteImport.update({
@@ -44,6 +50,7 @@ const PrivacyRoute = PrivacyRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/404': typeof R404Route
+  '/beta': typeof BetaRoute
   '/delete-account': typeof DeleteAccountRoute
   '/press': typeof PressRoute
   '/privacy': typeof PrivacyRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/404': typeof R404Route
+  '/beta': typeof BetaRoute
   '/delete-account': typeof DeleteAccountRoute
   '/press': typeof PressRoute
   '/privacy': typeof PrivacyRoute
@@ -59,21 +67,30 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/404': typeof R404Route
+  '/beta': typeof BetaRoute
   '/delete-account': typeof DeleteAccountRoute
   '/press': typeof PressRoute
   '/privacy': typeof PrivacyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/404' | '/delete-account' | '/press' | '/privacy'
+  fullPaths: '/' | '/404' | '/beta' | '/delete-account' | '/press' | '/privacy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/404' | '/delete-account' | '/press' | '/privacy'
-  id: '__root__' | '/' | '/404' | '/delete-account' | '/press' | '/privacy'
+  to: '/' | '/404' | '/beta' | '/delete-account' | '/press' | '/privacy'
+  id:
+    | '__root__'
+    | '/'
+    | '/404'
+    | '/beta'
+    | '/delete-account'
+    | '/press'
+    | '/privacy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R404Route: typeof R404Route
+  BetaRoute: typeof BetaRoute
   DeleteAccountRoute: typeof DeleteAccountRoute
   PressRoute: typeof PressRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -93,6 +110,13 @@ declare module '@tanstack/react-router' {
       path: '/404'
       fullPath: '/404'
       preLoaderRoute: typeof R404RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/beta': {
+      id: '/beta'
+      path: '/beta'
+      fullPath: '/beta'
+      preLoaderRoute: typeof BetaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/delete-account': {
@@ -122,6 +146,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R404Route: R404Route,
+  BetaRoute: BetaRoute,
   DeleteAccountRoute: DeleteAccountRoute,
   PressRoute: PressRoute,
   PrivacyRoute: PrivacyRoute,
