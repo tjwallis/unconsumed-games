@@ -203,22 +203,74 @@ export const CAST: CastMember[] = [
 
 export const castById = (id: string) => CAST.find((c) => c.id === id) ?? CAST[0];
 
-/** Screenshots in /art/game/: [tab label, file id, caption]. */
-export const SHOTS: [string, string, string][] = [
-  ["Dundee", "dundee", "Dundee, May 1559. Chapter I begins at the harbour."],
-  ["St Giles’ Kirk", "st-giles", "St Giles’ Kirk, Edinburgh. The Word has free course here."],
-  [
-    "Disputation",
-    "disputation",
-    "A friar makes his claim. Answer with the Truth and the verse that meets it.",
-  ],
-  [
-    "Commonplace Book",
-    "commonplace-book",
-    "Each Truth you gather is kept in the Commonplace Book with its proof-texts.",
-  ],
-  ["Scotland", "world-map", "The map of Scotland."],
+export type Shot = {
+  /** File name in /art/game/ (web JPEG, 1600 × 736) and /art/game/full/ (PNG, 2868 × 1320). */
+  id: string;
+  /** Short tab label. */
+  label: string;
+  /** Caption shown under the screenshot. */
+  caption: string;
+  /** Plain description of the scene for screen readers. */
+  alt: string;
+};
+
+/** In-game screenshots, the final store set of 5 October 2026 (App Store size). */
+export const SHOTS: Shot[] = [
+  {
+    id: "print-shop",
+    label: "Print shop",
+    caption:
+      "In the print shop, among the bookshelves, the desks and the stacks of printed sheets.",
+    alt: "Alasdair, with his satchel, stands beside a bearded man in a printer’s shop with bookshelves, desks and stacks of paper.",
+  },
+  {
+    id: "catechism",
+    label: "Catechism",
+    caption: "Jonet and Tammie ask from the Geneva Catechism: “Which is the second commandment?”",
+    alt: "A catechism card from Jonet and Tammie. The question “Which is the second commandment?” is rightly answered: “Thou shalt not make unto thee any graven image.”",
+  },
+  {
+    id: "armour-card",
+    label: "Armour",
+    caption: "The whole armour of God: the Belt of Truth, from Ephesians 6:14.",
+    alt: "A card titled The Whole Armour of God shows the Belt of Truth, the verse Ephesians 6:14, and what it does in disputation.",
+  },
+  {
+    id: "psalm-drill",
+    label: "Psalms",
+    caption: "Practise the psalms. Which psalm opens so, and to which tune is it sung?",
+    alt: "A psalm practice question. The lines “Praise God, for he is good” are matched to Psalm 107, sung to York, from the Scottish Psalter.",
+  },
+  {
+    id: "market-stalls",
+    label: "Market",
+    caption:
+      "Market day: stalls, the well and the mercat cross, and townsfolk and friars about the square.",
+    alt: "A busy market square of cobbles and grass, with stalls, a well, a mercat cross, a flag, friars in grey habits and townsfolk.",
+  },
+  {
+    id: "dundee-shore",
+    label: "Dundee",
+    caption: "The shore at Dundee. A merchantman lies at the pier, and a seaman waits on the quay.",
+    alt: "Alasdair walks a wooden pier at Dundee beside a three-masted merchant ship flying the saltire. A seaman stands on the stone quay above.",
+  },
+  {
+    id: "town-map",
+    label: "Town map",
+    caption:
+      "The map of Edinburgh: the castle, St Giles’ Kirk, the Tolbooth and Lekpreuik’s printing house.",
+    alt: "The town map of Edinburgh, showing the castle, St Giles’ Kirk and the streets, with a list of places to go beside it.",
+  },
+  {
+    id: "ayr-winter-cross",
+    label: "Ayr",
+    caption: "Ayr in winter. Snow lies on the square by the mercat cross, and the lamps are lit.",
+    alt: "A snowy town square in Ayr at dusk. Alasdair meets a bearded minister by the mercat cross, with lit lamps, stalls and a stone tower.",
+  },
 ];
+
+export const shotSrc = (id: string) => `/art/game/${id}.jpg`;
+export const shotFull = (id: string) => `/art/game/full/${id}.png`;
 
 export const VERSES: Record<string, [string, string]> = {
   ac8_20: [
