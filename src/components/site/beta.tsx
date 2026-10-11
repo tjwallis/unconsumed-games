@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ds/actions";
-import { Input, Select } from "@/components/ds/forms";
+import { Dropdown } from "@/components/ds/dropdown";
+import { Input } from "@/components/ds/forms";
 import { Icon } from "@/components/ds/icon";
 import { Honeypot, honeypotValue, useNotify } from "@/components/site/notify";
 import { BETA, PLATFORM_OPTIONS, type BetaPhase } from "@/lib/beta";
@@ -43,10 +44,11 @@ export function SignupForm({ withPlatform = false }: { withPlatform?: boolean })
         error={err}
       />
       {withPlatform ? (
-        <Select
-          aria-label="Platform"
+        <Dropdown
+          size="lg"
+          aria-label="Platform (optional)"
           value={platform}
-          onChange={(e) => setPlatform(e.target.value)}
+          onChange={setPlatform}
           placeholder="Platform (optional)"
           options={PLATFORM_OPTIONS}
         />
