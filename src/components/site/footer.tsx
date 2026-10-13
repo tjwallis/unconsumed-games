@@ -25,7 +25,7 @@ export function SiteFooter() {
         <div className="foot__legal">
           <span>
             © {new Date().getFullYear()} {STUDIO.name} · Scripture from the Authorised Version ·
-            Psalms from the Scottish Psalter
+            Psalms from the Scottish Psalter · Soli Deo Gloria
           </span>
           <nav aria-label="Studio">
             {LEGAL.map((l) => (

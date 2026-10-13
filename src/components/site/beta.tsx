@@ -63,7 +63,7 @@ export function SignupForm({ withPlatform = false }: { withPlatform?: boolean })
 
 export function BetaSteps({ phase }: { phase: BetaPhase }) {
   const steps: [string, string][] = [
-    ["Request a place", "Leave your email. It takes a moment."],
+    ["Request a place", "Leave your email address. It takes a moment."],
     phase === "open"
       ? [
           "Watch your inbox",
@@ -100,7 +100,7 @@ const FAQ: [string, React.ReactNode][] = [
   ],
   [
     "Which devices can I use?",
-    "iPhone, iPad and Android phones and tablets. The closed beta is not on Steam or PC.",
+    "The closed beta is on iPhone, iPad, and Android phones and tablets. A desktop (PC) version is planned after the mobile release.",
   ],
   [
     "Is everyone who asks given a place?",
@@ -111,7 +111,7 @@ const FAQ: [string, React.ReactNode][] = [
     `Invites go out by email from ${BETA.dateLong}. Use the address you check most.`,
   ],
   [
-    "I haven't had an invite.",
+    "I haven’t had an invite.",
     <>
       Not everyone who asks is chosen, so an invite may not come this time. Check your spam and
       promotions folders, and make sure you used the address you check. Questions? Write to{" "}
@@ -122,10 +122,10 @@ const FAQ: [string, React.ReactNode][] = [
     "What will my children do in it?",
     "Walk the towns of Scotland in 1559 and 1560, hear the Reformers preach, learn verses, the catechism and the psalms, and answer false teaching with the Word of God. There are no swords: you answer with Scripture.",
   ],
-  ["Are there ads?", "No ads and no loot boxes. It is something to play together."],
+  ["Are there ads?", "No ads and no loot boxes. It is a game to play together."],
   [
     "Why Reformation Day?",
-    "On 31 October 1517 Martin Luther sent out his Ninety-five Theses, and the questions he raised travelled as far as the towns of Scotland. We chose the day to open the beta.",
+    "On 31 October 1517 Martin Luther sent out his Ninety-five Theses, and the questions he raised travelled as far as the towns of Scotland. It seemed the right day to open the beta.",
   ],
   ["How do I send feedback?", "Reply to the email your invite came from. We read every message."],
   [

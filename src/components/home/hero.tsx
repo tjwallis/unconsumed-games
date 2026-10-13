@@ -25,7 +25,7 @@ export function Hero({ onPick }: { onPick: (id: string) => void }) {
             <p className="uc-eyebrow">
               {phase === "open"
                 ? "Covenanter · Closed beta now open"
-                : `Covenanter · Closed beta · ${BETA.dateLong}`}
+                : `Covenanter · Closed beta opens ${BETA.dateLong}`}
               {daysLeft !== null ? (
                 <span className="hero__days">{daysLeftLabel(daysLeft)}</span>
               ) : null}
@@ -35,20 +35,22 @@ export function Hero({ onPick }: { onPick: (id: string) => void }) {
                 Request to join
               </Button>
               <Button size="sm" variant="secondary" href="#game" iconRight="arrow-right">
-                Meet Covenanter
+                Turn aside and see
               </Button>
             </div>
           </div>
           <h1>
             Unconsumed <em>Games</em>
           </h1>
-          <p className="hero__tag">Games which last.</p>
+          <p className="hero__tag" title="“If any man’s work abide…” 1 Corinthians 3:14">
+            Games that abide.
+          </p>
           <p className="hero__lead">
-            Unconsumed Games makes video games grounded in the Word of God, teaching children the
-            Bible, doctrine and history.{" "}
+            Unconsumed Games creates games grounded in the Word of God, teaching children the Bible,
+            sound doctrine and the history of the Church.{" "}
             {phase === "open"
               ? "Our first, Covenanter, is now in closed beta."
-              : "Our first, Covenanter, opens its closed beta on Reformation Day."}
+              : "Our first, Covenanter, opens its closed beta on Reformation Day, 31 October."}
           </p>
           <div className="hero__cta">
             <Button size="lg" href="#lasting" iconRight="arrow-right">

@@ -25,7 +25,7 @@ const FAMILIES = [
   "Five difficulty levels",
   "No ads",
   "No loot boxes",
-  "Something to play together",
+  "Made to play together",
 ];
 
 function BetaPage() {
@@ -50,7 +50,7 @@ function BetaPage() {
           <div className="ph__art ph__art--scholar">
             <img
               src={POSES.hero}
-              alt="The Scholar, a young Scottish scholar of Covenanter with a satchel and a Bible"
+              alt="The Scholar, a young man of 1560 in a long coat and flat cap, with a satchel and a Bible"
               width={346}
               height={660}
             />
@@ -60,7 +60,7 @@ function BetaPage() {
         <div className="beta-hero__form" id="join">
           <SignupForm withPlatform />
           <p className="uc-caption">
-            {daysLeft !== null ? `${daysLeftLabel(daysLeft)} · ` : ""}We will only write about
+            {daysLeft !== null ? `${daysLeftLabel(daysLeft)} · ` : ""}We will write only about
             Covenanter. You can leave the list from any email.
           </p>
         </div>
@@ -82,8 +82,8 @@ function BetaPage() {
               <h2 id="fam-h">Made for the kitchen table.</h2>
               <p className="uc-lead">
                 Something parents and children can play side by side, talk about, and come back to.
-                Covenanter is grounded in the Word of God and teaches Bible, doctrine and history
-                through the story of the Scottish Reformation.
+                Covenanter is grounded in the Word of God and teaches the Bible, doctrine and
+                history through the story of the Scottish Reformation.
               </p>
             </div>
             <ul className="ticks ticks--card">
@@ -99,7 +99,7 @@ function BetaPage() {
           <section id="faq" aria-labelledby="faq-h">
             <header className="sh">
               <p className="uc-eyebrow">Questions</p>
-              <h2 id="faq-h">About the beta.</h2>
+              <h2 id="faq-h">Questions about the beta.</h2>
             </header>
             <BetaFaq />
           </section>

@@ -8,7 +8,7 @@ export function NotFound() {
       <PageHeader
         eyebrow="Not found"
         title="This page is not here."
-        lead="The page you asked for has moved or never existed. The rest of the site is still standing."
+        lead="The page you asked for has moved or never existed. The rest of the site still stands."
       >
         <div className="ph__cta">
           <Button href="/" iconRight="arrow-right">

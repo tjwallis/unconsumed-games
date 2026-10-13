@@ -12,7 +12,7 @@ export const BETA = {
   platforms: "iOS and Android",
 } as const;
 
-/** Platform interest for Kit tags. Steam is not part of the closed beta. "unsure" adds no tag. */
+/** Platform interest for Kit tags. Desktop is not part of the closed beta; the "steam" value is kept as the existing Kit tag key. "unsure" adds no tag. */
 export const PLATFORM_OPTIONS: DropdownOption[] = [
   {
     value: "ios",
@@ -28,8 +28,13 @@ export const PLATFORM_OPTIONS: DropdownOption[] = [
     icon: "smartphone",
     badge: "Closed beta",
   },
-  { value: "steam", label: "Steam", description: "PC, after the beta", icon: "monitor" },
-  { value: "unsure", label: "Not sure yet", description: "We’ll write about every platform" },
+  {
+    value: "steam",
+    label: "Desktop (PC)",
+    description: "After the mobile release",
+    icon: "monitor",
+  },
+  { value: "unsure", label: "Not sure yet", description: "We’ll keep you posted" },
 ];
 
 /** The one sentence that says a request is not a guaranteed place. Use it wherever people sign up. */
