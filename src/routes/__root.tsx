@@ -6,7 +6,7 @@ import appCss from "../styles.css?url";
 
 const APP_NAME = "Unconsumed Games";
 const DESCRIPTION =
-  "Unconsumed Games makes video games grounded in the Word of God. First title: Covenanter, a tale of the Scottish Reformation.";
+  "Unconsumed Games creates games grounded in the Word of God. Our first is Covenanter, a tale of the Scottish Reformation for iOS and Android.";
 
 /* Self-hosted static build (`npm run build:static`): no Grok middleware runs, so the share
    card and manifest are declared here. The Grok/Vercel build leaves these to its injector,
@@ -21,7 +21,7 @@ const shareMeta = STATIC_SITE
   ? [
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: APP_NAME },
-      { property: "og:title", content: `${APP_NAME} · Games which last` },
+      { property: "og:title", content: `${APP_NAME} · Games that abide` },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:image", content: `${SITE_URL}/og.jpg` },
       { name: "twitter:card", content: "summary_large_image" },

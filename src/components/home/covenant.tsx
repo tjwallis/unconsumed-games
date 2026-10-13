@@ -29,16 +29,16 @@ export function Covenant({ onPick }: { onPick: (id: string) => void }) {
               maintain and establish his Word.
             </p>
             <p>
-              The game follows how God’s promises were worked out in Scotland by faithful men. Some
-              are known by name, like John Knox and John Erskine of Dun. Many are unknown.
+              The game follows God’s promises as they were worked out in Scotland through faithful
+              men. Some are known by name, like John Knox and John Erskine of Dun. Most are known
+              only to God.
             </p>
             <p>
-              The Scholar is one of the unknown, standing for the countless faithful men who worked
-              to see the Word of God established in the kirks and burghs.
+              The Scholar is one of these: a young man in a long coat and flat cap, standing for the
+              countless faithful who laboured to see the Word of God established in the kirks and
+              burghs.
             </p>
-            <p className="nm__end">
-              If God permits, this is just one of the many Covenanter stories to come.
-            </p>
+            <p className="nm__end">If God permit, the first of many Covenanter stories.</p>
           </div>
           <div className="band">
             <Lozenges />
@@ -92,7 +92,7 @@ export function Covenant({ onPick }: { onPick: (id: string) => void }) {
                   <img
                     className="nm__pose"
                     src={POSES.hero}
-                    alt="The Scholar, a young Scottish scholar of Covenanter with a satchel and a Bible"
+                    alt="The Scholar, a young man of 1560 in a long coat and flat cap, with a satchel and a Bible"
                     width={346}
                     height={660}
                     loading="lazy"

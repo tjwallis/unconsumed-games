@@ -12,7 +12,7 @@ export const Route = createFileRoute("/press")({
       {
         name: "description",
         content:
-          "Press kit for Covenanter, a pixel-art story RPG set in the Scottish Reformation, 1559–60, in development at Unconsumed Games for iOS, Android and the web. Fact sheet, descriptions, features, screenshots and logos.",
+          "Press kit for Covenanter, a pixel-art story RPG set in the Scottish Reformation, 1559–60, in development at Unconsumed Games for iOS and Android, with a desktop version planned. Fact sheet, descriptions, features, screenshots and logos.",
       },
     ],
   }),
@@ -26,14 +26,14 @@ const FACTS: [string, string, string?][] = [
   ["Game", "Covenanter"],
   ["Genre", "Pixel-art story RPG"],
   ["Setting", "Scotland, 1559–60: the Scottish Reformation"],
-  ["Platforms", "iOS, Android, and the web from its own site"],
+  ["Platforms", "iOS and Android; a desktop (PC) version is planned after the mobile release"],
   ["Status", "In development"],
   ["Closed beta", "Opens Saturday 31 October 2026 (Reformation Day) on iOS and Android"],
   ["Release date and price", "Not yet announced"],
   ["Engine", "Flutter and Flame"],
   [
     "Players",
-    "Reformed Christians, families and history fans. Five difficulty levels, from about age 5 to adult.",
+    "Reformed Christians, families and history fans. Five difficulty levels, from about age 5 to 13 and up.",
   ],
   ["Monetisation", "No ads, no loot boxes"],
   ["Website", STUDIO.site, "/"],
@@ -95,7 +95,7 @@ function PressPage() {
       <PageHeader
         eyebrow="Press kit"
         title="Covenanter"
-        lead="A pixel-art story RPG set in the Scottish Reformation, 1559–60. In development at Unconsumed Games for iOS, Android and the web."
+        lead="A pixel-art story RPG set in the Scottish Reformation, 1559–60. In development at Unconsumed Games for iOS and Android, with desktop to follow."
         aside={
           <div className="ph__art">
             <img src={POSES.knox} alt="John Knox preaching" width={572} height={642} />
@@ -135,7 +135,8 @@ function PressPage() {
               and a young scholar comes home from Geneva with a satchel and a Bible. Over eight
               chapters and an epilogue he walks the towns of Scotland, from Dundee to Edinburgh, and
               answers the false teaching of the age from Scripture. Covenanter is in development at
-              Unconsumed Games for iOS, Android and the web.
+              Unconsumed Games for iOS and Android, with a closed beta from Reformation Day, 31
+              October 2026, and a desktop version planned after the mobile release.
             </p>
 
             <h2>Description</h2>
@@ -160,8 +161,8 @@ function PressPage() {
               Bible and church history, and for anyone who loves the history of Scotland. Knox,
               Willock, Erskine of Dun, Lord James Stewart and the printer Lekpreuik are historical,
               and the game’s History tells who they were and what really happened. Scripture is in
-              King James wording, carried as Tyndale’s Bible, the English Testament. Five difficulty
-              levels let a child of about five and a grown-up play the same story.
+              King James wording, presented in the game as Tyndale’s English Testament. Five
+              difficulty levels let a child of about five and a grown-up play the same story.
             </p>
 
             <h3>The chapters</h3>
@@ -274,9 +275,10 @@ function PressPage() {
 
             <h2>About Unconsumed Games</h2>
             <p>
-              Unconsumed Games is an independent studio founded by H.T. Williams. We make video
-              games that are grounded in the Word of God, teach children the Bible, doctrine and
-              history, and are made to last. Covenanter is our first.
+              Unconsumed Games is an independent studio founded by H.T. Williams. We create games
+              grounded in the Word of God that teach children the Bible, doctrine and history, and
+              are made to last. Covenanter is our first. Our line, “Games that abide,” comes from 1
+              Corinthians 3:14: “If any man’s work abide…”
             </p>
             <p>
               The studio’s name comes from Exodus 3:2: “the bush burned with fire, and the bush was

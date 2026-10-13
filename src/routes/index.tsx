@@ -22,7 +22,7 @@ const STRUCTURED_DATA = {
       name: "Covenanter",
       url: "https://unconsumedgames.com/",
       description:
-        "A pixel-art story game of the Scottish Reformation, 1559–60. Children walk the towns of Scotland, hear the Reformers preach, learn the Word of God, and answer false teaching with Scripture.",
+        "A pixel-art RPG of the Scottish Reformation, 1559–60. Children walk the towns of Scotland, hear the Reformers preach, learn the Word of God and answer false teaching with Scripture.",
       genre: ["Educational", "Historical", "Adventure"],
       gamePlatform: ["iOS", "Android"],
       audience: { "@type": "PeopleAudience", suggestedMinAge: 5 },
@@ -37,11 +37,11 @@ const STRUCTURED_DATA = {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Unconsumed Games · Games which last" },
+      { title: "Unconsumed Games · Games that abide" },
       {
         name: "description",
         content:
-          "Unconsumed Games makes video games grounded in the Word of God. Covenanter, a tale of the Scottish Reformation, opens its closed beta on iOS and Android on Reformation Day, 31 October 2026.",
+          "Unconsumed Games creates games grounded in the Word of God. Covenanter, a tale of the Scottish Reformation, opens its closed beta on iOS and Android on Reformation Day, 31 October 2026.",
       },
     ],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(STRUCTURED_DATA) }],

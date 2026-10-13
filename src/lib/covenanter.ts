@@ -320,7 +320,7 @@ export const CLAIMS: Claim[] = [
     opts: ["ac4_12", "c1co14_19", "ac17_11"],
     truth: ["Solus Christus", "Christ alone", "#6E2EA0"],
     rebut:
-      "There is none other name under heaven given among men whereby we must be saved. Not a hair, not a bone, not a saint. Somebody laughs at the hair.",
+      "There is none other name under heaven given among men, whereby we must be saved. Not a hair, not a bone, not a saint. Somebody laughs at the hair.",
   },
   {
     text: "Your English Testaments are Tyndale’s forgeries. The Word of God belongs in holy Latin, not in the gutter speech of fishwives.",
@@ -342,7 +342,7 @@ export const LADDER: [string, string, string][] = [
   [
     "Easy",
     "about 7 to 9",
-    "Choose the Truth from four, then the verse from four: one strikes home, one answers, and two do not.",
+    "Choose the Truth from four, then the verse from four: one answers best, one answers in part, and two do not.",
   ],
   ["Normal", "about 9 to 11", "Choose from every Truth and every verse you have gathered."],
   [

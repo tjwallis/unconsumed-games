@@ -191,7 +191,7 @@ function NotifyDialog({
         />
         <Honeypot />
         <p className="uc-caption">
-          We will only write about Covenanter. You can leave the list from any email.
+          We will write only about Covenanter, and you can leave the list from any email.
         </p>
       </form>
     </Dialog>

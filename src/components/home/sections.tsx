@@ -21,10 +21,10 @@ import {
 } from "@/lib/covenanter";
 
 const PILLARS: [IconName, string, string][] = [
-  ["book-open", "Bible", "Real verses from Scripture, learned by heart."],
+  ["book-open", "Bible", "Scripture itself, learned by heart."],
   ["scroll-text", "Theology", "Plain truths about who God is and what he has done."],
   ["landmark", "History", "True people and places of the Scottish Reformation."],
-  ["flame", "God’s glory", "Made for the glory of God alone."],
+  ["flame", "Soli Deo Gloria", "Made for the glory of God alone."],
 ];
 
 export function Lasting() {
@@ -34,10 +34,11 @@ export function Lasting() {
         <div className="lasting__top">
           <div className="lasting__txt">
             <p className="uc-eyebrow">Why they last</p>
-            <h2>Made to last.</h2>
+            <h2>Not burned up. Made to last.</h2>
             <p className="uc-lead">
-              Most games are played and used up. We want ours to be remembered. A child who learns a
-              verse, a doctrine or a true account of the past keeps it for life, and passes it on.
+              Most games are played, used up and forgotten. Ours are made to last. A child who
+              learns a verse, a doctrine or a true account of the past keeps it for life, and passes
+              it on.
             </p>
             <blockquote className="verse">
               The grass withereth, the flower fadeth: but the word of our God shall stand for ever.
@@ -60,11 +61,11 @@ export function Lasting() {
                 <Oval id="boy" n={2} />
               </div>
             )}
-            <p className="plate__cap">John Knox and Wee Jock · The Word passed on</p>
+            <p className="plate__cap">John Knox and Wee Jock · The Word handed down</p>
           </div>
         </div>
         <div className="edu">
-          <h3 className="edu__h">Education in</h3>
+          <h3 className="edu__h">Rooted in</h3>
           <ul className="pillars">
             {PILLARS.map(([icon, title, text]) => (
               <li className="pillar" key={title}>
@@ -89,10 +90,10 @@ export function Cast({ sel, setSel }: { sel: string; setSel: (id: string) => voi
       <div className="wrap">
         <header className="sh">
           <p className="uc-eyebrow">The cast</p>
-          <h2>Those who went before.</h2>
+          <h2>A cloud of witnesses.</h2>
           <p className="uc-lead">
-            Covenanter is peopled by the men and women of the Scottish Reformation. Choose a
-            portrait to meet them.
+            Covenanter is peopled by the men of the Scottish Reformation, known and unknown. Choose
+            a portrait to meet them.
           </p>
         </header>
         <div className="cast__grid">
@@ -180,7 +181,7 @@ export function Game() {
           <div className="gfeat__head">
             <p className="uc-eyebrow">A tale of the Scottish Reformation</p>
             <h2 className="gtitle">Covenanter</h2>
-            <p className="gmotto">Post tenebras lux</p>
+            <p className="gmotto">Post tenebras lux · Light after darkness</p>
           </div>
           <div className="gfeat__body">
             <div className="gfeat__txt">
@@ -194,7 +195,7 @@ export function Game() {
                 <Badge tone="gold">Android</Badge>
                 <Badge tone="inverse">Closed beta · {BETA.dateShort}</Badge>
               </div>
-              <p className="gfeat__note">No ads and no loot boxes. Something to play together.</p>
+              <p className="gfeat__note">No ads and no loot boxes. A game to play together.</p>
               <Button onClick={notify.open} iconLeft="bell">
                 Request to join
               </Button>
@@ -415,7 +416,7 @@ export function Motto() {
       <div className="wrap">
         <div className="motto__in">
           <img className="motto__mark" src="/brand/mark-on-dark.svg" alt="" />
-          <p className="motto__t">Nec tamen consumebatur</p>
+          <p className="motto__t">Burning, yet not consumed.</p>
           <p className="motto__c">Exodus 3:2</p>
           <p className="motto__v">
             And the angel of the LORD appeared unto him in a flame of fire out of the midst of a
@@ -436,7 +437,7 @@ export function Motto() {
           </p>
           <SignupForm />
           <p className="uc-caption nf__note">
-            We will only write about Covenanter. You can leave the list from any email.
+            We will write only about Covenanter, and you can leave the list from any email.
           </p>
         </div>
       </div>
