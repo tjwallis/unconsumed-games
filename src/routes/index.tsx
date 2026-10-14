@@ -68,7 +68,7 @@ function Home() {
       <Hero onPick={pick} />
       <Lasting />
       <Cast sel={sel} setSel={setSel} />
-      <Covenant onPick={pick} />
+      <Covenant />
       <Game />
       <BetaBand />
       <Disputation />
