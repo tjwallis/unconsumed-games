@@ -181,3 +181,9 @@ header.nav.solid[data-theme]{background:var(--navy-900);border-color:var(--navy-
 @media(max-width:700px){.hero[data-theme]{--s:2}.hero__in{padding-top:112px;padding-bottom:170px}.nf{flex-direction:column}.nf>*{width:100%}}
 @media(max-width:560px){.proc .ov{--n:1}.proc .pi--k .ov{--n:2}}
 @media(min-width:1980px){.hero[data-theme]{--s:4}}
+
+/* /beta/confirmed: Kit's double opt-in landing page, in the hero's style */
+.confirmed__eyebrow{color:var(--amber-400)}
+.confirmed__next{font-size:1.0625rem;color:var(--parchment-200,var(--parchment-100))}
+.confirmed__verse{max-width:32em;margin:4px 0 0;padding-left:18px;border-left:3px solid var(--amber-400);font:italic 500 1.25rem/1.45 var(--font-display);color:var(--parchment-50)}
+.confirmed__verse cite{display:block;margin-top:6px;font:700 .8125rem/1 var(--font-display);font-style:normal;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-400)}

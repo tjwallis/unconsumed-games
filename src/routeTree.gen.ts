@@ -15,6 +15,7 @@ import { Route as BetaRouteImport } from './routes/beta'
 import { Route as DeleteAccountRouteImport } from './routes/delete-account'
 import { Route as PressRouteImport } from './routes/press'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as BetaConfirmedRouteImport } from './routes/beta_.confirmed'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BetaConfirmedRoute = BetaConfirmedRouteImport.update({
+  id: '/beta_/confirmed',
+  path: '/beta/confirmed',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/delete-account': typeof DeleteAccountRoute
   '/press': typeof PressRoute
   '/privacy': typeof PrivacyRoute
+  '/beta/confirmed': typeof BetaConfirmedRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/delete-account': typeof DeleteAccountRoute
   '/press': typeof PressRoute
   '/privacy': typeof PrivacyRoute
+  '/beta/confirmed': typeof BetaConfirmedRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,12 +79,27 @@ export interface FileRoutesById {
   '/delete-account': typeof DeleteAccountRoute
   '/press': typeof PressRoute
   '/privacy': typeof PrivacyRoute
+  '/beta_/confirmed': typeof BetaConfirmedRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/404' | '/beta' | '/delete-account' | '/press' | '/privacy'
+  fullPaths:
+    | '/'
+    | '/404'
+    | '/beta'
+    | '/delete-account'
+    | '/press'
+    | '/privacy'
+    | '/beta/confirmed'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/404' | '/beta' | '/delete-account' | '/press' | '/privacy'
+  to:
+    | '/'
+    | '/404'
+    | '/beta'
+    | '/delete-account'
+    | '/press'
+    | '/privacy'
+    | '/beta/confirmed'
   id:
     | '__root__'
     | '/'
@@ -85,6 +108,7 @@ export interface FileRouteTypes {
     | '/delete-account'
     | '/press'
     | '/privacy'
+    | '/beta_/confirmed'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -94,6 +118,7 @@ export interface RootRouteChildren {
   DeleteAccountRoute: typeof DeleteAccountRoute
   PressRoute: typeof PressRoute
   PrivacyRoute: typeof PrivacyRoute
+  BetaConfirmedRoute: typeof BetaConfirmedRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -140,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/beta_/confirmed': {
+      id: '/beta_/confirmed'
+      path: '/beta/confirmed'
+      fullPath: '/beta/confirmed'
+      preLoaderRoute: typeof BetaConfirmedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -150,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   DeleteAccountRoute: DeleteAccountRoute,
   PressRoute: PressRoute,
   PrivacyRoute: PrivacyRoute,
+  BetaConfirmedRoute: BetaConfirmedRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

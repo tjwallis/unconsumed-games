@@ -63,6 +63,11 @@ DirectorySlash Off
   <ElseIf "%{REQUEST_URI} =~ m#^/(fonts|art|brand)/#">
     Header set Cache-Control "public, max-age=2592000"
   </ElseIf>
+  # The beta confirmation page is reached only from Kit's email: keep it out of search.
+  <ElseIf "%{REQUEST_URI} =~ m#^/beta/confirmed#">
+    Header set Cache-Control "no-cache"
+    Header set X-Robots-Tag "noindex, nofollow"
+  </ElseIf>
   # Pages: always revalidate, so a deploy shows up at once.
   <ElseIf "%{REQUEST_URI} =~ m#(^/$|\.html$|^/[^.]*$)#">
     Header set Cache-Control "no-cache"
