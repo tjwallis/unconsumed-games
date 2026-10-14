@@ -76,10 +76,11 @@ export function Covenant() {
               <p className="uc-eyebrow">Unknown</p>
               <h3 className="nm__uh">Of whom the world was not worthy.</h3>
               <p className="nm__ub">
-                Beside every Reformer stood countless faithful men whose names are lost to history
-                but written in heaven. They taught their households, sang the psalms and held fast
-                to the Word. The world forgot them; their Lord did not. To each he says,{" "}
-                <q>Well done, thou good and faithful servant.</q> <cite>Matthew 25:21</cite>
+                Beside the Reformers whose names we know stood countless faithful men whose names
+                are lost to history but written in heaven. They taught their households, sang the
+                psalms and held fast to the Word. The world forgot them; their Lord did not. To each
+                he says, <q>Well done, thou good and faithful servant.</q>{" "}
+                <cite>Matthew 25:21</cite>
               </p>
             </div>
             <div className="nm__crowd">
