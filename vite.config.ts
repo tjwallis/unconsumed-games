@@ -187,6 +187,8 @@ export default defineConfig(({ command, isPreview }) => ({
               { path: "/privacy" },
               { path: "/delete-account" },
               { path: "/404", sitemap: { exclude: true } },
+              // Kit's confirmation landing page: reached only from the email, never listed.
+              { path: "/beta/confirmed", sitemap: { exclude: true } },
             ],
             sitemap: { enabled: true, host: SITE_URL, outputPath: "/sitemap.xml" },
           }
