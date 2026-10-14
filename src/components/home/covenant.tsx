@@ -1,8 +1,7 @@
 import type { CSSProperties } from "react";
 import { GoldDivider, Lozenges, Oval } from "@/components/site/parts";
-import { POSES, castById } from "@/lib/covenanter";
+import { POSES } from "@/lib/covenanter";
 
-const KNOWN = ["knox", "erskine", "willock", "methven", "goodman", "lordjames"];
 /** Faithful men history did not name: the game's own figures, drawn as silhouettes. */
 const UNKNOWN_FIGURES = [
   { id: "glover", w: 243, h: 505 },
@@ -14,7 +13,7 @@ const UNKNOWN_FIGURES = [
   { id: "advocate", w: 298, h: 504 },
 ];
 
-export function Covenant({ onPick }: { onPick: (id: string) => void }) {
+export function Covenant() {
   return (
     <section className="sec sec--band nm" id="covenant" data-screen-label="04 Why Covenanter">
       <div className="wrap">
@@ -71,27 +70,19 @@ export function Covenant({ onPick }: { onPick: (id: string) => void }) {
             </div>
           </div>
         </div>
-        <div className="nm__row" role="group" aria-label="Faithful men, known and unknown">
-          <div className="nm__k">
-            <p className="uc-eyebrow">Known by name</p>
-            <div className="nm__faces">
-              {KNOWN.map((id) => (
-                <button key={id} type="button" className="ri" onClick={() => onPick(id)}>
-                  <Oval id={id} sm />
-                  <span>{castById(id).short}</span>
-                </button>
-              ))}
-            </div>
-          </div>
+        <div className="nm__row" role="group" aria-label="Faithful men, unknown">
           <div className="nm__u">
-            <p className="uc-eyebrow">Unknown</p>
-            <h3 className="nm__uh">Of whom the world was not worthy.</h3>
-            <p className="nm__ub">
-              Beside the Reformers whose names we know stood countless faithful men whose names are
-              lost to history but written in heaven. They taught their households, sang the psalms
-              and held fast to the Word. The world forgot them; their Lord did not. To each he says,{" "}
-              <q>Well done, thou good and faithful servant.</q> <cite>Matthew 25:21</cite>
-            </p>
+            <div className="nm__ut">
+              <p className="uc-eyebrow">Unknown</p>
+              <h3 className="nm__uh">Of whom the world was not worthy.</h3>
+              <p className="nm__ub">
+                Beside the Reformers whose names we know stood countless faithful men whose names
+                are lost to history but written in heaven. They taught their households, sang the
+                psalms and held fast to the Word. The world forgot them; their Lord did not. To each
+                he says, <q>Well done, thou good and faithful servant.</q>{" "}
+                <cite>Matthew 25:21</cite>
+              </p>
+            </div>
             <div className="nm__crowd">
               <div className="nm__hero">
                 {POSES.hero ? (
