@@ -17,14 +17,10 @@
 .band__f{width:100%;display:flex;flex-direction:column;gap:8px;padding-top:18px;border-top:1px solid rgb(90 62 38/.4)}
 .band__sig{font:italic 500 1.1875rem/1.45 var(--font-display);color:var(--cv-sepia)}
 .band__src{font:italic 500 1.0625rem/1.4 var(--font-display);color:var(--cv-umber)}
-.nm__row{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(24px,4vw,56px);margin-top:clamp(56px,8vw,104px);padding-top:28px;border-top:2px solid var(--navy-900)}
-.nm__k,.nm__u{display:flex;flex-direction:column;gap:20px;min-width:0}
-.nm__u{padding-left:clamp(24px,4vw,56px);border-left:1px solid var(--stone-400)}
-.nm__faces{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:18px 20px}
+.nm__row{margin-top:clamp(56px,8vw,104px);padding-top:28px;border-top:2px solid var(--navy-900)}
+.nm__u{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:end;gap:20px clamp(32px,5vw,72px);min-width:0}
+.nm__ut{display:flex;flex-direction:column;gap:20px;min-width:0;align-self:center}
 .nm .ov{box-shadow:0 6px 14px rgb(20 33 61/.3)}
-.nm .ri{padding-top:12px;color:var(--navy-800)}
-.nm .ri:hover{color:var(--navy-900)}
-.nm .ri span{white-space:nowrap}
 .nm__crowd{display:flex;align-items:flex-end;gap:14px}
 .nm__hero{flex:none;display:flex;flex-direction:column;align-items:center;gap:12px;padding:8px 0}
 .nm__hero span{font:700 .8125rem/1.2 var(--cin);letter-spacing:.02em;color:var(--ember-700)}
@@ -36,5 +32,5 @@
 .nm__ghosts{display:flex;flex:1;min-width:0;align-items:flex-end;padding:10px 0 calc(12px + .975rem);overflow:hidden;-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent);mask-image:linear-gradient(90deg,#000 55%,transparent)}
 .nm__ghost{--gh:clamp(176px,17vw,218px);flex:none;display:block;height:calc(var(--gh)*var(--k));width:auto;max-width:none;margin:0 -12px;opacity:calc(1 - var(--i)*.06)}
 @media(max-width:560px){.nm__ghost{--gh:138px;margin:0 -10px}}
-@media(max-width:1080px){.nm__row{grid-template-columns:minmax(0,1fr)}.nm__u{padding:24px 0 0;border-left:0;border-top:1px solid var(--stone-400)}.nm__faces{grid-template-columns:repeat(auto-fill,minmax(88px,1fr))}}
+@media(max-width:1080px){.nm__u{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:1000px){.nm__top{grid-template-columns:minmax(0,1fr)}.nm__top .band{order:0}}
