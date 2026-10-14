@@ -18,12 +18,15 @@ body{overflow-x:hidden;background:var(--navy-900)}
 header.nav[data-theme]{background:transparent}
 header.nav.solid[data-theme]{background:var(--navy-900);border-color:var(--navy-700)}
 .nav__row{display:flex;align-items:center;justify-content:space-between;height:100%;gap:24px}
-/* The lockup is 1211×411. flex:none stops the row squeezing the link, and max-width:none
-   overrides the preflight img{max-width:100%} that let the width collapse at a fixed height. */
-.nav__brand{flex:none;display:block;line-height:0;border-radius:4px}
-.nav__brand img{display:block;height:52px;width:auto;max-width:none;aspect-ratio:1211/411}
-.nav__links{display:flex;flex:0 1 auto;min-width:0;align-items:center;gap:clamp(16px,1.5vw,26px)}
-.nav__links a{white-space:nowrap;font:700 .9375rem/1 var(--font-display);letter-spacing:.11em;text-transform:uppercase;color:var(--navy-200);text-decoration:none;padding:8px 0;border-bottom:3px solid transparent;transition:color .16s,border-color .16s}
+/* Brand: the burning-bush mark plus the name as live Cormorant text (the PNG lockup's lettering
+   was too small to read at nav height). flex:none keeps the row from squeezing it, and
+   max-width:none overrides the preflight img{max-width:100%} that squashed the old lockup. */
+.nav__brand{flex:none;display:flex;align-items:center;gap:12px;line-height:0;border-radius:4px;text-decoration:none}
+.nav__brand img{display:block;height:50px;width:auto;max-width:none;aspect-ratio:273.7/405.5}
+.nav__word{display:flex;flex-direction:column;gap:1px;font:600 1.75rem/.92 var(--font-display);letter-spacing:-.005em;white-space:nowrap;color:var(--parchment-50)}
+.nav__word em{padding-left:1px;font-weight:500;font-size:1.3125rem;color:var(--amber-400)}
+.nav__links{display:flex;flex:0 1 auto;min-width:0;align-items:center;gap:clamp(14px,1.2vw,18px)}
+.nav__links a{white-space:nowrap;font:700 .9375rem/1 var(--font-display);letter-spacing:.08em;text-transform:uppercase;color:var(--navy-200);text-decoration:none;padding:8px 0;border-bottom:3px solid transparent;transition:color .16s,border-color .16s}
 .nav__links a:hover{color:var(--parchment-50);border-color:var(--ember-500)}
 /* portrait frame */
 .ov{--n:2;position:relative;display:block;flex:none;width:calc(64px*var(--n) + 10px);height:calc(70px*var(--n) + 10px);padding:5px;border-radius:50%;background:linear-gradient(160deg,var(--cv-gold-light),var(--cv-gold) 45%,var(--cv-gold-deep));box-shadow:0 8px 18px rgb(5 10 24/.45)}
@@ -180,8 +183,7 @@ header.nav.solid[data-theme]{background:var(--navy-900);border-color:var(--navy-
 @media(max-width:1000px){.lasting__top,.cast__grid,.gfeat__body,.disp{grid-template-columns:minmax(0,1fr)}.feat{position:relative;top:auto}.ladder{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 24px}}
 @media(max-width:1200px){.pi:nth-child(1),.pi:nth-child(7){display:none}}
 @media(max-width:1240px){.nav__links a{display:none}}
-@media(max-width:560px){.nav{height:68px}.nav__brand img{height:42px}.nav__links{gap:10px}.nav__links .uc-btn{padding:0 12px;letter-spacing:.1em}}
-@media(max-width:360px){.nav__links .uc-btn{display:none}}
+@media(max-width:560px){.nav{height:68px}.nav__brand{gap:10px}.nav__brand img{height:42px}.nav__word{font-size:1.5625rem}.nav__word em{font-size:1.1875rem}.nav__links{gap:10px}.nav__links .uc-btn{display:none}}
 @media(max-width:860px){.pi:nth-child(2),.pi:nth-child(6){display:none}}
 @media(max-width:700px){.hero[data-theme]{--s:2}.hero__in{padding-top:112px;padding-bottom:170px}.nf{flex-direction:column}.nf>*{width:100%}}
 @media(max-width:560px){.proc .ov{--n:1}.proc .pi--k .ov{--n:2}}

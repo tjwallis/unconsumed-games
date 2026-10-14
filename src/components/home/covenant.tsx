@@ -3,12 +3,16 @@ import { GoldDivider, Lozenges, Oval } from "@/components/site/parts";
 import { POSES, castById } from "@/lib/covenanter";
 
 const KNOWN = ["knox", "erskine", "willock", "methven", "goodman", "lordjames"];
-/** Faithful men history did not name: the game's own figures as silhouettes. SAMPLES: 2 of the set. */
+/** Faithful men history did not name: the game's own figures, drawn as silhouettes. */
 const UNKNOWN_FIGURES = [
-  { src: "/art/unknowns/unknown-glover-silhouette.png", w: 243, h: 505 },
-  { src: "/art/unknowns/unknown-cooper-silhouette.png", w: 248, h: 478 },
+  { id: "glover", w: 243, h: 505 },
+  { id: "cooper", w: 248, h: 478 },
+  { id: "student", w: 214, h: 476 },
+  { id: "bailie", w: 220, h: 476 },
+  { id: "gunner", w: 216, h: 476 },
+  { id: "keeper", w: 265, h: 474 },
+  { id: "advocate", w: 298, h: 504 },
 ];
-const CROWD = ["farmer", "ferryman", "fisher", "butcher", "miller", "piper", "drover"];
 
 export function Covenant({ onPick }: { onPick: (id: string) => void }) {
   return (
@@ -105,28 +109,17 @@ export function Covenant({ onPick }: { onPick: (id: string) => void }) {
                 <span>Scholar</span>
               </div>
               <div className="nm__ghosts" aria-hidden="true">
-                {UNKNOWN_FIGURES.map((f) => (
+                {UNKNOWN_FIGURES.map((f, i) => (
                   <img
-                    key={f.src}
+                    key={f.id}
                     className="nm__ghost"
-                    src={f.src}
+                    src={`/art/unknowns/unknown-${f.id}-silhouette.png`}
                     alt=""
                     width={f.w}
                     height={f.h}
                     loading="lazy"
+                    style={{ "--i": i, "--k": f.h / 476 } as CSSProperties}
                   />
-                ))}
-              </div>
-              <div className="nm__sils">
-                {CROWD.map((id, i) => (
-                  <span
-                    key={id}
-                    className="sil"
-                    style={{ "--i": i } as CSSProperties}
-                    aria-hidden="true"
-                  >
-                    <Oval id={id} sm />
-                  </span>
                 ))}
               </div>
             </div>
