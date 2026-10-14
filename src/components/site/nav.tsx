@@ -18,7 +18,7 @@ export function SiteNav() {
   useEffect(() => {
     if (!menu) return undefined;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenu(false);
-    const onWide = () => window.innerWidth > 1100 && setMenu(false);
+    const onWide = () => window.innerWidth > 1240 && setMenu(false);
     window.addEventListener("keydown", onKey);
     window.addEventListener("resize", onWide);
     return () => {
@@ -34,8 +34,11 @@ export function SiteNav() {
       data-screen-label="Navigation"
     >
       <div className="wrap nav__row">
-        <a className="nav__brand" href="/#top" aria-label="Unconsumed Games, top">
-          <img src="/brand/lockup-on-dark.png" alt="Unconsumed Games" width={153} height={52} />
+        <a className="nav__brand" href="/#top" aria-label="Unconsumed Games, home">
+          <img src="/brand/mark-on-dark.svg" alt="" width={34} height={50} />
+          <span className="nav__word">
+            Unconsumed <em>Games</em>
+          </span>
         </a>
         <nav className="nav__links" aria-label="Primary">
           {NAV.map((l) => (
@@ -64,8 +67,17 @@ export function SiteNav() {
                 {l.label}
               </a>
             ))}
+            <Button
+              className="nav__drawer-cta"
+              onClick={() => {
+                setMenu(false);
+                notify.open();
+              }}
+            >
+              Request to join
+            </Button>
             <div className="nav__more">
-              {LEGAL.slice(0, 1).map((l) => (
+              {LEGAL.slice(0, 2).map((l) => (
                 <a key={l.href} href={l.href}>
                   {l.label}
                 </a>

@@ -3,16 +3,15 @@ import { GoldDivider, Lozenges, Oval } from "@/components/site/parts";
 import { POSES, castById } from "@/lib/covenanter";
 
 const KNOWN = ["knox", "erskine", "willock", "methven", "goodman", "lordjames"];
-const CROWD = [
-  "farmer",
-  "cooper",
-  "ferryman",
-  "fisher",
-  "butcher",
-  "miller",
-  "piper",
-  "drover",
-  "glover",
+/** Faithful men history did not name: the game's own figures, drawn as silhouettes. */
+const UNKNOWN_FIGURES = [
+  { id: "glover", w: 243, h: 505 },
+  { id: "cooper", w: 248, h: 478 },
+  { id: "student", w: 214, h: 476 },
+  { id: "bailie", w: 220, h: 476 },
+  { id: "gunner", w: 216, h: 476 },
+  { id: "keeper", w: 265, h: 474 },
+  { id: "advocate", w: 298, h: 504 },
 ];
 
 export function Covenant({ onPick }: { onPick: (id: string) => void }) {
@@ -86,6 +85,13 @@ export function Covenant({ onPick }: { onPick: (id: string) => void }) {
           </div>
           <div className="nm__u">
             <p className="uc-eyebrow">Unknown</p>
+            <h3 className="nm__uh">Of whom the world was not worthy.</h3>
+            <p className="nm__ub">
+              Beside the Reformers whose names we know stood countless faithful men whose names are
+              lost to history but written in heaven. They taught their households, sang the psalms
+              and held fast to the Word. The world forgot them; their Lord did not. To each he says,{" "}
+              <q>Well done, thou good and faithful servant.</q> <cite>Matthew 25:21</cite>
+            </p>
             <div className="nm__crowd">
               <div className="nm__hero">
                 {POSES.hero ? (
@@ -102,16 +108,18 @@ export function Covenant({ onPick }: { onPick: (id: string) => void }) {
                 )}
                 <span>Scholar</span>
               </div>
-              <div className="nm__sils">
-                {CROWD.map((id, i) => (
-                  <span
-                    key={id}
-                    className="sil"
-                    style={{ "--i": i } as CSSProperties}
-                    aria-hidden="true"
-                  >
-                    <Oval id={id} sm />
-                  </span>
+              <div className="nm__ghosts" aria-hidden="true">
+                {UNKNOWN_FIGURES.map((f, i) => (
+                  <img
+                    key={f.id}
+                    className="nm__ghost"
+                    src={`/art/unknowns/unknown-${f.id}-silhouette.png`}
+                    alt=""
+                    width={f.w}
+                    height={f.h}
+                    loading="lazy"
+                    style={{ "--i": i, "--k": f.h / 476 } as CSSProperties}
+                  />
                 ))}
               </div>
             </div>
