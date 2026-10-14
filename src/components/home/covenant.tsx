@@ -3,17 +3,12 @@ import { GoldDivider, Lozenges, Oval } from "@/components/site/parts";
 import { POSES, castById } from "@/lib/covenanter";
 
 const KNOWN = ["knox", "erskine", "willock", "methven", "goodman", "lordjames"];
-const CROWD = [
-  "farmer",
-  "cooper",
-  "ferryman",
-  "fisher",
-  "butcher",
-  "miller",
-  "piper",
-  "drover",
-  "glover",
+/** Faithful men history did not name: the game's own figures as silhouettes. SAMPLES: 2 of the set. */
+const UNKNOWN_FIGURES = [
+  { src: "/art/unknowns/unknown-glover-silhouette.png", w: 243, h: 505 },
+  { src: "/art/unknowns/unknown-cooper-silhouette.png", w: 248, h: 478 },
 ];
+const CROWD = ["farmer", "ferryman", "fisher", "butcher", "miller", "piper", "drover"];
 
 export function Covenant({ onPick }: { onPick: (id: string) => void }) {
   return (
@@ -86,6 +81,13 @@ export function Covenant({ onPick }: { onPick: (id: string) => void }) {
           </div>
           <div className="nm__u">
             <p className="uc-eyebrow">Unknown</p>
+            <h3 className="nm__uh">Of whom the world was not worthy.</h3>
+            <p className="nm__ub">
+              Beside the Reformers whose names we know stood countless faithful men whose names are
+              lost to history but written in heaven. They taught their households, sang the psalms
+              and held fast to the Word. The world forgot them; their Lord did not. To each he says,{" "}
+              <q>Well done, thou good and faithful servant.</q> <cite>Matthew 25:21</cite>
+            </p>
             <div className="nm__crowd">
               <div className="nm__hero">
                 {POSES.hero ? (
@@ -101,6 +103,19 @@ export function Covenant({ onPick }: { onPick: (id: string) => void }) {
                   <Oval id="player" n={2} />
                 )}
                 <span>Scholar</span>
+              </div>
+              <div className="nm__ghosts" aria-hidden="true">
+                {UNKNOWN_FIGURES.map((f) => (
+                  <img
+                    key={f.src}
+                    className="nm__ghost"
+                    src={f.src}
+                    alt=""
+                    width={f.w}
+                    height={f.h}
+                    loading="lazy"
+                  />
+                ))}
               </div>
               <div className="nm__sils">
                 {CROWD.map((id, i) => (

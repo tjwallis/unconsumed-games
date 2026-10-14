@@ -18,7 +18,7 @@ export function SiteNav() {
   useEffect(() => {
     if (!menu) return undefined;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenu(false);
-    const onWide = () => window.innerWidth > 1100 && setMenu(false);
+    const onWide = () => window.innerWidth > 1240 && setMenu(false);
     window.addEventListener("keydown", onKey);
     window.addEventListener("resize", onWide);
     return () => {
@@ -64,8 +64,17 @@ export function SiteNav() {
                 {l.label}
               </a>
             ))}
+            <Button
+              className="nav__drawer-cta"
+              onClick={() => {
+                setMenu(false);
+                notify.open();
+              }}
+            >
+              Request to join
+            </Button>
             <div className="nav__more">
-              {LEGAL.slice(0, 1).map((l) => (
+              {LEGAL.slice(0, 2).map((l) => (
                 <a key={l.href} href={l.href}>
                   {l.label}
                 </a>
