@@ -21,8 +21,8 @@ export const Route = createFileRoute("/beta")({
 });
 
 const FAMILIES = [
-  "Ages about 5 to 13 and up",
-  "Five difficulty levels",
+  "A game for the whole family",
+  "Five difficulty levels, for everyone",
   "No ads",
   "No loot boxes",
   "Made to play together",
@@ -81,9 +81,9 @@ function BetaPage() {
               <p className="uc-eyebrow">For families</p>
               <h2 id="fam-h">Made for the kitchen table.</h2>
               <p className="uc-lead">
-                Something parents and children can play side by side, talk about, and come back to.
-                Covenanter is grounded in the Word of God and teaches the Bible, doctrine and
-                history through the story of the Scottish Reformation.
+                Something the family can play side by side, talk about, and come back to. Parents
+                and teachers can use it to help their children learn the Bible and doctrine through
+                the story of the Scottish Reformation.
               </p>
             </div>
             <ul className="ticks ticks--card">

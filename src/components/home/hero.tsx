@@ -46,8 +46,9 @@ export function Hero({ onPick }: { onPick: (id: string) => void }) {
             Games that abide.
           </p>
           <p className="hero__lead">
-            Unconsumed Games creates games grounded in the Word of God, teaching children the Bible,
-            sound doctrine and the history of the Church.{" "}
+            Unconsumed Games creates games grounded in the Word of God, for families to play
+            together and for parents and teachers who teach the Bible, sound doctrine and the
+            history of the Church.{" "}
             {phase === "open"
               ? "Our first, Covenanter, is now in closed beta."
               : "Our first, Covenanter, opens its closed beta on Reformation Day, 31 October."}

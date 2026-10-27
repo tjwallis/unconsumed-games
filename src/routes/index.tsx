@@ -22,10 +22,9 @@ const STRUCTURED_DATA = {
       name: "Covenanter",
       url: "https://unconsumedgames.com/",
       description:
-        "A pixel-art RPG of the Scottish Reformation, 1559–60. Children walk the towns of Scotland, hear the Reformers preach, learn the Word of God and answer false teaching with Scripture.",
+        "A pixel-art RPG of the Scottish Reformation, 1559–60. Walk the towns of Scotland, hear the Reformers preach, learn the Word of God and answer false teaching with Scripture. A game families can play together.",
       genre: ["Educational", "Historical", "Adventure"],
       gamePlatform: ["iOS", "Android"],
-      audience: { "@type": "PeopleAudience", suggestedMinAge: 5 },
       inLanguage: "en",
       image: "https://unconsumedgames.com/og.jpg",
       publisher: { "@id": "https://unconsumedgames.com/#org" },

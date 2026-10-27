@@ -96,7 +96,7 @@ export function BetaSteps({ phase }: { phase: BetaPhase }) {
 const FAQ: [string, React.ReactNode][] = [
   [
     "Who is the beta for?",
-    "Families with children of about 5 to 13 and up, and the parents and teachers who play with them. Five difficulty levels let a younger and an older child play side by side.",
+    "Families, and the parents and teachers who play with them. Five difficulty levels let everyone in the house play the same story at their own pace.",
   ],
   [
     "Which devices can I use?",
@@ -119,7 +119,7 @@ const FAQ: [string, React.ReactNode][] = [
     </>,
   ],
   [
-    "What will my children do in it?",
+    "What will we do in it?",
     "Walk the towns of Scotland in 1559 and 1560, hear the Reformers preach, learn verses, the catechism and the psalms, and answer false teaching with the Word of God. There are no swords: you answer with Scripture.",
   ],
   ["Are there ads?", "No ads and no loot boxes. It is a game to play together."],
