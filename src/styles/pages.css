@@ -27,6 +27,35 @@
 .prose .uc-lead{font:var(--type-lead);color:var(--navy-800)}
 .prose strong{font-weight:600;color:var(--navy-900)}
 .prose .prose__src{font:italic 500 1.125rem/1.45 var(--font-display);color:var(--slate-600)}
+.prose--policy :is(ul,ol):not(.steps){margin:0;padding-left:1.35em}
+.prose--policy ul{list-style:disc}
+.prose--policy :is(ul,ol):not(.steps) li+li{margin-top:8px}
+.prose--policy .tablewrap{position:relative;width:100%;min-width:0;max-width:100%;overflow-x:auto;border:1px solid var(--stone-300);border-radius:var(--radius-md);background:var(--parchment-50)}
+.prose--policy table{width:100%;border-collapse:collapse;table-layout:fixed}
+.prose--policy th,.prose--policy td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--stone-300);font-size:1rem;line-height:1.5;color:var(--slate-700)}
+.prose--policy th{font:700 .8125rem/1.3 var(--font-display);letter-spacing:.08em;text-transform:uppercase;color:var(--navy-900);background:var(--parchment-100)}
+.prose--policy tr:last-child td{border-bottom:0}
+@media(max-width:720px){
+  .prose--policy table,.prose--policy thead,.prose--policy tbody,.prose--policy tr,.prose--policy td{display:block;width:100%;min-width:0}
+  .prose--policy thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .prose--policy tr{padding:14px 16px;border-bottom:1px solid var(--stone-300)}
+  .prose--policy td{padding:0;border:0}
+  .prose--policy td+td{margin-top:8px}
+  .prose--policy td::before{display:block;margin-bottom:2px;font:700 .75rem/1.2 var(--font-display);letter-spacing:.08em;text-transform:uppercase;color:var(--ember-700)}
+  .prose--policy table.collect td:nth-child(1)::before{content:"What"}
+  .prose--policy table.collect td:nth-child(2)::before{content:"Examples"}
+  .prose--policy table.collect td:nth-child(3)::before{content:"Why we want it"}
+  .prose--policy table.basis td:nth-child(1)::before{content:"We use"}
+  .prose--policy table.basis td:nth-child(2)::before{content:"To"}
+  .prose--policy table.basis td:nth-child(3)::before{content:"Legal basis (EU / UK)"}
+  .prose--policy table.keep td:nth-child(1)::before{content:"What"}
+  .prose--policy table.keep td:nth-child(2)::before{content:"How long"}
+  .prose--policy table.ccpa td:nth-child(1)::before{content:"Category"}
+  .prose--policy table.ccpa td:nth-child(2)::before{content:"What"}
+  .prose--policy table.ccpa td:nth-child(3)::before{content:"Source"}
+  .prose--policy table.ccpa td:nth-child(4)::before{content:"Why"}
+  .prose--policy tr:last-child{border-bottom:0}
+}
 .steps{display:flex;flex-direction:column;gap:10px;margin:0;padding-left:1.5em;list-style:decimal}
 .steps li::marker{font:700 1.125rem/1 var(--font-display);color:var(--ember-700)}
 .ticks{display:grid;gap:12px;margin:0;padding:0;list-style:none}
