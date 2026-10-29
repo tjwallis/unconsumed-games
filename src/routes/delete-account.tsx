@@ -77,13 +77,13 @@ function DeleteAccountPage() {
             <p>
               Crash and analytics data is not tied to your name, your email or your account. We do
               not collect a user ID or an advertising ID. Ad ID collection is disabled. Google
-              Analytics keeps play reports, including time spent, for 2 months and then deletes
+              Analytics keeps play reports, including time spent, for 14 months and then deletes
               them. Crash reports are kept for 90 days. Performance data is kept for 30 to 60 days.
             </p>
             <p>
               Answer data (which catechism, psalm and dispute answers you chose) is sent only if you
               opt in to <strong>Share my answers</strong>. If you do, it is part of the play reports
-              and is deleted with them after 2 months.
+              and is deleted with them after 14 months.
             </p>
 
             <p className="prose__src">

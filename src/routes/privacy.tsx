@@ -61,7 +61,7 @@ function PrivacyPage() {
                 your copy of the game. They are never tied to your name, your email or your account.
               </li>
               <li>
-                <strong>Play reports are deleted after 2 months.</strong>
+                <strong>Play reports are deleted after 14 months.</strong>
               </li>
               <li>
                 <strong>An account is optional.</strong> If you make one, you can delete it, and
@@ -352,7 +352,7 @@ function PrivacyPage() {
               data is gone from its backups within 180 days. Deleting an account does not delete
               play reports, crash reports or speed reports already collected. There is no user ID,
               and those reports are not tied to your account, so we cannot pick them out. It also
-              does not delete a Send a Note message. Play reports delete themselves after 2 months.
+              does not delete a Send a Note message. Play reports delete themselves after 14 months.
               See section 10.
             </p>
             <p>
@@ -551,8 +551,8 @@ function PrivacyPage() {
                   <tr>
                     <td>Play reports and time spent (Google Analytics)</td>
                     <td>
-                      <strong>2 months</strong>, then deleted automatically. Google Analytics is set
-                      to keep event data for 2 months.
+                      <strong>14 months</strong>, then deleted automatically. Google Analytics is set
+                      to keep event data for 14 months.
                     </td>
                   </tr>
                   <tr>
@@ -623,7 +623,7 @@ function PrivacyPage() {
             <p>
               <strong>Play reports and your rights.</strong> Because we do not tie play reports to
               your name, email or account, and there is no user ID, we cannot pick out yours to
-              show, correct or delete. They are deleted by themselves after 2 months, and turning
+              show, correct or delete. They are deleted by themselves after 14 months, and turning
               sharing off stops any more. For the information we can find (your account and cloud
               saves, a beta-list email, an email you sent, or a Send a Note you can describe), we
               will do what you ask.
