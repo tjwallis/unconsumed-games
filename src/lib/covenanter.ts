@@ -332,27 +332,27 @@ export const CLAIMS: Claim[] = [
   },
 ];
 
-/** [Level, ages, how it plays] */
+/** [Level, what it asks, how it plays]. The five names are for everyone. */
 export const LADDER: [string, string, string][] = [
   [
     "Easiest",
-    "about 5 to 7",
+    "choose from 3",
     "Choose the right verse from three. One answers the claim, and two do not.",
   ],
   [
     "Easy",
-    "about 7 to 9",
-    "Choose the Truth from four, then the verse from four: one answers best, one answers in part, and two do not.",
+    "choose from 4",
+    "Choose the Truth from four, then the verse from four: one strikes home, one answers, and two do not.",
   ],
-  ["Normal", "about 9 to 11", "Choose from every Truth and every verse you have gathered."],
+  ["Normal", "choose from all", "Choose from every Truth and every verse you have gathered."],
   [
     "Hard",
-    "about 11 to 13",
+    "set in order",
     "Choose the Truth and the reference, then set the words of the verse in order.",
   ],
   [
     "Expert",
-    "13 and up",
+    "write from memory",
     "Choose the Truth and the reference, then write the verse out from memory.",
   ],
 ];

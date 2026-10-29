@@ -33,7 +33,7 @@ const FACTS: [string, string, string?][] = [
   ["Engine", "Flutter and Flame"],
   [
     "Players",
-    "Reformed Christians, families and history fans. Five difficulty levels, from about age 5 to 13 and up.",
+    "Reformed Christians, families and history fans. Five difficulty levels, from choosing a verse from three to writing it out from memory.",
   ],
   ["Monetisation", "No ads, no loot boxes"],
   ["Website", STUDIO.site, "/"],
@@ -157,12 +157,13 @@ function PressPage() {
               reformed: the images come down, and the psalms are sung in the people’s own tongue.
             </p>
             <p>
-              Covenanter is made for Reformed Christians, for the families and schools teaching the
-              Bible and church history, and for anyone who loves the history of Scotland. Knox,
-              Willock, Erskine of Dun, Lord James Stewart and the printer Lekpreuik are historical,
-              and the game’s History tells who they were and what really happened. Scripture is in
-              King James wording, presented in the game as Tyndale’s English Testament. Five
-              difficulty levels let a child of about five and a grown-up play the same story.
+              Covenanter is made for Reformed Christians, for families to play together, for the
+              parents, teachers and church educators who teach the catechism and the Bible, and for
+              anyone who loves the history of Scotland. Knox, Willock, Erskine of Dun, Lord James
+              Stewart and the printer Lekpreuik are historical, and the game’s History tells who
+              they were and what really happened. Scripture is in King James wording, presented in
+              the game as Tyndale’s English Testament. Five difficulty levels let every player find
+              a pace in the same story.
             </p>
 
             <h3>The chapters</h3>
@@ -276,9 +277,10 @@ function PressPage() {
             <h2>About Unconsumed Games</h2>
             <p>
               Unconsumed Games is an independent studio founded by H.T. Williams. We create games
-              grounded in the Word of God that teach children the Bible, doctrine and history, and
-              are made to last. Covenanter is our first. Our line, “Games that abide,” comes from 1
-              Corinthians 3:14: “If any man’s work abide…”
+              grounded in the Word of God, for families to play together and for parents and
+              teachers to teach the Bible, doctrine and history, and are made to last. Covenanter is
+              our first. Our line, “Games that abide,” comes from 1 Corinthians 3:14: “If any man’s
+              work abide…”
             </p>
             <p>
               The studio’s name comes from Exodus 3:2: “the bush burned with fire, and the bush was

@@ -36,9 +36,9 @@ export function Lasting() {
             <p className="uc-eyebrow">Why they last</p>
             <h2>Not burned up. Made to last.</h2>
             <p className="uc-lead">
-              Most games are played, used up and forgotten. Ours are made to last. A child who
-              learns a verse, a doctrine or a true account of the past keeps it for life, and passes
-              it on.
+              Most games are played, used up and forgotten. Ours are made to last. What we learn of
+              a verse, a doctrine or a true account of the past we keep for life, and pass on.
+              Parents and teachers know the joy of helping their children do it.
             </p>
             <blockquote className="verse">
               The grass withereth, the flower fadeth: but the word of our God shall stand for ever.
@@ -241,15 +241,16 @@ function Ladder() {
   return (
     <>
       <div className="lh">
-        <p className="uc-eyebrow">For children</p>
-        <h2>Grows with the child.</h2>
+        <p className="uc-eyebrow">For families</p>
+        <h2>A level for every player in the house.</h2>
         <p className="uc-lead">
-          Five levels of difficulty, from about age 5 to 13 and up. A child can begin with a choice
-          of three and finish by writing the verse from memory.
+          Five levels of difficulty, so everyone in the family can find their pace. Begin with a
+          choice of three and finish by writing the verse from memory. Parents and teachers choose
+          the level that suits, and can change it at any time.
         </p>
       </div>
       <div className="ladder">
-        {LADDER.map(([title, ages, text], i) => (
+        {LADDER.map(([title, ask, text], i) => (
           <div className="lad" key={title}>
             <div className="fl" aria-hidden="true">
               {Array.from({ length: i + 1 }, (_, j) => (
@@ -257,7 +258,7 @@ function Ladder() {
               ))}
             </div>
             <h3>{title}</h3>
-            <span className="ag">{ages}</span>
+            <span className="ag">{ask}</span>
             <p>{text}</p>
           </div>
         ))}
