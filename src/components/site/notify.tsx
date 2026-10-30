@@ -11,9 +11,8 @@ import {
 } from "react";
 import { Button } from "@/components/ds/actions";
 import { Dialog, Toast } from "@/components/ds/feedback";
-import { Dropdown } from "@/components/ds/dropdown";
 import { Input } from "@/components/ds/forms";
-import { PLATFORM_OPTIONS, WAITLIST_NOTE } from "@/lib/beta";
+import { WAITLIST_NOTE } from "@/lib/beta";
 
 /* Sign-ups post to the PHP endpoint deployed next to the static site (public/api/subscribe.php),
    which adds them to Kit. The Kit API key lives only on the server. */
@@ -26,8 +25,9 @@ type Notify = {
   /**
    * Sign an address up. Resolves to an error message, or null on success.
    * `trap` is the hidden honeypot field: real people leave it empty.
+   * `platform` is always sent empty: the form no longer asks.
    */
-  save: (email: string, platform?: string, trap?: string) => Promise<string | null>;
+  save: (email: string, trap?: string) => Promise<string | null>;
 };
 
 const NotifyContext = createContext<Notify | null>(null);
@@ -65,7 +65,7 @@ export function NotifyProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => () => clearTimeout(timer.current), []);
 
-  const save = useCallback(async (raw: string, platform?: string, trap?: string) => {
+  const save = useCallback(async (raw: string, trap?: string) => {
     const email = raw.trim();
     if (!EMAIL_RE.test(email)) return "Enter a valid email address";
     let res: Response;
@@ -73,7 +73,7 @@ export function NotifyProvider({ children }: { children: ReactNode }) {
       res = await fetch(SUBSCRIBE_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email, platform: platform || "", website: trap || "" }),
+        body: JSON.stringify({ email, platform: "", website: trap || "" }),
       });
     } catch {
       return "We could not reach the sign-up service. Check your connection and try again.";
@@ -125,7 +125,6 @@ function NotifyDialog({
   onSave: Notify["save"];
 }) {
   const [email, setEmail] = useState("");
-  const [platform, setPlatform] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
@@ -133,13 +132,10 @@ function NotifyDialog({
     e.preventDefault();
     if (busy) return;
     setBusy(true);
-    const err = await onSave(email, platform, honeypotValue(e.currentTarget));
+    const err = await onSave(email, honeypotValue(e.currentTarget));
     setBusy(false);
     setError(err ?? "");
-    if (!err) {
-      setEmail("");
-      setPlatform("");
-    }
+    if (!err) setEmail("");
   };
 
   return (
@@ -173,14 +169,6 @@ function NotifyDialog({
             if (error) setError("");
           }}
           error={error}
-        />
-        <Dropdown
-          label="Platform"
-          value={platform}
-          onChange={setPlatform}
-          placeholder="Choose one (optional)"
-          options={PLATFORM_OPTIONS}
-          hint="Optional. iOS, Android, or Desktop (PC)."
         />
         <Honeypot />
         <p className="uc-caption">

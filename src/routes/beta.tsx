@@ -47,7 +47,7 @@ function BetaPage() {
         }
       >
         <div className="beta-hero__form" id="join">
-          <SignupForm withPlatform />
+          <SignupForm />
           <p className="uc-caption">
             We will write only about Covenanter. You can leave the list from any email.
           </p>

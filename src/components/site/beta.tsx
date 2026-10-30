@@ -1,17 +1,14 @@
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ds/actions";
-import { Dropdown } from "@/components/ds/dropdown";
 import { Input } from "@/components/ds/forms";
 import { Icon } from "@/components/ds/icon";
 import { Honeypot, honeypotValue, useNotify } from "@/components/site/notify";
-import { PLATFORM_OPTIONS } from "@/lib/beta";
 import { STUDIO } from "@/lib/site";
 
-/** Inline sign-up: email, optional platform, submit. Posts to the existing Kit endpoint. */
-export function SignupForm({ withPlatform = false }: { withPlatform?: boolean }) {
+/** Inline sign-up: email and submit. Posts to the existing Kit endpoint. */
+export function SignupForm() {
   const notify = useNotify();
   const [email, setEmail] = useState("");
-  const [platform, setPlatform] = useState("");
   const [err, setErr] = useState("");
   const [busy, setBusy] = useState(false);
 
@@ -19,17 +16,14 @@ export function SignupForm({ withPlatform = false }: { withPlatform?: boolean })
     e.preventDefault();
     if (busy) return;
     setBusy(true);
-    const error = await notify.save(email, platform, honeypotValue(e.currentTarget));
+    const error = await notify.save(email, honeypotValue(e.currentTarget));
     setBusy(false);
     setErr(error ?? "");
-    if (!error) {
-      setEmail("");
-      setPlatform("");
-    }
+    if (!error) setEmail("");
   };
 
   return (
-    <form className={"sf" + (withPlatform ? " sf--platform" : "")} onSubmit={submit} noValidate>
+    <form className="sf" onSubmit={submit} noValidate>
       <Input
         size="lg"
         type="email"
@@ -43,16 +37,6 @@ export function SignupForm({ withPlatform = false }: { withPlatform?: boolean })
         }}
         error={err}
       />
-      {withPlatform ? (
-        <Dropdown
-          size="lg"
-          aria-label="Platform (optional)"
-          value={platform}
-          onChange={setPlatform}
-          placeholder="Platform (optional)"
-          options={PLATFORM_OPTIONS}
-        />
-      ) : null}
       <Button size="lg" type="submit" disabled={busy}>
         {busy ? "Sending…" : "Join the waitlist"}
       </Button>
