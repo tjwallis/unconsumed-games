@@ -10,9 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as R1517RouteImport } from './routes/1517'
 import { Route as R404RouteImport } from './routes/404'
 import { Route as BetaRouteImport } from './routes/beta'
 import { Route as DeleteAccountRouteImport } from './routes/delete-account'
+import { Route as LaunchRouteImport } from './routes/launch'
 import { Route as PressRouteImport } from './routes/press'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as BetaConfirmedRouteImport } from './routes/beta_.confirmed'
@@ -20,6 +22,11 @@ import { Route as BetaConfirmedRouteImport } from './routes/beta_.confirmed'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R1517Route = R1517RouteImport.update({
+  id: '/1517',
+  path: '/1517',
   getParentRoute: () => rootRouteImport,
 } as any)
 const R404Route = R404RouteImport.update({
@@ -35,6 +42,11 @@ const BetaRoute = BetaRouteImport.update({
 const DeleteAccountRoute = DeleteAccountRouteImport.update({
   id: '/delete-account',
   path: '/delete-account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LaunchRoute = LaunchRouteImport.update({
+  id: '/launch',
+  path: '/launch',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PressRoute = PressRouteImport.update({
@@ -55,18 +67,22 @@ const BetaConfirmedRoute = BetaConfirmedRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/1517': typeof R1517Route
   '/404': typeof R404Route
   '/beta': typeof BetaRoute
   '/delete-account': typeof DeleteAccountRoute
+  '/launch': typeof LaunchRoute
   '/press': typeof PressRoute
   '/privacy': typeof PrivacyRoute
   '/beta/confirmed': typeof BetaConfirmedRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/1517': typeof R1517Route
   '/404': typeof R404Route
   '/beta': typeof BetaRoute
   '/delete-account': typeof DeleteAccountRoute
+  '/launch': typeof LaunchRoute
   '/press': typeof PressRoute
   '/privacy': typeof PrivacyRoute
   '/beta/confirmed': typeof BetaConfirmedRoute
@@ -74,9 +90,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/1517': typeof R1517Route
   '/404': typeof R404Route
   '/beta': typeof BetaRoute
   '/delete-account': typeof DeleteAccountRoute
+  '/launch': typeof LaunchRoute
   '/press': typeof PressRoute
   '/privacy': typeof PrivacyRoute
   '/beta_/confirmed': typeof BetaConfirmedRoute
@@ -85,27 +103,33 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/1517'
     | '/404'
     | '/beta'
     | '/delete-account'
+    | '/launch'
     | '/press'
     | '/privacy'
     | '/beta/confirmed'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/1517'
     | '/404'
     | '/beta'
     | '/delete-account'
+    | '/launch'
     | '/press'
     | '/privacy'
     | '/beta/confirmed'
   id:
     | '__root__'
     | '/'
+    | '/1517'
     | '/404'
     | '/beta'
     | '/delete-account'
+    | '/launch'
     | '/press'
     | '/privacy'
     | '/beta_/confirmed'
@@ -113,9 +137,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R1517Route: typeof R1517Route
   R404Route: typeof R404Route
   BetaRoute: typeof BetaRoute
   DeleteAccountRoute: typeof DeleteAccountRoute
+  LaunchRoute: typeof LaunchRoute
   PressRoute: typeof PressRoute
   PrivacyRoute: typeof PrivacyRoute
   BetaConfirmedRoute: typeof BetaConfirmedRoute
@@ -128,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/1517': {
+      id: '/1517'
+      path: '/1517'
+      fullPath: '/1517'
+      preLoaderRoute: typeof R1517RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/404': {
@@ -149,6 +182,13 @@ declare module '@tanstack/react-router' {
       path: '/delete-account'
       fullPath: '/delete-account'
       preLoaderRoute: typeof DeleteAccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/launch': {
+      id: '/launch'
+      path: '/launch'
+      fullPath: '/launch'
+      preLoaderRoute: typeof LaunchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/press': {
@@ -177,9 +217,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R1517Route: R1517Route,
   R404Route: R404Route,
   BetaRoute: BetaRoute,
   DeleteAccountRoute: DeleteAccountRoute,
+  LaunchRoute: LaunchRoute,
   PressRoute: PressRoute,
   PrivacyRoute: PrivacyRoute,
   BetaConfirmedRoute: BetaConfirmedRoute,

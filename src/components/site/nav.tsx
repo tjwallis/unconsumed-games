@@ -47,7 +47,7 @@ export function SiteNav() {
             </a>
           ))}
           <Button size="sm" onClick={notify.open}>
-            Request to join
+            Join the waitlist
           </Button>
           <IconButton
             className="nav__menu"
@@ -74,7 +74,7 @@ export function SiteNav() {
                 notify.open();
               }}
             >
-              Request to join
+              Join the waitlist
             </Button>
             <div className="nav__more">
               {LEGAL.slice(0, 2).map((l) => (

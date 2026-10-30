@@ -4,10 +4,10 @@ import { Dropdown } from "@/components/ds/dropdown";
 import { Input } from "@/components/ds/forms";
 import { Icon } from "@/components/ds/icon";
 import { Honeypot, honeypotValue, useNotify } from "@/components/site/notify";
-import { BETA, PLATFORM_OPTIONS, type BetaPhase } from "@/lib/beta";
+import { PLATFORM_OPTIONS } from "@/lib/beta";
 import { STUDIO } from "@/lib/site";
 
-/** Inline sign-up: email, optional platform, submit. Used on the home page and /beta. */
+/** Inline sign-up: email, optional platform, submit. Posts to the existing Kit endpoint. */
 export function SignupForm({ withPlatform = false }: { withPlatform?: boolean }) {
   const notify = useNotify();
   const [email, setEmail] = useState("");
@@ -54,28 +54,20 @@ export function SignupForm({ withPlatform = false }: { withPlatform?: boolean })
         />
       ) : null}
       <Button size="lg" type="submit" disabled={busy}>
-        {busy ? "Sending…" : "Request to join"}
+        {busy ? "Sending…" : "Join the waitlist"}
       </Button>
       <Honeypot />
     </form>
   );
 }
 
-export function BetaSteps({ phase }: { phase: BetaPhase }) {
+export function BetaSteps() {
   const steps: [string, string][] = [
-    ["Request a place", "Leave your email address. It takes a moment."],
-    phase === "open"
-      ? [
-          "Watch your inbox",
-          "We choose testers at random from everyone who asks, and invites go out by email. Check your spam and promotions folders too.",
-        ]
-      : [
-          "Watch your inbox",
-          `We choose testers at random from everyone who asks. Invites go out by email from ${BETA.dateLong}.`,
-        ],
+    ["Join the waitlist", "Leave your email address. It takes a moment."],
+    ["Watch your inbox", "We will write with news of the full Covenanter launch."],
     [
       "Play together",
-      "If you are chosen, install Covenanter on iPhone, iPad or Android, then tell us what your children learn, what they love, and what we can make better.",
+      "When Covenanter launches, families can play it together on iPhone, iPad or Android.",
     ],
   ];
   return (
@@ -104,17 +96,17 @@ const FAQ: [string, React.ReactNode][] = [
   ],
   [
     "Is everyone who asks given a place?",
-    "No. Places in the closed beta are limited, so we choose testers at random from everyone who asks. If you are not chosen this time, you stay on our list and we will write when Covenanter is available.",
+    "The closed beta is invite-only, so this form does not ask for a place. Join the waitlist and we will write with news of the full launch.",
   ],
   [
     "When will I hear?",
-    `Invites go out by email from ${BETA.dateLong}. Use the address you check most.`,
+    "We will write when there is news of the full launch. Use the address you check most.",
   ],
   [
     "I haven’t had an invite.",
     <>
-      Not everyone who asks is chosen, so an invite may not come this time. Check your spam and
-      promotions folders, and make sure you used the address you check. Questions? Write to{" "}
+      The closed beta is invite-only, so an invite may not come. Check your spam and promotions
+      folders. This list is for news of the full launch. Questions? Write to{" "}
       <a href={`mailto:${STUDIO.hello}`}>{STUDIO.hello}</a>.
     </>,
   ],

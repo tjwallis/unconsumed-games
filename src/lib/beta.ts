@@ -37,9 +37,12 @@ export const PLATFORM_OPTIONS: DropdownOption[] = [
   { value: "unsure", label: "Not sure yet", description: "We’ll keep you posted" },
 ];
 
-/** The one sentence that says a request is not a guaranteed place. Use it wherever people sign up. */
-export const SELECTION =
-  "Places are limited, so we choose testers at random from everyone who asks. If you are chosen, your invite comes by email.";
+/**
+ * Beside every waitlist form. The closed beta is invite-only; this list is news of the full launch.
+ * The platform field on the form is unchanged (Kit tags, including the existing "steam" key).
+ */
+export const WAITLIST_NOTE =
+  "The closed beta is invite-only. This list is for news of the full launch.";
 
 export type BetaPhase = "soon" | "open";
 

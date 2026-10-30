@@ -24,7 +24,7 @@ export const NAV = [
   { label: "The name", href: "/#covenant" },
   { label: "Covenanter", href: "/#game" },
   { label: "Try it", href: "/#disputation" },
-  { label: "Closed beta", href: "/beta" },
+  { label: "Waitlist", href: "/launch" },
 ] as const;
 
 export const LEGAL = [

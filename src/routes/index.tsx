@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useState } from "react";
 import { Covenant } from "@/components/home/covenant";
 import { Hero } from "@/components/home/hero";
-import { BetaBand, Cast, Disputation, Game, Lasting, Motto } from "@/components/home/sections";
+import { WittenbergBand } from "@/components/home/wittenberg";
+import { Cast, Disputation, Game, Lasting, Motto } from "@/components/home/sections";
 import { PageShell } from "@/components/page-shell";
 
 /** Search-engine description of the studio and the game. Facts only: no ratings or prices. */
@@ -40,7 +41,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Unconsumed Games creates games grounded in the Word of God. Covenanter, a tale of the Scottish Reformation, opens its closed beta on iOS and Android on Reformation Day, 31 October 2026.",
+          "Unconsumed Games creates games grounded in the Word of God. Play Wittenberg 1517 free in the browser, and join the waitlist for news of Covenanter’s full launch.",
       },
     ],
     scripts: [{ type: "application/ld+json", children: JSON.stringify(STRUCTURED_DATA) }],
@@ -69,7 +70,7 @@ function Home() {
       <Cast sel={sel} setSel={setSel} />
       <Covenant />
       <Game />
-      <BetaBand />
+      <WittenbergBand />
       <Disputation />
       <Motto />
     </PageShell>

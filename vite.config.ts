@@ -182,6 +182,8 @@ export default defineConfig(({ command, isPreview }) => ({
             prerender: { enabled: true, crawlLinks: false, failOnError: true },
             pages: [
               { path: "/" },
+              { path: "/1517" },
+              { path: "/launch" },
               { path: "/beta" },
               { path: "/press" },
               { path: "/privacy" },
