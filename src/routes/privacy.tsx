@@ -371,8 +371,8 @@ function PrivacyPage() {
             </p>
             <p>
               The game only sends that progress. It does not read or keep your Play Games or Game
-              Center player ID, and none of this comes to us or goes into our play reports. Google
-              and Apple handle it under their own privacy policies: the{' '}
+              Center player ID, and neither Google nor Apple sends this progress or your player ID
+              to us. Google and Apple handle it under their own privacy policies: the{' '}
               <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and{' '}
               <a href="https://www.apple.com/legal/privacy/">Apple’s privacy policy</a> (see also{' '}
               <a href="https://www.apple.com/legal/privacy/data/en/game-center/">
