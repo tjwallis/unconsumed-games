@@ -38,7 +38,7 @@ function PrivacyPage() {
               what information the game and this website collect, why, who else sees it, how long we
               keep it, and what you can do about it.
             </p>
-            <p className="prose__src">Last updated 29 October 2026.</p>
+            <p className="prose__src">Last updated 30 October 2026.</p>
 
             <h2>The short version</h2>
             <ul>
@@ -360,6 +360,32 @@ function PrivacyPage() {
               device. Remove the game or clear its data to erase them. We hold no copy.
             </p>
 
+            <h3>Achievements (Google Play Games and Game Center)</h3>
+            <p>
+              Covenanter has achievements you can earn as you play. If you play signed in to{' '}
+              <strong>Google Play Games</strong> (on Android) or <strong>Game Center</strong> (on
+              iPhone and iPad), your achievement progress is sent to Google or Apple: which
+              achievements you have earned, and how far along you are with the others. This lets
+              them show your achievements in their apps and keep them with your Google or Apple
+              account.
+            </p>
+            <p>
+              The game only sends that progress. It does not read or keep your Play Games or Game
+              Center player ID, and none of this comes to us or goes into our play reports. Google
+              and Apple handle it under their own privacy policies: the{' '}
+              <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and{' '}
+              <a href="https://www.apple.com/legal/privacy/">Apple’s privacy policy</a> (see also{' '}
+              <a href="https://www.apple.com/legal/privacy/data/en/game-center/">
+                Game Center &amp; Privacy
+              </a>
+              ). You can choose who sees your achievements, or delete them, in your Play Games
+              profile or your Game Center settings.
+            </p>
+            <p>
+              If you are not signed in to either, you can still play the whole game. Achievements
+              are simply not sent.
+            </p>
+
             <h2>5. Send a Note</h2>
             <p>
               In the pause menu there is a <strong>Send a Note</strong> button. It does nothing
@@ -514,6 +540,12 @@ function PrivacyPage() {
                 <strong>Apple and Google</strong> when you choose to sign in with them. They tell us
                 who you are. They have their own privacy policies and are independent of us. The app
                 stores also know that you downloaded the game, under their own policies.
+              </li>
+              <li>
+                <strong>Google Play Games and Apple Game Center</strong>, if you play signed in to
+                them. They receive your achievement progress for your own Google or Apple account,
+                under their own privacy policies (see “Achievements” in section 4). We do not
+                receive it from them.
               </li>
               <li>
                 <strong>Kit</strong>, for the beta email list.
@@ -734,7 +766,7 @@ function PrivacyPage() {
                 <strong>{DELETE_URL}</strong>
               </a>
             </p>
-            <p className="prose__src">Last updated 29 October 2026.</p>
+            <p className="prose__src">Last updated 30 October 2026.</p>
           </article>
         </div>
       </section>
