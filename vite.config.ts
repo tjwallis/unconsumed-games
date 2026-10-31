@@ -184,7 +184,7 @@ export default defineConfig(({ command, isPreview }) => ({
               { path: "/" },
               { path: "/1517" },
               { path: "/launch" },
-              { path: "/beta" },
+              { path: "/beta", sitemap: { exclude: true } },
               { path: "/press" },
               { path: "/privacy" },
               { path: "/delete-account" },

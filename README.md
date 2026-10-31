@@ -7,7 +7,7 @@ Marketing site for [Unconsumed Games](https://unconsumedgames.com) and **Covenan
 - `/` — studio home: hero, “Made to last”, the cast, why it is called Covenanter, the game, the Wittenberg 1517 callout, a playable disputation, and the waitlist form
 - `/1517` — Wittenberg 1517 splash page. The play URL is `WITTENBERG_PLAY_URL` in `src/lib/wittenberg.ts`
 - `/launch` — waitlist sign-up. The browser game links here (`?utm_source=wittenberg-1517`). Same form and Kit endpoint as the other sign-ups
-- `/beta` — the same waitlist, with steps and questions. Older links still land here
+- `/beta` — unlisted closed-beta sign-up (email and platform). Not linked from the site, left out of the sitemap, and marked noindex. The public waitlist is `/launch`
 - `/press` — press kit: fact sheet, descriptions, chapters, features, screenshots and logo downloads
 - `/delete-account` — how to delete a Covenanter account
 - `/privacy` — privacy notice

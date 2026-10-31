@@ -68,6 +68,11 @@ DirectorySlash Off
     Header set Cache-Control "no-cache"
     Header set X-Robots-Tag "noindex, nofollow"
   </ElseIf>
+  # /beta is the unlisted closed-beta form. It is not in the sitemap.
+  <ElseIf "%{REQUEST_URI} =~ m#^/beta/?$#">
+    Header set Cache-Control "no-cache"
+    Header set X-Robots-Tag "noindex, nofollow"
+  </ElseIf>
   # Pages: always revalidate, so a deploy shows up at once.
   <ElseIf "%{REQUEST_URI} =~ m#(^/$|\.html$|^/[^.]*$)#">
     Header set Cache-Control "no-cache"

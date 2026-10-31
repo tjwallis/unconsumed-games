@@ -1,8 +1,10 @@
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/ds/actions";
+import { Dropdown } from "@/components/ds/dropdown";
 import { Input } from "@/components/ds/forms";
 import { Icon } from "@/components/ds/icon";
 import { Honeypot, honeypotValue, useNotify } from "@/components/site/notify";
+import { PLATFORM_OPTIONS } from "@/lib/beta";
 import { STUDIO } from "@/lib/site";
 
 /** Inline sign-up: email and submit. Posts to the existing Kit endpoint. */
@@ -16,7 +18,7 @@ export function SignupForm() {
     e.preventDefault();
     if (busy) return;
     setBusy(true);
-    const error = await notify.save(email, honeypotValue(e.currentTarget));
+    const error = await notify.save(email, "", honeypotValue(e.currentTarget));
     setBusy(false);
     setErr(error ?? "");
     if (!error) setEmail("");
@@ -39,6 +41,61 @@ export function SignupForm() {
       />
       <Button size="lg" type="submit" disabled={busy}>
         {busy ? "Sending…" : "Join the waitlist"}
+      </Button>
+      <Honeypot />
+    </form>
+  );
+}
+
+/**
+ * Closed-beta sign-up recovered from main (email, optional platform, same post body).
+ * Used only on the unlisted /beta page. The public waitlist uses SignupForm.
+ */
+export function ClosedBetaSignupForm() {
+  const notify = useNotify();
+  const [email, setEmail] = useState("");
+  const [platform, setPlatform] = useState("");
+  const [err, setErr] = useState("");
+  const [busy, setBusy] = useState(false);
+
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (busy) return;
+    setBusy(true);
+    const error = await notify.save(email, platform, honeypotValue(e.currentTarget), true);
+    setBusy(false);
+    setErr(error ?? "");
+    if (!error) {
+      setEmail("");
+      setPlatform("");
+    }
+  };
+
+  return (
+    <form className="sf sf--platform" onSubmit={submit} noValidate>
+      <Input
+        size="lg"
+        type="email"
+        autoComplete="email"
+        placeholder="you@example.com"
+        aria-label="Email address"
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
+          if (err) setErr("");
+        }}
+        error={err}
+      />
+      <Dropdown
+        size="lg"
+        aria-label="Platform (optional)"
+        value={platform}
+        onChange={setPlatform}
+        placeholder="Platform (optional)"
+        options={PLATFORM_OPTIONS}
+      />
+      <Button size="lg" type="submit" disabled={busy}>
+        {busy ? "Sending…" : "Request to join"}
       </Button>
       <Honeypot />
     </form>

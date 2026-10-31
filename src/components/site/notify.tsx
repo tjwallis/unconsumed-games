@@ -25,9 +25,15 @@ type Notify = {
   /**
    * Sign an address up. Resolves to an error message, or null on success.
    * `trap` is the hidden honeypot field: real people leave it empty.
-   * `platform` is always sent empty: the form no longer asks.
+   * `platform` is the original Kit tag key. The public waitlist sends "".
+   * `closedBeta` chooses the closed-beta confirmation instead of the waitlist one.
    */
-  save: (email: string, trap?: string) => Promise<string | null>;
+  save: (
+    email: string,
+    platform?: string,
+    trap?: string,
+    closedBeta?: boolean,
+  ) => Promise<string | null>;
 };
 
 const NotifyContext = createContext<Notify | null>(null);
@@ -60,37 +66,40 @@ export function honeypotValue(form: HTMLFormElement) {
 
 export function NotifyProvider({ children }: { children: ReactNode }) {
   const [dialog, setDialog] = useState(false);
-  const [toast, setToast] = useState<null | { confirm: boolean }>(null);
+  const [toast, setToast] = useState<null | { confirm: boolean; closedBeta: boolean }>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => () => clearTimeout(timer.current), []);
 
-  const save = useCallback(async (raw: string, trap?: string) => {
-    const email = raw.trim();
-    if (!EMAIL_RE.test(email)) return "Enter a valid email address";
-    let res: Response;
-    try {
-      res = await fetch(SUBSCRIBE_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email, platform: "", website: trap || "" }),
-      });
-    } catch {
-      return "We could not reach the sign-up service. Check your connection and try again.";
-    }
-    const body = (await res.json().catch(() => ({}))) as {
-      ok?: boolean;
-      error?: string;
-      confirm?: boolean;
-    };
-    if (!res.ok || !body.ok)
-      return body.error || "We could not sign you up just now. Please try again later.";
-    setDialog(false);
-    setToast({ confirm: Boolean(body.confirm) });
-    clearTimeout(timer.current);
-    timer.current = setTimeout(() => setToast(null), 8000);
-    return null;
-  }, []);
+  const save = useCallback(
+    async (raw: string, platform?: string, trap?: string, closedBeta?: boolean) => {
+      const email = raw.trim();
+      if (!EMAIL_RE.test(email)) return "Enter a valid email address";
+      let res: Response;
+      try {
+        res = await fetch(SUBSCRIBE_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({ email, platform: platform || "", website: trap || "" }),
+        });
+      } catch {
+        return "We could not reach the sign-up service. Check your connection and try again.";
+      }
+      const body = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+        confirm?: boolean;
+      };
+      if (!res.ok || !body.ok)
+        return body.error || "We could not sign you up just now. Please try again later.";
+      setDialog(false);
+      setToast({ confirm: Boolean(body.confirm), closedBeta: Boolean(closedBeta) });
+      clearTimeout(timer.current);
+      timer.current = setTimeout(() => setToast(null), 8000);
+      return null;
+    },
+    [],
+  );
 
   const value = useMemo<Notify>(() => ({ open: () => setDialog(true), save }), [save]);
 
@@ -100,7 +109,19 @@ export function NotifyProvider({ children }: { children: ReactNode }) {
       <NotifyDialog open={dialog} onClose={() => setDialog(false)} onSave={save} />
       {toast ? (
         <div className="toast-region">
-          {toast.confirm ? (
+          {toast.closedBeta ? (
+            toast.confirm ? (
+              <Toast tone="success" title="Check your email" onClose={() => setToast(null)}>
+                We sent a link to confirm your address. Once you confirm, your request is in.
+                Testers are chosen at random, and invites go out by email.
+              </Toast>
+            ) : (
+              <Toast tone="success" title="Request received" onClose={() => setToast(null)}>
+                Testers are chosen at random from everyone who asks. If you are chosen, your invite
+                comes by email.
+              </Toast>
+            )
+          ) : toast.confirm ? (
             <Toast tone="success" title="Check your email" onClose={() => setToast(null)}>
               We sent a link to confirm your address. Once you confirm, you are on the waitlist.
             </Toast>
@@ -132,7 +153,7 @@ function NotifyDialog({
     e.preventDefault();
     if (busy) return;
     setBusy(true);
-    const err = await onSave(email, honeypotValue(e.currentTarget));
+    const err = await onSave(email, "", honeypotValue(e.currentTarget));
     setBusy(false);
     setError(err ?? "");
     if (!err) setEmail("");

@@ -56,7 +56,6 @@ function LaunchPage() {
             We will write only about Covenanter. You can leave the list from any email.
           </p>
           <p className="launch__more">
-            <a href="/beta#faq">Questions about the closed beta</a>
             <a href="/1517">Wittenberg 1517</a>
           </p>
         </div>
