@@ -19,19 +19,28 @@ export function Hero({ onPick }: { onPick: (id: string) => void }) {
       <div className="wrap hero__in">
         <div className="hero__txt">
           <div className="hero__news">
-            <p className="hero__banner">
-              New for Reformation Day: Wittenberg 1517, a free game you can play in your browser.
-            </p>
-            <div className="hero__news-cta">
-              <Button
-                size="sm"
-                href={WITTENBERG_PLAY_URL}
-                target="_blank"
-                rel="noreferrer"
-                iconRight="external-link"
-              >
-                Play now
-              </Button>
+            <img
+              className="hero__luther"
+              src="/art/wittenberg/luther-portrait.png"
+              alt="Martin Luther"
+              width={64}
+              height={64}
+            />
+            <div className="hero__news-body">
+              <p className="hero__banner">
+                New for Reformation Day: Wittenberg 1517, a free game you can play in your browser.
+              </p>
+              <div className="hero__news-cta">
+                <Button
+                  size="sm"
+                  href={WITTENBERG_PLAY_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  iconRight="external-link"
+                >
+                  Play now
+                </Button>
+              </div>
             </div>
           </div>
           <h1>
