@@ -6,7 +6,7 @@ import { Icon, type IconName } from "@/components/ds/icon";
 import { Tabs } from "@/components/ds/navigation";
 import { SignupForm } from "@/components/site/beta";
 import { useNotify } from "@/components/site/notify";
-import { BETA, WAITLIST_NOTE } from "@/lib/beta";
+import { WAITLIST_NOTE } from "@/lib/beta";
 import { GoldDivider, Lozenges, Oval, Panel } from "@/components/site/parts";
 import {
   CAST,
@@ -193,7 +193,6 @@ export function Game() {
               <div className="gfeat__b">
                 <Badge tone="gold">iOS</Badge>
                 <Badge tone="gold">Android</Badge>
-                <Badge tone="inverse">Closed beta · {BETA.dateShort}</Badge>
               </div>
               <p className="gfeat__note">No ads and no loot boxes. A game to play together.</p>
               <Button onClick={notify.open} iconLeft="bell">

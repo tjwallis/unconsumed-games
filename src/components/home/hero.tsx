@@ -1,15 +1,12 @@
 import type { CSSProperties } from "react";
 import { Button } from "@/components/ds/actions";
-import { useNotify } from "@/components/site/notify";
 import { Oval } from "@/components/site/parts";
-import { BETA, daysLeftLabel, useBeta } from "@/lib/beta";
 import { castById } from "@/lib/covenanter";
+import { WITTENBERG_PLAY_URL } from "@/lib/wittenberg";
 
 const PROCESSION = ["willock", "methven", "goodman", "knox", "erskine", "lordjames", "winram"];
 
 export function Hero({ onPick }: { onPick: (id: string) => void }) {
-  const notify = useNotify();
-  const { phase, daysLeft } = useBeta();
   return (
     <section className="hero" id="top" data-theme="dark" data-screen-label="01 Hero">
       <div className="scene" aria-hidden="true">
@@ -22,20 +19,18 @@ export function Hero({ onPick }: { onPick: (id: string) => void }) {
       <div className="wrap hero__in">
         <div className="hero__txt">
           <div className="hero__news">
-            <p className="uc-eyebrow">
-              {phase === "open"
-                ? "Covenanter · Closed beta now open"
-                : `Covenanter · Closed beta opens ${BETA.dateLong}`}
-              {daysLeft !== null ? (
-                <span className="hero__days">{daysLeftLabel(daysLeft)}</span>
-              ) : null}
+            <p className="hero__banner">
+              New for Reformation Day: Wittenberg 1517, a free game you can play in your browser.
             </p>
             <div className="hero__news-cta">
-              <Button size="sm" onClick={notify.open} iconLeft="bell">
-                Join the waitlist
-              </Button>
-              <Button size="sm" variant="secondary" href="#game" iconRight="arrow-right">
-                Turn aside and see
+              <Button
+                size="sm"
+                href={WITTENBERG_PLAY_URL}
+                target="_blank"
+                rel="noreferrer"
+                iconRight="external-link"
+              >
+                Play now
               </Button>
             </div>
           </div>
@@ -48,10 +43,7 @@ export function Hero({ onPick }: { onPick: (id: string) => void }) {
           <p className="hero__lead">
             Unconsumed Games creates games grounded in the Word of God, for families to play
             together and for parents and teachers who teach the Bible, sound doctrine and the
-            history of the Church.{" "}
-            {phase === "open"
-              ? "Our first, Covenanter, is now in closed beta."
-              : "Our first, Covenanter, opens its closed beta on Reformation Day, 31 October."}
+            history of the Church.
           </p>
           <div className="hero__cta">
             <Button size="lg" href="#lasting" iconRight="arrow-right">
