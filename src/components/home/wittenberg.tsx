@@ -16,8 +16,8 @@ export function WittenbergBand() {
             <p className="uc-eyebrow">Free in the browser</p>
             <h2>Play the Wittenberg 1517 demo.</h2>
             <p className="uc-lead">
-              Martin Luther posts the Ninety-five Theses in Wittenberg. One map, and the town is
-              reformed.
+              Martin Luther posts the Ninety-five Theses on the Castle Church door in Wittenberg.
+              One map, and the town is reformed.
             </p>
             <p className="wb__where">Plays on a phone or a computer.</p>
             <div className="wb__cta">

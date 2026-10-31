@@ -6,14 +6,14 @@
  */
 export const WITTENBERG_PLAY_URL = "https://play.unconsumedgames.com";
 
-/** Share card for /1517. The image is the composited title (1280 × 640). */
+/** Share card for /1517. The image is the composited title, cropped to a social card. */
 export const WITTENBERG_SHARE = {
   title: "Wittenberg 1517 · Unconsumed Games",
   description:
-    "A free browser game. On 31 October 1517, Martin Luther posts the Ninety-five Theses in Wittenberg. One map, then the town is reformed. Plays on a phone or a computer.",
-  imagePath: "/art/wittenberg/preview.png",
-  imageWidth: "1280",
-  imageHeight: "640",
+    "A free browser game. On 31 October 1517, answer three disputations in Wittenberg’s market, write the Ninety-five Theses in Luther’s cell, and post them on the Castle Church door. Plays on a phone or a computer.",
+  imagePath: "/art/wittenberg/og.jpg",
+  imageWidth: "1200",
+  imageHeight: "630",
 } as const;
 
 export function wittenbergShareImage(siteUrl: string) {

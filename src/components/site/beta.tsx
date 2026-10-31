@@ -101,7 +101,7 @@ const FAQ: [string, React.ReactNode][] = [
   ["Are there ads?", "No ads and no loot boxes. It is a game to play together."],
   [
     "Why Reformation Day?",
-    "On 31 October 1517 Martin Luther sent out his Ninety-five Theses, and the questions he raised travelled as far as the towns of Scotland. It seemed the right day to open the beta.",
+    "On 31 October 1517 Martin Luther posted his Ninety-five Theses, and the questions he raised travelled as far as the towns of Scotland. It seemed the right day to open the beta.",
   ],
   ["How do I send feedback?", "Reply to the email your invite came from. We read every message."],
   [

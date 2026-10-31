@@ -55,8 +55,9 @@ function WittenbergPage() {
               Wittenberg <em>1517</em>
             </h1>
             <p className="uc-lead">
-              On 31 October 1517, Martin Luther posted the Ninety-five Theses in Wittenberg. One
-              map. When you are done, the town is reformed.
+              On 31 October 1517, answer three disputations in Wittenberg’s market, write the
+              Ninety-five Theses in Luther’s cell, and post them on the Castle Church door. When you
+              are done, the town is reformed.
             </p>
             <p className="whero__where">Plays on a phone or a computer.</p>
             <div className="whero__cta">
