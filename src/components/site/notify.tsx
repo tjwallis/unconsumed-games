@@ -11,9 +11,8 @@ import {
 } from "react";
 import { Button } from "@/components/ds/actions";
 import { Dialog, Toast } from "@/components/ds/feedback";
-import { Dropdown } from "@/components/ds/dropdown";
 import { Input } from "@/components/ds/forms";
-import { BETA, PLATFORM_OPTIONS, SELECTION, useBeta } from "@/lib/beta";
+import { WAITLIST_NOTE } from "@/lib/beta";
 
 /* Sign-ups post to the PHP endpoint deployed next to the static site (public/api/subscribe.php),
    which adds them to Kit. The Kit API key lives only on the server. */
@@ -21,13 +20,20 @@ const SUBSCRIBE_URL = import.meta.env.VITE_SUBSCRIBE_URL || "/api/subscribe.php"
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type Notify = {
-  /** Open the "Request to join the beta" dialog. */
+  /** Open the waitlist dialog. */
   open: () => void;
   /**
    * Sign an address up. Resolves to an error message, or null on success.
    * `trap` is the hidden honeypot field: real people leave it empty.
+   * `platform` is the original Kit tag key. The public waitlist sends "".
+   * `closedBeta` chooses the closed-beta confirmation instead of the waitlist one.
    */
-  save: (email: string, platform?: string, trap?: string) => Promise<string | null>;
+  save: (
+    email: string,
+    platform?: string,
+    trap?: string,
+    closedBeta?: boolean,
+  ) => Promise<string | null>;
 };
 
 const NotifyContext = createContext<Notify | null>(null);
@@ -60,37 +66,40 @@ export function honeypotValue(form: HTMLFormElement) {
 
 export function NotifyProvider({ children }: { children: ReactNode }) {
   const [dialog, setDialog] = useState(false);
-  const [toast, setToast] = useState<null | { confirm: boolean }>(null);
+  const [toast, setToast] = useState<null | { confirm: boolean; closedBeta: boolean }>(null);
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => () => clearTimeout(timer.current), []);
 
-  const save = useCallback(async (raw: string, platform?: string, trap?: string) => {
-    const email = raw.trim();
-    if (!EMAIL_RE.test(email)) return "Enter a valid email address";
-    let res: Response;
-    try {
-      res = await fetch(SUBSCRIBE_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ email, platform: platform || "", website: trap || "" }),
-      });
-    } catch {
-      return "We could not reach the sign-up service. Check your connection and try again.";
-    }
-    const body = (await res.json().catch(() => ({}))) as {
-      ok?: boolean;
-      error?: string;
-      confirm?: boolean;
-    };
-    if (!res.ok || !body.ok)
-      return body.error || "We could not sign you up just now. Please try again later.";
-    setDialog(false);
-    setToast({ confirm: Boolean(body.confirm) });
-    clearTimeout(timer.current);
-    timer.current = setTimeout(() => setToast(null), 8000);
-    return null;
-  }, []);
+  const save = useCallback(
+    async (raw: string, platform?: string, trap?: string, closedBeta?: boolean) => {
+      const email = raw.trim();
+      if (!EMAIL_RE.test(email)) return "Enter a valid email address";
+      let res: Response;
+      try {
+        res = await fetch(SUBSCRIBE_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({ email, platform: platform || "", website: trap || "" }),
+        });
+      } catch {
+        return "We could not reach the sign-up service. Check your connection and try again.";
+      }
+      const body = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        error?: string;
+        confirm?: boolean;
+      };
+      if (!res.ok || !body.ok)
+        return body.error || "We could not sign you up just now. Please try again later.";
+      setDialog(false);
+      setToast({ confirm: Boolean(body.confirm), closedBeta: Boolean(closedBeta) });
+      clearTimeout(timer.current);
+      timer.current = setTimeout(() => setToast(null), 8000);
+      return null;
+    },
+    [],
+  );
 
   const value = useMemo<Notify>(() => ({ open: () => setDialog(true), save }), [save]);
 
@@ -100,15 +109,25 @@ export function NotifyProvider({ children }: { children: ReactNode }) {
       <NotifyDialog open={dialog} onClose={() => setDialog(false)} onSave={save} />
       {toast ? (
         <div className="toast-region">
-          {toast.confirm ? (
+          {toast.closedBeta ? (
+            toast.confirm ? (
+              <Toast tone="success" title="Check your email" onClose={() => setToast(null)}>
+                We sent a link to confirm your address. Once you confirm, your request is in.
+                Testers are chosen at random, and invites go out by email.
+              </Toast>
+            ) : (
+              <Toast tone="success" title="Request received" onClose={() => setToast(null)}>
+                Testers are chosen at random from everyone who asks. If you are chosen, your invite
+                comes by email.
+              </Toast>
+            )
+          ) : toast.confirm ? (
             <Toast tone="success" title="Check your email" onClose={() => setToast(null)}>
-              We sent a link to confirm your address. Once you confirm, your request is in. Testers
-              are chosen at random, and invites go out by email.
+              We sent a link to confirm your address. Once you confirm, you are on the waitlist.
             </Toast>
           ) : (
-            <Toast tone="success" title="Request received" onClose={() => setToast(null)}>
-              Testers are chosen at random from everyone who asks. If you are chosen, your invite
-              comes by email.
+            <Toast tone="success" title="You’re on the waitlist" onClose={() => setToast(null)}>
+              We will write with news of the full Covenanter launch.
             </Toast>
           )}
         </div>
@@ -127,22 +146,17 @@ function NotifyDialog({
   onSave: Notify["save"];
 }) {
   const [email, setEmail] = useState("");
-  const [platform, setPlatform] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
-  const { phase } = useBeta();
 
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (busy) return;
     setBusy(true);
-    const err = await onSave(email, platform, honeypotValue(e.currentTarget));
+    const err = await onSave(email, "", honeypotValue(e.currentTarget));
     setBusy(false);
     setError(err ?? "");
-    if (!err) {
-      setEmail("");
-      setPlatform("");
-    }
+    if (!err) setEmail("");
   };
 
   return (
@@ -150,25 +164,21 @@ function NotifyDialog({
       open={open}
       onClose={onClose}
       size="sm"
-      eyebrow="Covenanter · Closed beta"
-      title="Request to join the beta"
+      eyebrow="Covenanter · Waitlist"
+      title="Join the waitlist"
       footer={
         <>
           <Button variant="ghost" onClick={onClose}>
             Cancel
           </Button>
           <Button type="submit" form="notify-form" disabled={busy}>
-            {busy ? "Sending…" : "Request to join"}
+            {busy ? "Sending…" : "Join the waitlist"}
           </Button>
         </>
       }
     >
       <form id="notify-form" onSubmit={submit} noValidate className="notify-form">
-        <p className="uc-small">
-          {phase === "open"
-            ? `The closed beta is open on ${BETA.platforms}. ${SELECTION}`
-            : `The closed beta opens on ${BETA.dateLong} on ${BETA.platforms}. ${SELECTION}`}
-        </p>
+        <p className="uc-small">{WAITLIST_NOTE}</p>
         <Input
           label="Email"
           type="email"
@@ -180,14 +190,6 @@ function NotifyDialog({
             if (error) setError("");
           }}
           error={error}
-        />
-        <Dropdown
-          label="Platform"
-          value={platform}
-          onChange={setPlatform}
-          placeholder="Choose one (optional)"
-          options={PLATFORM_OPTIONS}
-          hint="The closed beta is on iOS and Android."
         />
         <Honeypot />
         <p className="uc-caption">

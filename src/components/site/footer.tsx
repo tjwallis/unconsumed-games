@@ -11,7 +11,8 @@ export function SiteFooter() {
             <a href="/#cast">The cast</a>
             <a href="/#covenant">The name</a>
             <a href="/#game">Covenanter</a>
-            <a href="/beta">Closed beta</a>
+            <a href="/1517">Wittenberg 1517</a>
+            <a href="/launch">Waitlist</a>
           </nav>
         </div>
         <div className="foot__social">

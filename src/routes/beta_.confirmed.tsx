@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Button } from "@/components/ds/actions";
 import { PageShell } from "@/components/page-shell";
-import { BETA, SELECTION } from "@/lib/beta";
+import { WAITLIST_NOTE } from "@/lib/beta";
 
 /* Landing page for Kit's double opt-in: the form's confirmation email links here once the
    address is confirmed. Reached only from that email. Nothing on the site links to it, it is
@@ -29,20 +29,16 @@ function Confirmed() {
         </div>
         <div className="wrap hero__in">
           <div className="hero__txt">
-            <p className="uc-eyebrow confirmed__eyebrow">Covenanter · Closed beta</p>
+            <p className="uc-eyebrow confirmed__eyebrow">Covenanter · Waitlist</p>
             <h1>
               You’re on <em>the list.</em>
             </h1>
             <p className="hero__tag">Games that abide.</p>
             <p className="hero__lead">
-              Thank you for confirming your email address. Your request to join the Covenanter
-              closed beta is in. The beta opens on Reformation Day, {BETA.dateLong} 2026, on iPhone,
-              iPad and Android.
+              Thank you for confirming your email address. You are on the waitlist for news of the
+              full Covenanter launch.
             </p>
-            <p className="hero__lead confirmed__next">
-              {SELECTION} Invites go out from {BETA.dateLong}, so watch your inbox, and check your
-              spam and promotions folders too.
-            </p>
+            <p className="hero__lead confirmed__next">{WAITLIST_NOTE}</p>
             <blockquote className="confirmed__verse">
               Wait on the LORD: be of good courage, and he shall strengthen thine heart: wait, I
               say, on the LORD.

@@ -4,9 +4,9 @@ import { Badge } from "@/components/ds/display";
 import { Input } from "@/components/ds/forms";
 import { Icon, type IconName } from "@/components/ds/icon";
 import { Tabs } from "@/components/ds/navigation";
-import { BetaSteps, SignupForm } from "@/components/site/beta";
+import { SignupForm } from "@/components/site/beta";
 import { useNotify } from "@/components/site/notify";
-import { BETA, SELECTION, useBeta } from "@/lib/beta";
+import { BETA, WAITLIST_NOTE } from "@/lib/beta";
 import { GoldDivider, Lozenges, Oval, Panel } from "@/components/site/parts";
 import {
   CAST,
@@ -197,7 +197,7 @@ export function Game() {
               </div>
               <p className="gfeat__note">No ads and no loot boxes. A game to play together.</p>
               <Button onClick={notify.open} iconLeft="bell">
-                Request to join
+                Join the waitlist
               </Button>
             </div>
             <figure className="gshot">
@@ -374,39 +374,7 @@ export function Disputation() {
   );
 }
 
-export function BetaBand() {
-  const notify = useNotify();
-  const { phase } = useBeta();
-  return (
-    <section className="sec sec--light beta-band" id="beta" data-screen-label="05b Closed beta">
-      <div className="wrap">
-        <header className="sh">
-          <p className="uc-eyebrow">
-            {phase === "open" ? "Closed beta · Now open" : `Closed beta · ${BETA.dateLong}`}
-          </p>
-          <h2>{phase === "open" ? "The beta is open." : "Be among the first to play."}</h2>
-          <p className="uc-lead">
-            {phase === "open"
-              ? `The Covenanter closed beta is open on ${BETA.platforms}. ${SELECTION}`
-              : `The Covenanter closed beta opens on Reformation Day, ${BETA.dateLong}, on ${BETA.platforms}. ${SELECTION}`}
-          </p>
-        </header>
-        <BetaSteps phase={phase} />
-        <div className="beta-band__cta">
-          <Button size="lg" onClick={notify.open} iconLeft="bell">
-            Request to join
-          </Button>
-          <Button size="lg" variant="secondary" href="/beta" iconRight="arrow-right">
-            Beta questions
-          </Button>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export function Motto() {
-  const { phase } = useBeta();
   return (
     <section
       className="motto"
@@ -426,16 +394,8 @@ export function Motto() {
           </p>
         </div>
         <div className="notify">
-          <h2>
-            {phase === "open"
-              ? "The Covenanter closed beta is open."
-              : "The Covenanter closed beta opens on Reformation Day."}
-          </h2>
-          <p className="uc-lead">
-            {phase === "open"
-              ? `On ${BETA.platforms}. Request a place below. ${SELECTION}`
-              : `${BETA.dateLong}, on ${BETA.platforms}. Request a place below. ${SELECTION}`}
-          </p>
+          <h2>Join the waitlist.</h2>
+          <p className="uc-lead">{WAITLIST_NOTE}</p>
           <SignupForm />
           <p className="uc-caption nf__note">
             We will write only about Covenanter, and you can leave the list from any email.

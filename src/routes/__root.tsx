@@ -29,28 +29,33 @@ const shareMeta = STATIC_SITE
   : [];
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: APP_NAME },
-      { name: "description", content: DESCRIPTION },
-      { name: "theme-color", content: "#14213D" },
-      ...shareMeta,
-    ],
-    links: [
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-      { rel: "stylesheet", href: appCss },
-      {
-        rel: "manifest",
-        href: STATIC_SITE ? "/site.webmanifest" : "/__grok/manifest.webmanifest",
-      },
-      {
-        rel: "apple-touch-icon",
-        href: STATIC_SITE ? "/brand/app-icon.png" : "/__grok/icon-180.png",
-      },
-    ],
-  }),
+  head: ({ matches }) => {
+    const path = matches[matches.length - 1]?.pathname ?? "/";
+    /* /1517 brings its own share card. Skip the site-wide tags so they are not duplicated. */
+    const meta = path === "/1517" ? [] : shareMeta;
+    return {
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { title: APP_NAME },
+        { name: "description", content: DESCRIPTION },
+        { name: "theme-color", content: "#14213D" },
+        ...meta,
+      ],
+      links: [
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
+        { rel: "stylesheet", href: appCss },
+        {
+          rel: "manifest",
+          href: STATIC_SITE ? "/site.webmanifest" : "/__grok/manifest.webmanifest",
+        },
+        {
+          rel: "apple-touch-icon",
+          href: STATIC_SITE ? "/brand/app-icon.png" : "/__grok/icon-180.png",
+        },
+      ],
+    };
+  },
   notFoundComponent: NotFound,
   component: () => (
     <html lang="en" suppressHydrationWarning>
